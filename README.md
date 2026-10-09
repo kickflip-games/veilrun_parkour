@@ -1,5 +1,7 @@
 # SWITCHBACK
 
+[![Nightreach cover](docs/marketing/nightreach-cover.png)](https://avivajpeyi.itch.io/nightreach)
+
 A first-person parkour time-trial game. **VEILRUN · CITY RUN** connects seven
 sectors of one misty industrial city. Build momentum, bend your trajectory with
 architectural anchors, release into an arc and carry speed into the next sector.
