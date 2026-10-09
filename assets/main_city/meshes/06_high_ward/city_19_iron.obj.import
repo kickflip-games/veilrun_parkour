@@ -1,0 +1,25 @@
+[remap]
+
+importer="wavefront_obj"
+importer_version=1
+type="Mesh"
+uid="uid://dv35rpubsslci"
+path="res://.godot/imported/city_19_iron.obj-27fdebf3b6690a1d2f59db07fae3d581.mesh"
+
+[deps]
+
+files=["res://.godot/imported/city_19_iron.obj-27fdebf3b6690a1d2f59db07fae3d581.mesh"]
+
+source_file="res://assets/main_city/meshes/06_high_ward/city_19_iron.obj"
+dest_files=["res://.godot/imported/city_19_iron.obj-27fdebf3b6690a1d2f59db07fae3d581.mesh", "res://.godot/imported/city_19_iron.obj-27fdebf3b6690a1d2f59db07fae3d581.mesh"]
+
+[params]
+
+generate_tangents=true
+generate_lods=true
+generate_shadow_mesh=true
+generate_lightmap_uv2=false
+generate_lightmap_uv2_texel_size=0.2
+scale_mesh=Vector3(1, 1, 1)
+offset_mesh=Vector3(0, 0, 0)
+force_disable_mesh_compression=false

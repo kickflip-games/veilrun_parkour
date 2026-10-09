@@ -1,0 +1,3244 @@
+[gd_scene format=3]
+
+[ext_resource type="Sky" path="res://scenes/parkour/city_sky.tres" id="CitySky"]
+
+[ext_resource type="Script" path="res://levels/parkour/parkour_trial.gd" id="Trial"]
+[ext_resource type="PackedScene" path="res://scenes/player/player.tscn" id="Player"]
+[ext_resource type="PackedScene" path="res://scenes/parkour/grapple_anchor.tscn" id="Anchor"]
+
+[ext_resource type="PackedScene" path="res://levels/parkour/rooftop_city_district.tscn" id="CityDistrict"]
+
+[sub_resource type="StandardMaterial3D" id="Stone"]
+albedo_color = Color(0.32, 0.35, 0.37, 1)
+roughness = 0.86
+
+[sub_resource type="StandardMaterial3D" id="Brick"]
+albedo_color = Color(0.15, 0.18, 0.21, 1)
+roughness = 0.86
+
+[sub_resource type="StandardMaterial3D" id="Iron"]
+albedo_color = Color(0.075, 0.085, 0.095, 1)
+roughness = 0.62
+metallic = 0.4
+
+[sub_resource type="StandardMaterial3D" id="Trim"]
+albedo_color = Color(0.68, 0.68, 0.62, 1)
+roughness = 0.86
+
+[sub_resource type="StandardMaterial3D" id="Silhouette"]
+albedo_color = Color(0.12, 0.15, 0.18, 1)
+roughness = 0.86
+
+[sub_resource type="StandardMaterial3D" id="Warm"]
+albedo_color = Color(0.85, 0.56, 0.24, 1)
+roughness = 0.86
+shading_mode = 0
+emission_enabled = true
+emission = Color(0.35, 0.18, 0.05, 1)
+
+[sub_resource type="Environment" id="Mist"]
+background_mode = 2
+sky = ExtResource("CitySky")
+background_color = Color(0.095, 0.125, 0.17, 1)
+ambient_light_source = 3
+ambient_light_color = Color(0.48, 0.57, 0.70, 1)
+ambient_light_energy = 0.62
+fog_enabled = true
+fog_light_color = Color(0.22, 0.28, 0.36, 1)
+fog_density = 0.0037
+fog_sky_affect = 0.35
+fog_height = -5.0
+fog_height_density = 0.045
+
+[sub_resource type="BoxShape3D" id="Gate"]
+size = Vector3(34, 18, 2)
+
+[sub_resource type="BoxShape3D" id="CityCollision0"]
+size = Vector3(24, 30, 40)
+
+[sub_resource type="BoxShape3D" id="CityCollision1"]
+size = Vector3(1.2, 3.4, 1.2)
+
+[sub_resource type="BoxShape3D" id="CityCollision2"]
+size = Vector3(28, 30, 40)
+
+[sub_resource type="BoxShape3D" id="CityCollision3"]
+size = Vector3(28, 30, 22)
+
+[sub_resource type="BoxShape3D" id="CityCollision4"]
+size = Vector3(24, 30, 20)
+
+[sub_resource type="BoxShape3D" id="CityCollision5"]
+size = Vector3(34, 30, 42)
+
+[sub_resource type="BoxShape3D" id="CityCollision6"]
+size = Vector3(28, 34, 28)
+
+[sub_resource type="BoxShape3D" id="CityCollision7"]
+size = Vector3(28, 38, 24)
+
+[sub_resource type="BoxShape3D" id="CityCollision8"]
+size = Vector3(40, 42, 54)
+
+[sub_resource type="BoxShape3D" id="CityCollision9"]
+size = Vector3(32, 42, 28)
+
+[sub_resource type="BoxShape3D" id="CityCollision10"]
+size = Vector3(32, 42, 26)
+
+[sub_resource type="BoxShape3D" id="CityCollision11"]
+size = Vector3(34, 42, 28)
+
+[sub_resource type="BoxShape3D" id="CityCollision12"]
+size = Vector3(28, 42, 28)
+
+[sub_resource type="BoxShape3D" id="CityCollision13"]
+size = Vector3(44, 42, 38)
+
+[sub_resource type="BoxShape3D" id="CityCollision14"]
+size = Vector3(6, 0.5, 11.5)
+
+[sub_resource type="BoxShape3D" id="CityCollision15"]
+size = Vector3(6, 0.5, 9.719544)
+
+[sub_resource type="BoxShape3D" id="CityCollision16"]
+size = Vector3(6, 0.5, 4.5)
+
+[sub_resource type="BoxShape3D" id="CityCollision17"]
+size = Vector3(6, 0.5, 8.5)
+
+[sub_resource type="BoxShape3D" id="CityCollision18"]
+size = Vector3(6, 0.5, 20.896078)
+
+[sub_resource type="BoxShape3D" id="CityCollision19"]
+size = Vector3(6, 0.5, 30.232137)
+
+[sub_resource type="BoxShape3D" id="CityCollision20"]
+size = Vector3(6, 0.5, 18.61077)
+
+[sub_resource type="BoxShape3D" id="CityCollision21"]
+size = Vector3(7, 0.5, 32.138584)
+
+[sub_resource type="BoxShape3D" id="CityCollision22"]
+size = Vector3(7, 0.5, 24.83105)
+
+[sub_resource type="BoxShape3D" id="CityCollision23"]
+size = Vector3(7, 0.5, 22.86068)
+
+[sub_resource type="BoxShape3D" id="CityCollision24"]
+size = Vector3(7, 0.5, 6.5)
+
+[sub_resource type="BoxShape3D" id="CityCollision25"]
+size = Vector3(7, 0.5, 16.5)
+
+[sub_resource type="BoxShape3D" id="CityCollision26"]
+size = Vector3(7, 0.5, 24.015952)
+
+[sub_resource type="BoxShape3D" id="CityCollision27"]
+size = Vector3(7, 0.5, 51.5)
+
+[sub_resource type="BoxShape3D" id="CityCollision28"]
+size = Vector3(7, 0.5, 14.101471)
+
+[sub_resource type="BoxShape3D" id="CityCollision29"]
+size = Vector3(7, 0.5, 13.538405)
+
+[sub_resource type="BoxShape3D" id="CityCollision30"]
+size = Vector3(6, 0.5, 21.595023)
+
+[sub_resource type="BoxShape3D" id="CityCollision31"]
+size = Vector3(6, 0.5, 29.5)
+
+[sub_resource type="BoxShape3D" id="CityCollision32"]
+size = Vector3(6, 0.5, 20.146883)
+
+[sub_resource type="BoxShape3D" id="CityCollision33"]
+size = Vector3(1.7, 0.5, 12)
+
+[node name="RooftopTrial" type="Node3D"]
+script = ExtResource("Trial")
+course_id = "rooftop_pull_v1"
+course_title = "VEILRUN · ROOFTOP TRIAL"
+checkpoint_paths = Array[NodePath]([NodePath("Checkpoint1"), NodePath("Checkpoint2"), NodePath("Checkpoint3"), NodePath("Checkpoint4")])
+finish_path = NodePath("FinishGate")
+sector_names = PackedStringArray("THE EAVES", "BRAIDED SPAN", "CLOCKCOURT", "IRON CURRENT", "LAST LIGHT")
+fall_height = 4.0
+grapple_range = 26.0
+acquisition_horizontal_degrees = 20.0
+acquisition_vertical_degrees = 42.0
+medals_enabled = true
+medal_bronze = 75.0
+medal_silver = 60.0
+medal_gold = 45.0
+medal_developer = 35.0
+course_intro = "Run · Jump · Aim at a ring · Pull · Release to carry speed"
+metadata/safe_route_length = 495.0
+metadata/target_first_competent_seconds = Vector2(45, 75)
+
+[node name="WorldEnvironment" type="WorldEnvironment" parent="."]
+environment = SubResource("Mist")
+
+[node name="Sun" type="DirectionalLight3D" parent="."]
+rotation = Vector3(-0.9, -0.5, 0)
+light_color = Color(0.48, 0.60, 0.78, 1)
+light_energy = 0.85
+shadow_enabled = true
+directional_shadow_max_distance = 80.0
+directional_shadow_fade_start = 0.7
+
+[node name="Player" parent="." instance=ExtResource("Player")]
+position = Vector3(0, 12.55, 10)
+parkour_mode = true
+surf_mode = false
+use_momentum_pull = true
+vertical_look_enabled = true
+parkour_speed_limit = 32.0
+
+[node name="IntroStart" type="Node3D" parent="."]
+position = Vector3(0, 12, -7)
+
+[node name="Building" type="Node3D" parent="IntroStart"]
+position = Vector3(0, -15, 0)
+metadata/visual_size = Vector3(24, 30, 40)
+metadata/visual_material = "Brick"
+metadata/solid = true
+
+[node name="Body" type="StaticBody3D" parent="IntroStart/Building"]
+
+[node name="Shape" type="CollisionShape3D" parent="IntroStart/Building/Body"]
+shape = SubResource("CityCollision0")
+
+[node name="Roof" type="Node3D" parent="IntroStart"]
+position = Vector3(0, 0.035, 0)
+metadata/visual_size = Vector3(24, 0.07, 40)
+metadata/visual_material = "Stone"
+
+[node name="Cornice" type="Node3D" parent="IntroStart"]
+position = Vector3(0, -0.5, 0)
+metadata/visual_size = Vector3(24.35, 0.28, 40.35)
+metadata/visual_material = "Stone"
+
+[node name="Edge-1" type="Node3D" parent="IntroStart"]
+position = Vector3(-11.82, 0.12, 0)
+metadata/visual_size = Vector3(0.14, 0.18, 39)
+metadata/visual_material = "Trim"
+
+[node name="Pilaster-1-1" type="Node3D" parent="IntroStart"]
+position = Vector3(-11.9, -15, -19)
+metadata/visual_size = Vector3(0.3, 30, 0.45)
+metadata/visual_material = "Stone"
+
+[node name="Pilaster-11" type="Node3D" parent="IntroStart"]
+position = Vector3(-11.9, -15, 19)
+metadata/visual_size = Vector3(0.3, 30, 0.45)
+metadata/visual_material = "Stone"
+
+[node name="Edge1" type="Node3D" parent="IntroStart"]
+position = Vector3(11.82, 0.12, 0)
+metadata/visual_size = Vector3(0.14, 0.18, 39)
+metadata/visual_material = "Trim"
+
+[node name="Pilaster1-1" type="Node3D" parent="IntroStart"]
+position = Vector3(11.9, -15, -19)
+metadata/visual_size = Vector3(0.3, 30, 0.45)
+metadata/visual_material = "Stone"
+
+[node name="Pilaster11" type="Node3D" parent="IntroStart"]
+position = Vector3(11.9, -15, 19)
+metadata/visual_size = Vector3(0.3, 30, 0.45)
+metadata/visual_material = "Stone"
+
+[node name="IntroStartChimney0" type="Node3D" parent="."]
+position = Vector3(-9.6, 13.7, -18.2)
+metadata/visual_size = Vector3(1.2, 3.4, 1.2)
+metadata/visual_material = "Brick"
+metadata/solid = true
+
+[node name="Body" type="StaticBody3D" parent="IntroStartChimney0"]
+
+[node name="Shape" type="CollisionShape3D" parent="IntroStartChimney0/Body"]
+shape = SubResource("CityCollision1")
+
+[node name="IntroStartChimneyCap0" type="Node3D" parent="."]
+position = Vector3(-9.6, 15.46, -18.2)
+metadata/visual_size = Vector3(1.65, 0.18, 1.65)
+metadata/visual_material = "Iron"
+
+[node name="IntroStartLamp0" type="Node3D" parent="."]
+position = Vector3(-10.85, 12, -7)
+
+[node name="Stem" type="Node3D" parent="IntroStartLamp0"]
+position = Vector3(0, 0.65, 0)
+metadata/visual_size = Vector3(0.16, 1.3, 0.16)
+metadata/visual_material = "Iron"
+
+[node name="Glass" type="Node3D" parent="IntroStartLamp0"]
+position = Vector3(0, 1.48, 0)
+metadata/visual_size = Vector3(0.3, 0.46, 0.3)
+metadata/visual_material = "Warm"
+
+[node name="Cap" type="Node3D" parent="IntroStartLamp0"]
+position = Vector3(0, 1.77, 0)
+metadata/visual_size = Vector3(0.48, 0.1, 0.48)
+metadata/visual_material = "Iron"
+
+[node name="IntroStartChimney1" type="Node3D" parent="."]
+position = Vector3(9.6, 13.7, 4.2)
+metadata/visual_size = Vector3(1.2, 3.4, 1.2)
+metadata/visual_material = "Brick"
+metadata/solid = true
+
+[node name="Body" type="StaticBody3D" parent="IntroStartChimney1"]
+
+[node name="Shape" type="CollisionShape3D" parent="IntroStartChimney1/Body"]
+shape = SubResource("CityCollision1")
+
+[node name="IntroStartChimneyCap1" type="Node3D" parent="."]
+position = Vector3(9.6, 15.46, 4.2)
+metadata/visual_size = Vector3(1.65, 0.18, 1.65)
+metadata/visual_material = "Iron"
+
+[node name="IntroStartLamp1" type="Node3D" parent="."]
+position = Vector3(10.85, 12, -7)
+
+[node name="Stem" type="Node3D" parent="IntroStartLamp1"]
+position = Vector3(0, 0.65, 0)
+metadata/visual_size = Vector3(0.16, 1.3, 0.16)
+metadata/visual_material = "Iron"
+
+[node name="Glass" type="Node3D" parent="IntroStartLamp1"]
+position = Vector3(0, 1.48, 0)
+metadata/visual_size = Vector3(0.3, 0.46, 0.3)
+metadata/visual_material = "Warm"
+
+[node name="Cap" type="Node3D" parent="IntroStartLamp1"]
+position = Vector3(0, 1.77, 0)
+metadata/visual_size = Vector3(0.48, 0.1, 0.48)
+metadata/visual_material = "Iron"
+
+[node name="IntroLanding" type="Node3D" parent="."]
+position = Vector3(0, 12, -49)
+
+[node name="Building" type="Node3D" parent="IntroLanding"]
+position = Vector3(0, -15, 0)
+metadata/visual_size = Vector3(28, 30, 40)
+metadata/visual_material = "Brick"
+metadata/solid = true
+
+[node name="Body" type="StaticBody3D" parent="IntroLanding/Building"]
+
+[node name="Shape" type="CollisionShape3D" parent="IntroLanding/Building/Body"]
+shape = SubResource("CityCollision2")
+
+[node name="Roof" type="Node3D" parent="IntroLanding"]
+position = Vector3(0, 0.035, 0)
+metadata/visual_size = Vector3(28, 0.07, 40)
+metadata/visual_material = "Stone"
+
+[node name="Cornice" type="Node3D" parent="IntroLanding"]
+position = Vector3(0, -0.5, 0)
+metadata/visual_size = Vector3(28.35, 0.28, 40.35)
+metadata/visual_material = "Stone"
+
+[node name="Edge-1" type="Node3D" parent="IntroLanding"]
+position = Vector3(-13.82, 0.12, 0)
+metadata/visual_size = Vector3(0.14, 0.18, 39)
+metadata/visual_material = "Trim"
+
+[node name="Pilaster-1-1" type="Node3D" parent="IntroLanding"]
+position = Vector3(-13.9, -15, -19)
+metadata/visual_size = Vector3(0.3, 30, 0.45)
+metadata/visual_material = "Stone"
+
+[node name="Pilaster-11" type="Node3D" parent="IntroLanding"]
+position = Vector3(-13.9, -15, 19)
+metadata/visual_size = Vector3(0.3, 30, 0.45)
+metadata/visual_material = "Stone"
+
+[node name="Edge1" type="Node3D" parent="IntroLanding"]
+position = Vector3(13.82, 0.12, 0)
+metadata/visual_size = Vector3(0.14, 0.18, 39)
+metadata/visual_material = "Trim"
+
+[node name="Pilaster1-1" type="Node3D" parent="IntroLanding"]
+position = Vector3(13.9, -15, -19)
+metadata/visual_size = Vector3(0.3, 30, 0.45)
+metadata/visual_material = "Stone"
+
+[node name="Pilaster11" type="Node3D" parent="IntroLanding"]
+position = Vector3(13.9, -15, 19)
+metadata/visual_size = Vector3(0.3, 30, 0.45)
+metadata/visual_material = "Stone"
+
+[node name="IntroLandingChimney0" type="Node3D" parent="."]
+position = Vector3(-11.6, 13.7, -60.2)
+metadata/visual_size = Vector3(1.2, 3.4, 1.2)
+metadata/visual_material = "Brick"
+metadata/solid = true
+
+[node name="Body" type="StaticBody3D" parent="IntroLandingChimney0"]
+
+[node name="Shape" type="CollisionShape3D" parent="IntroLandingChimney0/Body"]
+shape = SubResource("CityCollision1")
+
+[node name="IntroLandingChimneyCap0" type="Node3D" parent="."]
+position = Vector3(-11.6, 15.46, -60.2)
+metadata/visual_size = Vector3(1.65, 0.18, 1.65)
+metadata/visual_material = "Iron"
+
+[node name="IntroLandingLamp0" type="Node3D" parent="."]
+position = Vector3(-12.85, 12, -49)
+
+[node name="Stem" type="Node3D" parent="IntroLandingLamp0"]
+position = Vector3(0, 0.65, 0)
+metadata/visual_size = Vector3(0.16, 1.3, 0.16)
+metadata/visual_material = "Iron"
+
+[node name="Glass" type="Node3D" parent="IntroLandingLamp0"]
+position = Vector3(0, 1.48, 0)
+metadata/visual_size = Vector3(0.3, 0.46, 0.3)
+metadata/visual_material = "Warm"
+
+[node name="Cap" type="Node3D" parent="IntroLandingLamp0"]
+position = Vector3(0, 1.77, 0)
+metadata/visual_size = Vector3(0.48, 0.1, 0.48)
+metadata/visual_material = "Iron"
+
+[node name="IntroLandingChimney1" type="Node3D" parent="."]
+position = Vector3(11.6, 13.7, -37.8)
+metadata/visual_size = Vector3(1.2, 3.4, 1.2)
+metadata/visual_material = "Brick"
+metadata/solid = true
+
+[node name="Body" type="StaticBody3D" parent="IntroLandingChimney1"]
+
+[node name="Shape" type="CollisionShape3D" parent="IntroLandingChimney1/Body"]
+shape = SubResource("CityCollision1")
+
+[node name="IntroLandingChimneyCap1" type="Node3D" parent="."]
+position = Vector3(11.6, 15.46, -37.8)
+metadata/visual_size = Vector3(1.65, 0.18, 1.65)
+metadata/visual_material = "Iron"
+
+[node name="IntroLandingLamp1" type="Node3D" parent="."]
+position = Vector3(12.85, 12, -49)
+
+[node name="Stem" type="Node3D" parent="IntroLandingLamp1"]
+position = Vector3(0, 0.65, 0)
+metadata/visual_size = Vector3(0.16, 1.3, 0.16)
+metadata/visual_material = "Iron"
+
+[node name="Glass" type="Node3D" parent="IntroLandingLamp1"]
+position = Vector3(0, 1.48, 0)
+metadata/visual_size = Vector3(0.3, 0.46, 0.3)
+metadata/visual_material = "Warm"
+
+[node name="Cap" type="Node3D" parent="IntroLandingLamp1"]
+position = Vector3(0, 1.77, 0)
+metadata/visual_size = Vector3(0.48, 0.1, 0.48)
+metadata/visual_material = "Iron"
+
+[node name="GapApproach" type="Node3D" parent="."]
+position = Vector3(0, 12, -80)
+
+[node name="Building" type="Node3D" parent="GapApproach"]
+position = Vector3(0, -15, 0)
+metadata/visual_size = Vector3(28, 30, 22)
+metadata/visual_material = "Brick"
+metadata/solid = true
+
+[node name="Body" type="StaticBody3D" parent="GapApproach/Building"]
+
+[node name="Shape" type="CollisionShape3D" parent="GapApproach/Building/Body"]
+shape = SubResource("CityCollision3")
+
+[node name="Roof" type="Node3D" parent="GapApproach"]
+position = Vector3(0, 0.035, 0)
+metadata/visual_size = Vector3(28, 0.07, 22)
+metadata/visual_material = "Stone"
+
+[node name="Cornice" type="Node3D" parent="GapApproach"]
+position = Vector3(0, -0.5, 0)
+metadata/visual_size = Vector3(28.35, 0.28, 22.35)
+metadata/visual_material = "Stone"
+
+[node name="Edge-1" type="Node3D" parent="GapApproach"]
+position = Vector3(-13.82, 0.12, 0)
+metadata/visual_size = Vector3(0.14, 0.18, 21)
+metadata/visual_material = "Trim"
+
+[node name="Pilaster-1-1" type="Node3D" parent="GapApproach"]
+position = Vector3(-13.9, -15, -10)
+metadata/visual_size = Vector3(0.3, 30, 0.45)
+metadata/visual_material = "Stone"
+
+[node name="Pilaster-11" type="Node3D" parent="GapApproach"]
+position = Vector3(-13.9, -15, 10)
+metadata/visual_size = Vector3(0.3, 30, 0.45)
+metadata/visual_material = "Stone"
+
+[node name="Edge1" type="Node3D" parent="GapApproach"]
+position = Vector3(13.82, 0.12, 0)
+metadata/visual_size = Vector3(0.14, 0.18, 21)
+metadata/visual_material = "Trim"
+
+[node name="Pilaster1-1" type="Node3D" parent="GapApproach"]
+position = Vector3(13.9, -15, -10)
+metadata/visual_size = Vector3(0.3, 30, 0.45)
+metadata/visual_material = "Stone"
+
+[node name="Pilaster11" type="Node3D" parent="GapApproach"]
+position = Vector3(13.9, -15, 10)
+metadata/visual_size = Vector3(0.3, 30, 0.45)
+metadata/visual_material = "Stone"
+
+[node name="GapApproachChimney0" type="Node3D" parent="."]
+position = Vector3(-11.6, 13.7, -86.16)
+metadata/visual_size = Vector3(1.2, 3.4, 1.2)
+metadata/visual_material = "Brick"
+metadata/solid = true
+
+[node name="Body" type="StaticBody3D" parent="GapApproachChimney0"]
+
+[node name="Shape" type="CollisionShape3D" parent="GapApproachChimney0/Body"]
+shape = SubResource("CityCollision1")
+
+[node name="GapApproachChimneyCap0" type="Node3D" parent="."]
+position = Vector3(-11.6, 15.46, -86.16)
+metadata/visual_size = Vector3(1.65, 0.18, 1.65)
+metadata/visual_material = "Iron"
+
+[node name="GapApproachLamp0" type="Node3D" parent="."]
+position = Vector3(-12.85, 12, -80)
+
+[node name="Stem" type="Node3D" parent="GapApproachLamp0"]
+position = Vector3(0, 0.65, 0)
+metadata/visual_size = Vector3(0.16, 1.3, 0.16)
+metadata/visual_material = "Iron"
+
+[node name="Glass" type="Node3D" parent="GapApproachLamp0"]
+position = Vector3(0, 1.48, 0)
+metadata/visual_size = Vector3(0.3, 0.46, 0.3)
+metadata/visual_material = "Warm"
+
+[node name="Cap" type="Node3D" parent="GapApproachLamp0"]
+position = Vector3(0, 1.77, 0)
+metadata/visual_size = Vector3(0.48, 0.1, 0.48)
+metadata/visual_material = "Iron"
+
+[node name="GapApproachChimney1" type="Node3D" parent="."]
+position = Vector3(11.6, 13.7, -73.84)
+metadata/visual_size = Vector3(1.2, 3.4, 1.2)
+metadata/visual_material = "Brick"
+metadata/solid = true
+
+[node name="Body" type="StaticBody3D" parent="GapApproachChimney1"]
+
+[node name="Shape" type="CollisionShape3D" parent="GapApproachChimney1/Body"]
+shape = SubResource("CityCollision1")
+
+[node name="GapApproachChimneyCap1" type="Node3D" parent="."]
+position = Vector3(11.6, 15.46, -73.84)
+metadata/visual_size = Vector3(1.65, 0.18, 1.65)
+metadata/visual_material = "Iron"
+
+[node name="GapApproachLamp1" type="Node3D" parent="."]
+position = Vector3(12.85, 12, -80)
+
+[node name="Stem" type="Node3D" parent="GapApproachLamp1"]
+position = Vector3(0, 0.65, 0)
+metadata/visual_size = Vector3(0.16, 1.3, 0.16)
+metadata/visual_material = "Iron"
+
+[node name="Glass" type="Node3D" parent="GapApproachLamp1"]
+position = Vector3(0, 1.48, 0)
+metadata/visual_size = Vector3(0.3, 0.46, 0.3)
+metadata/visual_material = "Warm"
+
+[node name="Cap" type="Node3D" parent="GapApproachLamp1"]
+position = Vector3(0, 1.77, 0)
+metadata/visual_size = Vector3(0.48, 0.1, 0.48)
+metadata/visual_material = "Iron"
+
+[node name="GapLeft" type="Node3D" parent="."]
+position = Vector3(-14, 12, -108)
+
+[node name="Building" type="Node3D" parent="GapLeft"]
+position = Vector3(0, -15, 0)
+metadata/visual_size = Vector3(24, 30, 20)
+metadata/visual_material = "Brick"
+metadata/solid = true
+
+[node name="Body" type="StaticBody3D" parent="GapLeft/Building"]
+
+[node name="Shape" type="CollisionShape3D" parent="GapLeft/Building/Body"]
+shape = SubResource("CityCollision4")
+
+[node name="Roof" type="Node3D" parent="GapLeft"]
+position = Vector3(0, 0.035, 0)
+metadata/visual_size = Vector3(24, 0.07, 20)
+metadata/visual_material = "Stone"
+
+[node name="Cornice" type="Node3D" parent="GapLeft"]
+position = Vector3(0, -0.5, 0)
+metadata/visual_size = Vector3(24.35, 0.28, 20.35)
+metadata/visual_material = "Stone"
+
+[node name="Edge-1" type="Node3D" parent="GapLeft"]
+position = Vector3(-11.82, 0.12, 0)
+metadata/visual_size = Vector3(0.14, 0.18, 19)
+metadata/visual_material = "Trim"
+
+[node name="Pilaster-1-1" type="Node3D" parent="GapLeft"]
+position = Vector3(-11.9, -15, -9)
+metadata/visual_size = Vector3(0.3, 30, 0.45)
+metadata/visual_material = "Stone"
+
+[node name="Pilaster-11" type="Node3D" parent="GapLeft"]
+position = Vector3(-11.9, -15, 9)
+metadata/visual_size = Vector3(0.3, 30, 0.45)
+metadata/visual_material = "Stone"
+
+[node name="Edge1" type="Node3D" parent="GapLeft"]
+position = Vector3(11.82, 0.12, 0)
+metadata/visual_size = Vector3(0.14, 0.18, 19)
+metadata/visual_material = "Trim"
+
+[node name="Pilaster1-1" type="Node3D" parent="GapLeft"]
+position = Vector3(11.9, -15, -9)
+metadata/visual_size = Vector3(0.3, 30, 0.45)
+metadata/visual_material = "Stone"
+
+[node name="Pilaster11" type="Node3D" parent="GapLeft"]
+position = Vector3(11.9, -15, 9)
+metadata/visual_size = Vector3(0.3, 30, 0.45)
+metadata/visual_material = "Stone"
+
+[node name="GapLeftChimney0" type="Node3D" parent="."]
+position = Vector3(-23.6, 13.7, -113.6)
+metadata/visual_size = Vector3(1.2, 3.4, 1.2)
+metadata/visual_material = "Brick"
+metadata/solid = true
+
+[node name="Body" type="StaticBody3D" parent="GapLeftChimney0"]
+
+[node name="Shape" type="CollisionShape3D" parent="GapLeftChimney0/Body"]
+shape = SubResource("CityCollision1")
+
+[node name="GapLeftChimneyCap0" type="Node3D" parent="."]
+position = Vector3(-23.6, 15.46, -113.6)
+metadata/visual_size = Vector3(1.65, 0.18, 1.65)
+metadata/visual_material = "Iron"
+
+[node name="GapLeftLamp0" type="Node3D" parent="."]
+position = Vector3(-24.85, 12, -108)
+
+[node name="Stem" type="Node3D" parent="GapLeftLamp0"]
+position = Vector3(0, 0.65, 0)
+metadata/visual_size = Vector3(0.16, 1.3, 0.16)
+metadata/visual_material = "Iron"
+
+[node name="Glass" type="Node3D" parent="GapLeftLamp0"]
+position = Vector3(0, 1.48, 0)
+metadata/visual_size = Vector3(0.3, 0.46, 0.3)
+metadata/visual_material = "Warm"
+
+[node name="Cap" type="Node3D" parent="GapLeftLamp0"]
+position = Vector3(0, 1.77, 0)
+metadata/visual_size = Vector3(0.48, 0.1, 0.48)
+metadata/visual_material = "Iron"
+
+[node name="GapLeftChimney1" type="Node3D" parent="."]
+position = Vector3(-23.6, 13.7, -102.4)
+metadata/visual_size = Vector3(1.2, 3.4, 1.2)
+metadata/visual_material = "Brick"
+metadata/solid = true
+
+[node name="Body" type="StaticBody3D" parent="GapLeftChimney1"]
+
+[node name="Shape" type="CollisionShape3D" parent="GapLeftChimney1/Body"]
+shape = SubResource("CityCollision1")
+
+[node name="GapLeftChimneyCap1" type="Node3D" parent="."]
+position = Vector3(-23.6, 15.46, -102.4)
+metadata/visual_size = Vector3(1.65, 0.18, 1.65)
+metadata/visual_material = "Iron"
+
+[node name="GapLeftLamp1" type="Node3D" parent="."]
+position = Vector3(-3.15, 12, -108)
+
+[node name="Stem" type="Node3D" parent="GapLeftLamp1"]
+position = Vector3(0, 0.65, 0)
+metadata/visual_size = Vector3(0.16, 1.3, 0.16)
+metadata/visual_material = "Iron"
+
+[node name="Glass" type="Node3D" parent="GapLeftLamp1"]
+position = Vector3(0, 1.48, 0)
+metadata/visual_size = Vector3(0.3, 0.46, 0.3)
+metadata/visual_material = "Warm"
+
+[node name="Cap" type="Node3D" parent="GapLeftLamp1"]
+position = Vector3(0, 1.77, 0)
+metadata/visual_size = Vector3(0.48, 0.1, 0.48)
+metadata/visual_material = "Iron"
+
+[node name="GapRight" type="Node3D" parent="."]
+position = Vector3(14, 12, -124)
+
+[node name="Building" type="Node3D" parent="GapRight"]
+position = Vector3(0, -15, 0)
+metadata/visual_size = Vector3(24, 30, 20)
+metadata/visual_material = "Brick"
+metadata/solid = true
+
+[node name="Body" type="StaticBody3D" parent="GapRight/Building"]
+
+[node name="Shape" type="CollisionShape3D" parent="GapRight/Building/Body"]
+shape = SubResource("CityCollision4")
+
+[node name="Roof" type="Node3D" parent="GapRight"]
+position = Vector3(0, 0.035, 0)
+metadata/visual_size = Vector3(24, 0.07, 20)
+metadata/visual_material = "Stone"
+
+[node name="Cornice" type="Node3D" parent="GapRight"]
+position = Vector3(0, -0.5, 0)
+metadata/visual_size = Vector3(24.35, 0.28, 20.35)
+metadata/visual_material = "Stone"
+
+[node name="Edge-1" type="Node3D" parent="GapRight"]
+position = Vector3(-11.82, 0.12, 0)
+metadata/visual_size = Vector3(0.14, 0.18, 19)
+metadata/visual_material = "Trim"
+
+[node name="Pilaster-1-1" type="Node3D" parent="GapRight"]
+position = Vector3(-11.9, -15, -9)
+metadata/visual_size = Vector3(0.3, 30, 0.45)
+metadata/visual_material = "Stone"
+
+[node name="Pilaster-11" type="Node3D" parent="GapRight"]
+position = Vector3(-11.9, -15, 9)
+metadata/visual_size = Vector3(0.3, 30, 0.45)
+metadata/visual_material = "Stone"
+
+[node name="Edge1" type="Node3D" parent="GapRight"]
+position = Vector3(11.82, 0.12, 0)
+metadata/visual_size = Vector3(0.14, 0.18, 19)
+metadata/visual_material = "Trim"
+
+[node name="Pilaster1-1" type="Node3D" parent="GapRight"]
+position = Vector3(11.9, -15, -9)
+metadata/visual_size = Vector3(0.3, 30, 0.45)
+metadata/visual_material = "Stone"
+
+[node name="Pilaster11" type="Node3D" parent="GapRight"]
+position = Vector3(11.9, -15, 9)
+metadata/visual_size = Vector3(0.3, 30, 0.45)
+metadata/visual_material = "Stone"
+
+[node name="GapRightChimney0" type="Node3D" parent="."]
+position = Vector3(23.6, 13.7, -129.6)
+metadata/visual_size = Vector3(1.2, 3.4, 1.2)
+metadata/visual_material = "Brick"
+metadata/solid = true
+
+[node name="Body" type="StaticBody3D" parent="GapRightChimney0"]
+
+[node name="Shape" type="CollisionShape3D" parent="GapRightChimney0/Body"]
+shape = SubResource("CityCollision1")
+
+[node name="GapRightChimneyCap0" type="Node3D" parent="."]
+position = Vector3(23.6, 15.46, -129.6)
+metadata/visual_size = Vector3(1.65, 0.18, 1.65)
+metadata/visual_material = "Iron"
+
+[node name="GapRightLamp0" type="Node3D" parent="."]
+position = Vector3(3.15, 12, -124)
+
+[node name="Stem" type="Node3D" parent="GapRightLamp0"]
+position = Vector3(0, 0.65, 0)
+metadata/visual_size = Vector3(0.16, 1.3, 0.16)
+metadata/visual_material = "Iron"
+
+[node name="Glass" type="Node3D" parent="GapRightLamp0"]
+position = Vector3(0, 1.48, 0)
+metadata/visual_size = Vector3(0.3, 0.46, 0.3)
+metadata/visual_material = "Warm"
+
+[node name="Cap" type="Node3D" parent="GapRightLamp0"]
+position = Vector3(0, 1.77, 0)
+metadata/visual_size = Vector3(0.48, 0.1, 0.48)
+metadata/visual_material = "Iron"
+
+[node name="GapRightChimney1" type="Node3D" parent="."]
+position = Vector3(23.6, 13.7, -118.4)
+metadata/visual_size = Vector3(1.2, 3.4, 1.2)
+metadata/visual_material = "Brick"
+metadata/solid = true
+
+[node name="Body" type="StaticBody3D" parent="GapRightChimney1"]
+
+[node name="Shape" type="CollisionShape3D" parent="GapRightChimney1/Body"]
+shape = SubResource("CityCollision1")
+
+[node name="GapRightChimneyCap1" type="Node3D" parent="."]
+position = Vector3(23.6, 15.46, -118.4)
+metadata/visual_size = Vector3(1.65, 0.18, 1.65)
+metadata/visual_material = "Iron"
+
+[node name="GapRightLamp1" type="Node3D" parent="."]
+position = Vector3(24.85, 12, -124)
+
+[node name="Stem" type="Node3D" parent="GapRightLamp1"]
+position = Vector3(0, 0.65, 0)
+metadata/visual_size = Vector3(0.16, 1.3, 0.16)
+metadata/visual_material = "Iron"
+
+[node name="Glass" type="Node3D" parent="GapRightLamp1"]
+position = Vector3(0, 1.48, 0)
+metadata/visual_size = Vector3(0.3, 0.46, 0.3)
+metadata/visual_material = "Warm"
+
+[node name="Cap" type="Node3D" parent="GapRightLamp1"]
+position = Vector3(0, 1.77, 0)
+metadata/visual_size = Vector3(0.48, 0.1, 0.48)
+metadata/visual_material = "Iron"
+
+[node name="GapLanding" type="Node3D" parent="."]
+position = Vector3(0, 12, -149)
+
+[node name="Building" type="Node3D" parent="GapLanding"]
+position = Vector3(0, -15, 0)
+metadata/visual_size = Vector3(34, 30, 42)
+metadata/visual_material = "Brick"
+metadata/solid = true
+
+[node name="Body" type="StaticBody3D" parent="GapLanding/Building"]
+
+[node name="Shape" type="CollisionShape3D" parent="GapLanding/Building/Body"]
+shape = SubResource("CityCollision5")
+
+[node name="Roof" type="Node3D" parent="GapLanding"]
+position = Vector3(0, 0.035, 0)
+metadata/visual_size = Vector3(34, 0.07, 42)
+metadata/visual_material = "Stone"
+
+[node name="Cornice" type="Node3D" parent="GapLanding"]
+position = Vector3(0, -0.5, 0)
+metadata/visual_size = Vector3(34.35, 0.28, 42.35)
+metadata/visual_material = "Stone"
+
+[node name="Edge-1" type="Node3D" parent="GapLanding"]
+position = Vector3(-16.82, 0.12, 0)
+metadata/visual_size = Vector3(0.14, 0.18, 41)
+metadata/visual_material = "Trim"
+
+[node name="Pilaster-1-1" type="Node3D" parent="GapLanding"]
+position = Vector3(-16.9, -15, -20)
+metadata/visual_size = Vector3(0.3, 30, 0.45)
+metadata/visual_material = "Stone"
+
+[node name="Pilaster-11" type="Node3D" parent="GapLanding"]
+position = Vector3(-16.9, -15, 20)
+metadata/visual_size = Vector3(0.3, 30, 0.45)
+metadata/visual_material = "Stone"
+
+[node name="Edge1" type="Node3D" parent="GapLanding"]
+position = Vector3(16.82, 0.12, 0)
+metadata/visual_size = Vector3(0.14, 0.18, 41)
+metadata/visual_material = "Trim"
+
+[node name="Pilaster1-1" type="Node3D" parent="GapLanding"]
+position = Vector3(16.9, -15, -20)
+metadata/visual_size = Vector3(0.3, 30, 0.45)
+metadata/visual_material = "Stone"
+
+[node name="Pilaster11" type="Node3D" parent="GapLanding"]
+position = Vector3(16.9, -15, 20)
+metadata/visual_size = Vector3(0.3, 30, 0.45)
+metadata/visual_material = "Stone"
+
+[node name="GapLandingChimney0" type="Node3D" parent="."]
+position = Vector3(-14.6, 13.7, -160.76)
+metadata/visual_size = Vector3(1.2, 3.4, 1.2)
+metadata/visual_material = "Brick"
+metadata/solid = true
+
+[node name="Body" type="StaticBody3D" parent="GapLandingChimney0"]
+
+[node name="Shape" type="CollisionShape3D" parent="GapLandingChimney0/Body"]
+shape = SubResource("CityCollision1")
+
+[node name="GapLandingChimneyCap0" type="Node3D" parent="."]
+position = Vector3(-14.6, 15.46, -160.76)
+metadata/visual_size = Vector3(1.65, 0.18, 1.65)
+metadata/visual_material = "Iron"
+
+[node name="GapLandingLamp0" type="Node3D" parent="."]
+position = Vector3(-15.85, 12, -149)
+
+[node name="Stem" type="Node3D" parent="GapLandingLamp0"]
+position = Vector3(0, 0.65, 0)
+metadata/visual_size = Vector3(0.16, 1.3, 0.16)
+metadata/visual_material = "Iron"
+
+[node name="Glass" type="Node3D" parent="GapLandingLamp0"]
+position = Vector3(0, 1.48, 0)
+metadata/visual_size = Vector3(0.3, 0.46, 0.3)
+metadata/visual_material = "Warm"
+
+[node name="Cap" type="Node3D" parent="GapLandingLamp0"]
+position = Vector3(0, 1.77, 0)
+metadata/visual_size = Vector3(0.48, 0.1, 0.48)
+metadata/visual_material = "Iron"
+
+[node name="GapLandingChimney1" type="Node3D" parent="."]
+position = Vector3(14.6, 13.7, -137.24)
+metadata/visual_size = Vector3(1.2, 3.4, 1.2)
+metadata/visual_material = "Brick"
+metadata/solid = true
+
+[node name="Body" type="StaticBody3D" parent="GapLandingChimney1"]
+
+[node name="Shape" type="CollisionShape3D" parent="GapLandingChimney1/Body"]
+shape = SubResource("CityCollision1")
+
+[node name="GapLandingChimneyCap1" type="Node3D" parent="."]
+position = Vector3(14.6, 15.46, -137.24)
+metadata/visual_size = Vector3(1.65, 0.18, 1.65)
+metadata/visual_material = "Iron"
+
+[node name="GapLandingLamp1" type="Node3D" parent="."]
+position = Vector3(15.85, 12, -149)
+
+[node name="Stem" type="Node3D" parent="GapLandingLamp1"]
+position = Vector3(0, 0.65, 0)
+metadata/visual_size = Vector3(0.16, 1.3, 0.16)
+metadata/visual_material = "Iron"
+
+[node name="Glass" type="Node3D" parent="GapLandingLamp1"]
+position = Vector3(0, 1.48, 0)
+metadata/visual_size = Vector3(0.3, 0.46, 0.3)
+metadata/visual_material = "Warm"
+
+[node name="Cap" type="Node3D" parent="GapLandingLamp1"]
+position = Vector3(0, 1.77, 0)
+metadata/visual_size = Vector3(0.48, 0.1, 0.48)
+metadata/visual_material = "Iron"
+
+[node name="TowerLow" type="Node3D" parent="."]
+position = Vector3(-12, 16, -179)
+
+[node name="Building" type="Node3D" parent="TowerLow"]
+position = Vector3(0, -17, 0)
+metadata/visual_size = Vector3(28, 34, 28)
+metadata/visual_material = "Brick"
+metadata/solid = true
+
+[node name="Body" type="StaticBody3D" parent="TowerLow/Building"]
+
+[node name="Shape" type="CollisionShape3D" parent="TowerLow/Building/Body"]
+shape = SubResource("CityCollision6")
+
+[node name="Roof" type="Node3D" parent="TowerLow"]
+position = Vector3(0, 0.035, 0)
+metadata/visual_size = Vector3(28, 0.07, 28)
+metadata/visual_material = "Stone"
+
+[node name="Cornice" type="Node3D" parent="TowerLow"]
+position = Vector3(0, -0.5, 0)
+metadata/visual_size = Vector3(28.35, 0.28, 28.35)
+metadata/visual_material = "Stone"
+
+[node name="Edge-1" type="Node3D" parent="TowerLow"]
+position = Vector3(-13.82, 0.12, 0)
+metadata/visual_size = Vector3(0.14, 0.18, 27)
+metadata/visual_material = "Trim"
+
+[node name="Pilaster-1-1" type="Node3D" parent="TowerLow"]
+position = Vector3(-13.9, -17, -13)
+metadata/visual_size = Vector3(0.3, 34, 0.45)
+metadata/visual_material = "Stone"
+
+[node name="Pilaster-11" type="Node3D" parent="TowerLow"]
+position = Vector3(-13.9, -17, 13)
+metadata/visual_size = Vector3(0.3, 34, 0.45)
+metadata/visual_material = "Stone"
+
+[node name="Edge1" type="Node3D" parent="TowerLow"]
+position = Vector3(13.82, 0.12, 0)
+metadata/visual_size = Vector3(0.14, 0.18, 27)
+metadata/visual_material = "Trim"
+
+[node name="Pilaster1-1" type="Node3D" parent="TowerLow"]
+position = Vector3(13.9, -17, -13)
+metadata/visual_size = Vector3(0.3, 34, 0.45)
+metadata/visual_material = "Stone"
+
+[node name="Pilaster11" type="Node3D" parent="TowerLow"]
+position = Vector3(13.9, -17, 13)
+metadata/visual_size = Vector3(0.3, 34, 0.45)
+metadata/visual_material = "Stone"
+
+[node name="TowerLowChimney0" type="Node3D" parent="."]
+position = Vector3(-23.6, 17.7, -186.84)
+metadata/visual_size = Vector3(1.2, 3.4, 1.2)
+metadata/visual_material = "Brick"
+metadata/solid = true
+
+[node name="Body" type="StaticBody3D" parent="TowerLowChimney0"]
+
+[node name="Shape" type="CollisionShape3D" parent="TowerLowChimney0/Body"]
+shape = SubResource("CityCollision1")
+
+[node name="TowerLowChimneyCap0" type="Node3D" parent="."]
+position = Vector3(-23.6, 19.46, -186.84)
+metadata/visual_size = Vector3(1.65, 0.18, 1.65)
+metadata/visual_material = "Iron"
+
+[node name="TowerLowLamp0" type="Node3D" parent="."]
+position = Vector3(-24.85, 16, -179)
+
+[node name="Stem" type="Node3D" parent="TowerLowLamp0"]
+position = Vector3(0, 0.65, 0)
+metadata/visual_size = Vector3(0.16, 1.3, 0.16)
+metadata/visual_material = "Iron"
+
+[node name="Glass" type="Node3D" parent="TowerLowLamp0"]
+position = Vector3(0, 1.48, 0)
+metadata/visual_size = Vector3(0.3, 0.46, 0.3)
+metadata/visual_material = "Warm"
+
+[node name="Cap" type="Node3D" parent="TowerLowLamp0"]
+position = Vector3(0, 1.77, 0)
+metadata/visual_size = Vector3(0.48, 0.1, 0.48)
+metadata/visual_material = "Iron"
+
+[node name="TowerLowChimney1" type="Node3D" parent="."]
+position = Vector3(-23.6, 17.7, -171.16)
+metadata/visual_size = Vector3(1.2, 3.4, 1.2)
+metadata/visual_material = "Brick"
+metadata/solid = true
+
+[node name="Body" type="StaticBody3D" parent="TowerLowChimney1"]
+
+[node name="Shape" type="CollisionShape3D" parent="TowerLowChimney1/Body"]
+shape = SubResource("CityCollision1")
+
+[node name="TowerLowChimneyCap1" type="Node3D" parent="."]
+position = Vector3(-23.6, 19.46, -171.16)
+metadata/visual_size = Vector3(1.65, 0.18, 1.65)
+metadata/visual_material = "Iron"
+
+[node name="TowerLowLamp1" type="Node3D" parent="."]
+position = Vector3(0.85, 16, -179)
+
+[node name="Stem" type="Node3D" parent="TowerLowLamp1"]
+position = Vector3(0, 0.65, 0)
+metadata/visual_size = Vector3(0.16, 1.3, 0.16)
+metadata/visual_material = "Iron"
+
+[node name="Glass" type="Node3D" parent="TowerLowLamp1"]
+position = Vector3(0, 1.48, 0)
+metadata/visual_size = Vector3(0.3, 0.46, 0.3)
+metadata/visual_material = "Warm"
+
+[node name="Cap" type="Node3D" parent="TowerLowLamp1"]
+position = Vector3(0, 1.77, 0)
+metadata/visual_size = Vector3(0.48, 0.1, 0.48)
+metadata/visual_material = "Iron"
+
+[node name="TowerMid" type="Node3D" parent="."]
+position = Vector3(12, 20, -199)
+
+[node name="Building" type="Node3D" parent="TowerMid"]
+position = Vector3(0, -19, 0)
+metadata/visual_size = Vector3(28, 38, 24)
+metadata/visual_material = "Brick"
+metadata/solid = true
+
+[node name="Body" type="StaticBody3D" parent="TowerMid/Building"]
+
+[node name="Shape" type="CollisionShape3D" parent="TowerMid/Building/Body"]
+shape = SubResource("CityCollision7")
+
+[node name="Roof" type="Node3D" parent="TowerMid"]
+position = Vector3(0, 0.035, 0)
+metadata/visual_size = Vector3(28, 0.07, 24)
+metadata/visual_material = "Stone"
+
+[node name="Cornice" type="Node3D" parent="TowerMid"]
+position = Vector3(0, -0.5, 0)
+metadata/visual_size = Vector3(28.35, 0.28, 24.35)
+metadata/visual_material = "Stone"
+
+[node name="Edge-1" type="Node3D" parent="TowerMid"]
+position = Vector3(-13.82, 0.12, 0)
+metadata/visual_size = Vector3(0.14, 0.18, 23)
+metadata/visual_material = "Trim"
+
+[node name="Pilaster-1-1" type="Node3D" parent="TowerMid"]
+position = Vector3(-13.9, -19, -11)
+metadata/visual_size = Vector3(0.3, 38, 0.45)
+metadata/visual_material = "Stone"
+
+[node name="Pilaster-11" type="Node3D" parent="TowerMid"]
+position = Vector3(-13.9, -19, 11)
+metadata/visual_size = Vector3(0.3, 38, 0.45)
+metadata/visual_material = "Stone"
+
+[node name="Edge1" type="Node3D" parent="TowerMid"]
+position = Vector3(13.82, 0.12, 0)
+metadata/visual_size = Vector3(0.14, 0.18, 23)
+metadata/visual_material = "Trim"
+
+[node name="Pilaster1-1" type="Node3D" parent="TowerMid"]
+position = Vector3(13.9, -19, -11)
+metadata/visual_size = Vector3(0.3, 38, 0.45)
+metadata/visual_material = "Stone"
+
+[node name="Pilaster11" type="Node3D" parent="TowerMid"]
+position = Vector3(13.9, -19, 11)
+metadata/visual_size = Vector3(0.3, 38, 0.45)
+metadata/visual_material = "Stone"
+
+[node name="TowerMidChimney0" type="Node3D" parent="."]
+position = Vector3(23.6, 21.7, -205.72)
+metadata/visual_size = Vector3(1.2, 3.4, 1.2)
+metadata/visual_material = "Brick"
+metadata/solid = true
+
+[node name="Body" type="StaticBody3D" parent="TowerMidChimney0"]
+
+[node name="Shape" type="CollisionShape3D" parent="TowerMidChimney0/Body"]
+shape = SubResource("CityCollision1")
+
+[node name="TowerMidChimneyCap0" type="Node3D" parent="."]
+position = Vector3(23.6, 23.46, -205.72)
+metadata/visual_size = Vector3(1.65, 0.18, 1.65)
+metadata/visual_material = "Iron"
+
+[node name="TowerMidLamp0" type="Node3D" parent="."]
+position = Vector3(-0.85, 20, -199)
+
+[node name="Stem" type="Node3D" parent="TowerMidLamp0"]
+position = Vector3(0, 0.65, 0)
+metadata/visual_size = Vector3(0.16, 1.3, 0.16)
+metadata/visual_material = "Iron"
+
+[node name="Glass" type="Node3D" parent="TowerMidLamp0"]
+position = Vector3(0, 1.48, 0)
+metadata/visual_size = Vector3(0.3, 0.46, 0.3)
+metadata/visual_material = "Warm"
+
+[node name="Cap" type="Node3D" parent="TowerMidLamp0"]
+position = Vector3(0, 1.77, 0)
+metadata/visual_size = Vector3(0.48, 0.1, 0.48)
+metadata/visual_material = "Iron"
+
+[node name="TowerMidChimney1" type="Node3D" parent="."]
+position = Vector3(23.6, 21.7, -192.28)
+metadata/visual_size = Vector3(1.2, 3.4, 1.2)
+metadata/visual_material = "Brick"
+metadata/solid = true
+
+[node name="Body" type="StaticBody3D" parent="TowerMidChimney1"]
+
+[node name="Shape" type="CollisionShape3D" parent="TowerMidChimney1/Body"]
+shape = SubResource("CityCollision1")
+
+[node name="TowerMidChimneyCap1" type="Node3D" parent="."]
+position = Vector3(23.6, 23.46, -192.28)
+metadata/visual_size = Vector3(1.65, 0.18, 1.65)
+metadata/visual_material = "Iron"
+
+[node name="TowerMidLamp1" type="Node3D" parent="."]
+position = Vector3(24.85, 20, -199)
+
+[node name="Stem" type="Node3D" parent="TowerMidLamp1"]
+position = Vector3(0, 0.65, 0)
+metadata/visual_size = Vector3(0.16, 1.3, 0.16)
+metadata/visual_material = "Iron"
+
+[node name="Glass" type="Node3D" parent="TowerMidLamp1"]
+position = Vector3(0, 1.48, 0)
+metadata/visual_size = Vector3(0.3, 0.46, 0.3)
+metadata/visual_material = "Warm"
+
+[node name="Cap" type="Node3D" parent="TowerMidLamp1"]
+position = Vector3(0, 1.77, 0)
+metadata/visual_size = Vector3(0.48, 0.1, 0.48)
+metadata/visual_material = "Iron"
+
+[node name="TowerTop" type="Node3D" parent="."]
+position = Vector3(0, 24, -229)
+
+[node name="Building" type="Node3D" parent="TowerTop"]
+position = Vector3(0, -21, 0)
+metadata/visual_size = Vector3(40, 42, 54)
+metadata/visual_material = "Brick"
+metadata/solid = true
+
+[node name="Body" type="StaticBody3D" parent="TowerTop/Building"]
+
+[node name="Shape" type="CollisionShape3D" parent="TowerTop/Building/Body"]
+shape = SubResource("CityCollision8")
+
+[node name="Roof" type="Node3D" parent="TowerTop"]
+position = Vector3(0, 0.035, 0)
+metadata/visual_size = Vector3(40, 0.07, 54)
+metadata/visual_material = "Stone"
+
+[node name="Cornice" type="Node3D" parent="TowerTop"]
+position = Vector3(0, -0.5, 0)
+metadata/visual_size = Vector3(40.35, 0.28, 54.35)
+metadata/visual_material = "Stone"
+
+[node name="Edge-1" type="Node3D" parent="TowerTop"]
+position = Vector3(-19.82, 0.12, 0)
+metadata/visual_size = Vector3(0.14, 0.18, 53)
+metadata/visual_material = "Trim"
+
+[node name="Pilaster-1-1" type="Node3D" parent="TowerTop"]
+position = Vector3(-19.9, -21, -26)
+metadata/visual_size = Vector3(0.3, 42, 0.45)
+metadata/visual_material = "Stone"
+
+[node name="Pilaster-11" type="Node3D" parent="TowerTop"]
+position = Vector3(-19.9, -21, 26)
+metadata/visual_size = Vector3(0.3, 42, 0.45)
+metadata/visual_material = "Stone"
+
+[node name="Edge1" type="Node3D" parent="TowerTop"]
+position = Vector3(19.82, 0.12, 0)
+metadata/visual_size = Vector3(0.14, 0.18, 53)
+metadata/visual_material = "Trim"
+
+[node name="Pilaster1-1" type="Node3D" parent="TowerTop"]
+position = Vector3(19.9, -21, -26)
+metadata/visual_size = Vector3(0.3, 42, 0.45)
+metadata/visual_material = "Stone"
+
+[node name="Pilaster11" type="Node3D" parent="TowerTop"]
+position = Vector3(19.9, -21, 26)
+metadata/visual_size = Vector3(0.3, 42, 0.45)
+metadata/visual_material = "Stone"
+
+[node name="TowerTopChimney0" type="Node3D" parent="."]
+position = Vector3(-17.6, 25.7, -244.12)
+metadata/visual_size = Vector3(1.2, 3.4, 1.2)
+metadata/visual_material = "Brick"
+metadata/solid = true
+
+[node name="Body" type="StaticBody3D" parent="TowerTopChimney0"]
+
+[node name="Shape" type="CollisionShape3D" parent="TowerTopChimney0/Body"]
+shape = SubResource("CityCollision1")
+
+[node name="TowerTopChimneyCap0" type="Node3D" parent="."]
+position = Vector3(-17.6, 27.46, -244.12)
+metadata/visual_size = Vector3(1.65, 0.18, 1.65)
+metadata/visual_material = "Iron"
+
+[node name="TowerTopLamp0" type="Node3D" parent="."]
+position = Vector3(-18.85, 24, -229)
+
+[node name="Stem" type="Node3D" parent="TowerTopLamp0"]
+position = Vector3(0, 0.65, 0)
+metadata/visual_size = Vector3(0.16, 1.3, 0.16)
+metadata/visual_material = "Iron"
+
+[node name="Glass" type="Node3D" parent="TowerTopLamp0"]
+position = Vector3(0, 1.48, 0)
+metadata/visual_size = Vector3(0.3, 0.46, 0.3)
+metadata/visual_material = "Warm"
+
+[node name="Cap" type="Node3D" parent="TowerTopLamp0"]
+position = Vector3(0, 1.77, 0)
+metadata/visual_size = Vector3(0.48, 0.1, 0.48)
+metadata/visual_material = "Iron"
+
+[node name="TowerTopChimney1" type="Node3D" parent="."]
+position = Vector3(17.6, 25.7, -213.88)
+metadata/visual_size = Vector3(1.2, 3.4, 1.2)
+metadata/visual_material = "Brick"
+metadata/solid = true
+
+[node name="Body" type="StaticBody3D" parent="TowerTopChimney1"]
+
+[node name="Shape" type="CollisionShape3D" parent="TowerTopChimney1/Body"]
+shape = SubResource("CityCollision1")
+
+[node name="TowerTopChimneyCap1" type="Node3D" parent="."]
+position = Vector3(17.6, 27.46, -213.88)
+metadata/visual_size = Vector3(1.65, 0.18, 1.65)
+metadata/visual_material = "Iron"
+
+[node name="TowerTopLamp1" type="Node3D" parent="."]
+position = Vector3(18.85, 24, -229)
+
+[node name="Stem" type="Node3D" parent="TowerTopLamp1"]
+position = Vector3(0, 0.65, 0)
+metadata/visual_size = Vector3(0.16, 1.3, 0.16)
+metadata/visual_material = "Iron"
+
+[node name="Glass" type="Node3D" parent="TowerTopLamp1"]
+position = Vector3(0, 1.48, 0)
+metadata/visual_size = Vector3(0.3, 0.46, 0.3)
+metadata/visual_material = "Warm"
+
+[node name="Cap" type="Node3D" parent="TowerTopLamp1"]
+position = Vector3(0, 1.77, 0)
+metadata/visual_size = Vector3(0.48, 0.1, 0.48)
+metadata/visual_material = "Iron"
+
+[node name="ChainLeft" type="Node3D" parent="."]
+position = Vector3(-8, 24, -274)
+
+[node name="Building" type="Node3D" parent="ChainLeft"]
+position = Vector3(0, -21, 0)
+metadata/visual_size = Vector3(32, 42, 28)
+metadata/visual_material = "Brick"
+metadata/solid = true
+
+[node name="Body" type="StaticBody3D" parent="ChainLeft/Building"]
+
+[node name="Shape" type="CollisionShape3D" parent="ChainLeft/Building/Body"]
+shape = SubResource("CityCollision9")
+
+[node name="Roof" type="Node3D" parent="ChainLeft"]
+position = Vector3(0, 0.035, 0)
+metadata/visual_size = Vector3(32, 0.07, 28)
+metadata/visual_material = "Stone"
+
+[node name="Cornice" type="Node3D" parent="ChainLeft"]
+position = Vector3(0, -0.5, 0)
+metadata/visual_size = Vector3(32.35, 0.28, 28.35)
+metadata/visual_material = "Stone"
+
+[node name="Edge-1" type="Node3D" parent="ChainLeft"]
+position = Vector3(-15.82, 0.12, 0)
+metadata/visual_size = Vector3(0.14, 0.18, 27)
+metadata/visual_material = "Trim"
+
+[node name="Pilaster-1-1" type="Node3D" parent="ChainLeft"]
+position = Vector3(-15.9, -21, -13)
+metadata/visual_size = Vector3(0.3, 42, 0.45)
+metadata/visual_material = "Stone"
+
+[node name="Pilaster-11" type="Node3D" parent="ChainLeft"]
+position = Vector3(-15.9, -21, 13)
+metadata/visual_size = Vector3(0.3, 42, 0.45)
+metadata/visual_material = "Stone"
+
+[node name="Edge1" type="Node3D" parent="ChainLeft"]
+position = Vector3(15.82, 0.12, 0)
+metadata/visual_size = Vector3(0.14, 0.18, 27)
+metadata/visual_material = "Trim"
+
+[node name="Pilaster1-1" type="Node3D" parent="ChainLeft"]
+position = Vector3(15.9, -21, -13)
+metadata/visual_size = Vector3(0.3, 42, 0.45)
+metadata/visual_material = "Stone"
+
+[node name="Pilaster11" type="Node3D" parent="ChainLeft"]
+position = Vector3(15.9, -21, 13)
+metadata/visual_size = Vector3(0.3, 42, 0.45)
+metadata/visual_material = "Stone"
+
+[node name="ChainLeftChimney0" type="Node3D" parent="."]
+position = Vector3(-21.6, 25.7, -281.84)
+metadata/visual_size = Vector3(1.2, 3.4, 1.2)
+metadata/visual_material = "Brick"
+metadata/solid = true
+
+[node name="Body" type="StaticBody3D" parent="ChainLeftChimney0"]
+
+[node name="Shape" type="CollisionShape3D" parent="ChainLeftChimney0/Body"]
+shape = SubResource("CityCollision1")
+
+[node name="ChainLeftChimneyCap0" type="Node3D" parent="."]
+position = Vector3(-21.6, 27.46, -281.84)
+metadata/visual_size = Vector3(1.65, 0.18, 1.65)
+metadata/visual_material = "Iron"
+
+[node name="ChainLeftLamp0" type="Node3D" parent="."]
+position = Vector3(-22.85, 24, -274)
+
+[node name="Stem" type="Node3D" parent="ChainLeftLamp0"]
+position = Vector3(0, 0.65, 0)
+metadata/visual_size = Vector3(0.16, 1.3, 0.16)
+metadata/visual_material = "Iron"
+
+[node name="Glass" type="Node3D" parent="ChainLeftLamp0"]
+position = Vector3(0, 1.48, 0)
+metadata/visual_size = Vector3(0.3, 0.46, 0.3)
+metadata/visual_material = "Warm"
+
+[node name="Cap" type="Node3D" parent="ChainLeftLamp0"]
+position = Vector3(0, 1.77, 0)
+metadata/visual_size = Vector3(0.48, 0.1, 0.48)
+metadata/visual_material = "Iron"
+
+[node name="ChainLeftChimney1" type="Node3D" parent="."]
+position = Vector3(-21.6, 25.7, -266.16)
+metadata/visual_size = Vector3(1.2, 3.4, 1.2)
+metadata/visual_material = "Brick"
+metadata/solid = true
+
+[node name="Body" type="StaticBody3D" parent="ChainLeftChimney1"]
+
+[node name="Shape" type="CollisionShape3D" parent="ChainLeftChimney1/Body"]
+shape = SubResource("CityCollision1")
+
+[node name="ChainLeftChimneyCap1" type="Node3D" parent="."]
+position = Vector3(-21.6, 27.46, -266.16)
+metadata/visual_size = Vector3(1.65, 0.18, 1.65)
+metadata/visual_material = "Iron"
+
+[node name="ChainLeftLamp1" type="Node3D" parent="."]
+position = Vector3(6.85, 24, -274)
+
+[node name="Stem" type="Node3D" parent="ChainLeftLamp1"]
+position = Vector3(0, 0.65, 0)
+metadata/visual_size = Vector3(0.16, 1.3, 0.16)
+metadata/visual_material = "Iron"
+
+[node name="Glass" type="Node3D" parent="ChainLeftLamp1"]
+position = Vector3(0, 1.48, 0)
+metadata/visual_size = Vector3(0.3, 0.46, 0.3)
+metadata/visual_material = "Warm"
+
+[node name="Cap" type="Node3D" parent="ChainLeftLamp1"]
+position = Vector3(0, 1.77, 0)
+metadata/visual_size = Vector3(0.48, 0.1, 0.48)
+metadata/visual_material = "Iron"
+
+[node name="ChainRight" type="Node3D" parent="."]
+position = Vector3(8, 24, -302)
+
+[node name="Building" type="Node3D" parent="ChainRight"]
+position = Vector3(0, -21, 0)
+metadata/visual_size = Vector3(32, 42, 26)
+metadata/visual_material = "Brick"
+metadata/solid = true
+
+[node name="Body" type="StaticBody3D" parent="ChainRight/Building"]
+
+[node name="Shape" type="CollisionShape3D" parent="ChainRight/Building/Body"]
+shape = SubResource("CityCollision10")
+
+[node name="Roof" type="Node3D" parent="ChainRight"]
+position = Vector3(0, 0.035, 0)
+metadata/visual_size = Vector3(32, 0.07, 26)
+metadata/visual_material = "Stone"
+
+[node name="Cornice" type="Node3D" parent="ChainRight"]
+position = Vector3(0, -0.5, 0)
+metadata/visual_size = Vector3(32.35, 0.28, 26.35)
+metadata/visual_material = "Stone"
+
+[node name="Edge-1" type="Node3D" parent="ChainRight"]
+position = Vector3(-15.82, 0.12, 0)
+metadata/visual_size = Vector3(0.14, 0.18, 25)
+metadata/visual_material = "Trim"
+
+[node name="Pilaster-1-1" type="Node3D" parent="ChainRight"]
+position = Vector3(-15.9, -21, -12)
+metadata/visual_size = Vector3(0.3, 42, 0.45)
+metadata/visual_material = "Stone"
+
+[node name="Pilaster-11" type="Node3D" parent="ChainRight"]
+position = Vector3(-15.9, -21, 12)
+metadata/visual_size = Vector3(0.3, 42, 0.45)
+metadata/visual_material = "Stone"
+
+[node name="Edge1" type="Node3D" parent="ChainRight"]
+position = Vector3(15.82, 0.12, 0)
+metadata/visual_size = Vector3(0.14, 0.18, 25)
+metadata/visual_material = "Trim"
+
+[node name="Pilaster1-1" type="Node3D" parent="ChainRight"]
+position = Vector3(15.9, -21, -12)
+metadata/visual_size = Vector3(0.3, 42, 0.45)
+metadata/visual_material = "Stone"
+
+[node name="Pilaster11" type="Node3D" parent="ChainRight"]
+position = Vector3(15.9, -21, 12)
+metadata/visual_size = Vector3(0.3, 42, 0.45)
+metadata/visual_material = "Stone"
+
+[node name="ChainRightChimney0" type="Node3D" parent="."]
+position = Vector3(21.6, 25.7, -309.28)
+metadata/visual_size = Vector3(1.2, 3.4, 1.2)
+metadata/visual_material = "Brick"
+metadata/solid = true
+
+[node name="Body" type="StaticBody3D" parent="ChainRightChimney0"]
+
+[node name="Shape" type="CollisionShape3D" parent="ChainRightChimney0/Body"]
+shape = SubResource("CityCollision1")
+
+[node name="ChainRightChimneyCap0" type="Node3D" parent="."]
+position = Vector3(21.6, 27.46, -309.28)
+metadata/visual_size = Vector3(1.65, 0.18, 1.65)
+metadata/visual_material = "Iron"
+
+[node name="ChainRightLamp0" type="Node3D" parent="."]
+position = Vector3(-6.85, 24, -302)
+
+[node name="Stem" type="Node3D" parent="ChainRightLamp0"]
+position = Vector3(0, 0.65, 0)
+metadata/visual_size = Vector3(0.16, 1.3, 0.16)
+metadata/visual_material = "Iron"
+
+[node name="Glass" type="Node3D" parent="ChainRightLamp0"]
+position = Vector3(0, 1.48, 0)
+metadata/visual_size = Vector3(0.3, 0.46, 0.3)
+metadata/visual_material = "Warm"
+
+[node name="Cap" type="Node3D" parent="ChainRightLamp0"]
+position = Vector3(0, 1.77, 0)
+metadata/visual_size = Vector3(0.48, 0.1, 0.48)
+metadata/visual_material = "Iron"
+
+[node name="ChainRightChimney1" type="Node3D" parent="."]
+position = Vector3(21.6, 25.7, -294.72)
+metadata/visual_size = Vector3(1.2, 3.4, 1.2)
+metadata/visual_material = "Brick"
+metadata/solid = true
+
+[node name="Body" type="StaticBody3D" parent="ChainRightChimney1"]
+
+[node name="Shape" type="CollisionShape3D" parent="ChainRightChimney1/Body"]
+shape = SubResource("CityCollision1")
+
+[node name="ChainRightChimneyCap1" type="Node3D" parent="."]
+position = Vector3(21.6, 27.46, -294.72)
+metadata/visual_size = Vector3(1.65, 0.18, 1.65)
+metadata/visual_material = "Iron"
+
+[node name="ChainRightLamp1" type="Node3D" parent="."]
+position = Vector3(22.85, 24, -302)
+
+[node name="Stem" type="Node3D" parent="ChainRightLamp1"]
+position = Vector3(0, 0.65, 0)
+metadata/visual_size = Vector3(0.16, 1.3, 0.16)
+metadata/visual_material = "Iron"
+
+[node name="Glass" type="Node3D" parent="ChainRightLamp1"]
+position = Vector3(0, 1.48, 0)
+metadata/visual_size = Vector3(0.3, 0.46, 0.3)
+metadata/visual_material = "Warm"
+
+[node name="Cap" type="Node3D" parent="ChainRightLamp1"]
+position = Vector3(0, 1.77, 0)
+metadata/visual_size = Vector3(0.48, 0.1, 0.48)
+metadata/visual_material = "Iron"
+
+[node name="ChainExit" type="Node3D" parent="."]
+position = Vector3(0, 24, -329)
+
+[node name="Building" type="Node3D" parent="ChainExit"]
+position = Vector3(0, -21, 0)
+metadata/visual_size = Vector3(34, 42, 28)
+metadata/visual_material = "Brick"
+metadata/solid = true
+
+[node name="Body" type="StaticBody3D" parent="ChainExit/Building"]
+
+[node name="Shape" type="CollisionShape3D" parent="ChainExit/Building/Body"]
+shape = SubResource("CityCollision11")
+
+[node name="Roof" type="Node3D" parent="ChainExit"]
+position = Vector3(0, 0.035, 0)
+metadata/visual_size = Vector3(34, 0.07, 28)
+metadata/visual_material = "Stone"
+
+[node name="Cornice" type="Node3D" parent="ChainExit"]
+position = Vector3(0, -0.5, 0)
+metadata/visual_size = Vector3(34.35, 0.28, 28.35)
+metadata/visual_material = "Stone"
+
+[node name="Edge-1" type="Node3D" parent="ChainExit"]
+position = Vector3(-16.82, 0.12, 0)
+metadata/visual_size = Vector3(0.14, 0.18, 27)
+metadata/visual_material = "Trim"
+
+[node name="Pilaster-1-1" type="Node3D" parent="ChainExit"]
+position = Vector3(-16.9, -21, -13)
+metadata/visual_size = Vector3(0.3, 42, 0.45)
+metadata/visual_material = "Stone"
+
+[node name="Pilaster-11" type="Node3D" parent="ChainExit"]
+position = Vector3(-16.9, -21, 13)
+metadata/visual_size = Vector3(0.3, 42, 0.45)
+metadata/visual_material = "Stone"
+
+[node name="Edge1" type="Node3D" parent="ChainExit"]
+position = Vector3(16.82, 0.12, 0)
+metadata/visual_size = Vector3(0.14, 0.18, 27)
+metadata/visual_material = "Trim"
+
+[node name="Pilaster1-1" type="Node3D" parent="ChainExit"]
+position = Vector3(16.9, -21, -13)
+metadata/visual_size = Vector3(0.3, 42, 0.45)
+metadata/visual_material = "Stone"
+
+[node name="Pilaster11" type="Node3D" parent="ChainExit"]
+position = Vector3(16.9, -21, 13)
+metadata/visual_size = Vector3(0.3, 42, 0.45)
+metadata/visual_material = "Stone"
+
+[node name="ChainExitChimney0" type="Node3D" parent="."]
+position = Vector3(-14.6, 25.7, -336.84)
+metadata/visual_size = Vector3(1.2, 3.4, 1.2)
+metadata/visual_material = "Brick"
+metadata/solid = true
+
+[node name="Body" type="StaticBody3D" parent="ChainExitChimney0"]
+
+[node name="Shape" type="CollisionShape3D" parent="ChainExitChimney0/Body"]
+shape = SubResource("CityCollision1")
+
+[node name="ChainExitChimneyCap0" type="Node3D" parent="."]
+position = Vector3(-14.6, 27.46, -336.84)
+metadata/visual_size = Vector3(1.65, 0.18, 1.65)
+metadata/visual_material = "Iron"
+
+[node name="ChainExitLamp0" type="Node3D" parent="."]
+position = Vector3(-15.85, 24, -329)
+
+[node name="Stem" type="Node3D" parent="ChainExitLamp0"]
+position = Vector3(0, 0.65, 0)
+metadata/visual_size = Vector3(0.16, 1.3, 0.16)
+metadata/visual_material = "Iron"
+
+[node name="Glass" type="Node3D" parent="ChainExitLamp0"]
+position = Vector3(0, 1.48, 0)
+metadata/visual_size = Vector3(0.3, 0.46, 0.3)
+metadata/visual_material = "Warm"
+
+[node name="Cap" type="Node3D" parent="ChainExitLamp0"]
+position = Vector3(0, 1.77, 0)
+metadata/visual_size = Vector3(0.48, 0.1, 0.48)
+metadata/visual_material = "Iron"
+
+[node name="ChainExitChimney1" type="Node3D" parent="."]
+position = Vector3(14.6, 25.7, -321.16)
+metadata/visual_size = Vector3(1.2, 3.4, 1.2)
+metadata/visual_material = "Brick"
+metadata/solid = true
+
+[node name="Body" type="StaticBody3D" parent="ChainExitChimney1"]
+
+[node name="Shape" type="CollisionShape3D" parent="ChainExitChimney1/Body"]
+shape = SubResource("CityCollision1")
+
+[node name="ChainExitChimneyCap1" type="Node3D" parent="."]
+position = Vector3(14.6, 27.46, -321.16)
+metadata/visual_size = Vector3(1.65, 0.18, 1.65)
+metadata/visual_material = "Iron"
+
+[node name="ChainExitLamp1" type="Node3D" parent="."]
+position = Vector3(15.85, 24, -329)
+
+[node name="Stem" type="Node3D" parent="ChainExitLamp1"]
+position = Vector3(0, 0.65, 0)
+metadata/visual_size = Vector3(0.16, 1.3, 0.16)
+metadata/visual_material = "Iron"
+
+[node name="Glass" type="Node3D" parent="ChainExitLamp1"]
+position = Vector3(0, 1.48, 0)
+metadata/visual_size = Vector3(0.3, 0.46, 0.3)
+metadata/visual_material = "Warm"
+
+[node name="Cap" type="Node3D" parent="ChainExitLamp1"]
+position = Vector3(0, 1.77, 0)
+metadata/visual_size = Vector3(0.48, 0.1, 0.48)
+metadata/visual_material = "Iron"
+
+[node name="FinalLeft" type="Node3D" parent="."]
+position = Vector3(-10, 24, -361)
+
+[node name="Building" type="Node3D" parent="FinalLeft"]
+position = Vector3(0, -21, 0)
+metadata/visual_size = Vector3(28, 42, 28)
+metadata/visual_material = "Brick"
+metadata/solid = true
+
+[node name="Body" type="StaticBody3D" parent="FinalLeft/Building"]
+
+[node name="Shape" type="CollisionShape3D" parent="FinalLeft/Building/Body"]
+shape = SubResource("CityCollision12")
+
+[node name="Roof" type="Node3D" parent="FinalLeft"]
+position = Vector3(0, 0.035, 0)
+metadata/visual_size = Vector3(28, 0.07, 28)
+metadata/visual_material = "Stone"
+
+[node name="Cornice" type="Node3D" parent="FinalLeft"]
+position = Vector3(0, -0.5, 0)
+metadata/visual_size = Vector3(28.35, 0.28, 28.35)
+metadata/visual_material = "Stone"
+
+[node name="Edge-1" type="Node3D" parent="FinalLeft"]
+position = Vector3(-13.82, 0.12, 0)
+metadata/visual_size = Vector3(0.14, 0.18, 27)
+metadata/visual_material = "Trim"
+
+[node name="Pilaster-1-1" type="Node3D" parent="FinalLeft"]
+position = Vector3(-13.9, -21, -13)
+metadata/visual_size = Vector3(0.3, 42, 0.45)
+metadata/visual_material = "Stone"
+
+[node name="Pilaster-11" type="Node3D" parent="FinalLeft"]
+position = Vector3(-13.9, -21, 13)
+metadata/visual_size = Vector3(0.3, 42, 0.45)
+metadata/visual_material = "Stone"
+
+[node name="Edge1" type="Node3D" parent="FinalLeft"]
+position = Vector3(13.82, 0.12, 0)
+metadata/visual_size = Vector3(0.14, 0.18, 27)
+metadata/visual_material = "Trim"
+
+[node name="Pilaster1-1" type="Node3D" parent="FinalLeft"]
+position = Vector3(13.9, -21, -13)
+metadata/visual_size = Vector3(0.3, 42, 0.45)
+metadata/visual_material = "Stone"
+
+[node name="Pilaster11" type="Node3D" parent="FinalLeft"]
+position = Vector3(13.9, -21, 13)
+metadata/visual_size = Vector3(0.3, 42, 0.45)
+metadata/visual_material = "Stone"
+
+[node name="FinalLeftChimney0" type="Node3D" parent="."]
+position = Vector3(-21.6, 25.7, -368.84)
+metadata/visual_size = Vector3(1.2, 3.4, 1.2)
+metadata/visual_material = "Brick"
+metadata/solid = true
+
+[node name="Body" type="StaticBody3D" parent="FinalLeftChimney0"]
+
+[node name="Shape" type="CollisionShape3D" parent="FinalLeftChimney0/Body"]
+shape = SubResource("CityCollision1")
+
+[node name="FinalLeftChimneyCap0" type="Node3D" parent="."]
+position = Vector3(-21.6, 27.46, -368.84)
+metadata/visual_size = Vector3(1.65, 0.18, 1.65)
+metadata/visual_material = "Iron"
+
+[node name="FinalLeftLamp0" type="Node3D" parent="."]
+position = Vector3(-22.85, 24, -361)
+
+[node name="Stem" type="Node3D" parent="FinalLeftLamp0"]
+position = Vector3(0, 0.65, 0)
+metadata/visual_size = Vector3(0.16, 1.3, 0.16)
+metadata/visual_material = "Iron"
+
+[node name="Glass" type="Node3D" parent="FinalLeftLamp0"]
+position = Vector3(0, 1.48, 0)
+metadata/visual_size = Vector3(0.3, 0.46, 0.3)
+metadata/visual_material = "Warm"
+
+[node name="Cap" type="Node3D" parent="FinalLeftLamp0"]
+position = Vector3(0, 1.77, 0)
+metadata/visual_size = Vector3(0.48, 0.1, 0.48)
+metadata/visual_material = "Iron"
+
+[node name="FinalLeftChimney1" type="Node3D" parent="."]
+position = Vector3(-21.6, 25.7, -353.16)
+metadata/visual_size = Vector3(1.2, 3.4, 1.2)
+metadata/visual_material = "Brick"
+metadata/solid = true
+
+[node name="Body" type="StaticBody3D" parent="FinalLeftChimney1"]
+
+[node name="Shape" type="CollisionShape3D" parent="FinalLeftChimney1/Body"]
+shape = SubResource("CityCollision1")
+
+[node name="FinalLeftChimneyCap1" type="Node3D" parent="."]
+position = Vector3(-21.6, 27.46, -353.16)
+metadata/visual_size = Vector3(1.65, 0.18, 1.65)
+metadata/visual_material = "Iron"
+
+[node name="FinalLeftLamp1" type="Node3D" parent="."]
+position = Vector3(2.85, 24, -361)
+
+[node name="Stem" type="Node3D" parent="FinalLeftLamp1"]
+position = Vector3(0, 0.65, 0)
+metadata/visual_size = Vector3(0.16, 1.3, 0.16)
+metadata/visual_material = "Iron"
+
+[node name="Glass" type="Node3D" parent="FinalLeftLamp1"]
+position = Vector3(0, 1.48, 0)
+metadata/visual_size = Vector3(0.3, 0.46, 0.3)
+metadata/visual_material = "Warm"
+
+[node name="Cap" type="Node3D" parent="FinalLeftLamp1"]
+position = Vector3(0, 1.77, 0)
+metadata/visual_size = Vector3(0.48, 0.1, 0.48)
+metadata/visual_material = "Iron"
+
+[node name="FinalRight" type="Node3D" parent="."]
+position = Vector3(10, 24, -389)
+
+[node name="Building" type="Node3D" parent="FinalRight"]
+position = Vector3(0, -21, 0)
+metadata/visual_size = Vector3(28, 42, 28)
+metadata/visual_material = "Brick"
+metadata/solid = true
+
+[node name="Body" type="StaticBody3D" parent="FinalRight/Building"]
+
+[node name="Shape" type="CollisionShape3D" parent="FinalRight/Building/Body"]
+shape = SubResource("CityCollision12")
+
+[node name="Roof" type="Node3D" parent="FinalRight"]
+position = Vector3(0, 0.035, 0)
+metadata/visual_size = Vector3(28, 0.07, 28)
+metadata/visual_material = "Stone"
+
+[node name="Cornice" type="Node3D" parent="FinalRight"]
+position = Vector3(0, -0.5, 0)
+metadata/visual_size = Vector3(28.35, 0.28, 28.35)
+metadata/visual_material = "Stone"
+
+[node name="Edge-1" type="Node3D" parent="FinalRight"]
+position = Vector3(-13.82, 0.12, 0)
+metadata/visual_size = Vector3(0.14, 0.18, 27)
+metadata/visual_material = "Trim"
+
+[node name="Pilaster-1-1" type="Node3D" parent="FinalRight"]
+position = Vector3(-13.9, -21, -13)
+metadata/visual_size = Vector3(0.3, 42, 0.45)
+metadata/visual_material = "Stone"
+
+[node name="Pilaster-11" type="Node3D" parent="FinalRight"]
+position = Vector3(-13.9, -21, 13)
+metadata/visual_size = Vector3(0.3, 42, 0.45)
+metadata/visual_material = "Stone"
+
+[node name="Edge1" type="Node3D" parent="FinalRight"]
+position = Vector3(13.82, 0.12, 0)
+metadata/visual_size = Vector3(0.14, 0.18, 27)
+metadata/visual_material = "Trim"
+
+[node name="Pilaster1-1" type="Node3D" parent="FinalRight"]
+position = Vector3(13.9, -21, -13)
+metadata/visual_size = Vector3(0.3, 42, 0.45)
+metadata/visual_material = "Stone"
+
+[node name="Pilaster11" type="Node3D" parent="FinalRight"]
+position = Vector3(13.9, -21, 13)
+metadata/visual_size = Vector3(0.3, 42, 0.45)
+metadata/visual_material = "Stone"
+
+[node name="FinalRightChimney0" type="Node3D" parent="."]
+position = Vector3(21.6, 25.7, -396.84)
+metadata/visual_size = Vector3(1.2, 3.4, 1.2)
+metadata/visual_material = "Brick"
+metadata/solid = true
+
+[node name="Body" type="StaticBody3D" parent="FinalRightChimney0"]
+
+[node name="Shape" type="CollisionShape3D" parent="FinalRightChimney0/Body"]
+shape = SubResource("CityCollision1")
+
+[node name="FinalRightChimneyCap0" type="Node3D" parent="."]
+position = Vector3(21.6, 27.46, -396.84)
+metadata/visual_size = Vector3(1.65, 0.18, 1.65)
+metadata/visual_material = "Iron"
+
+[node name="FinalRightLamp0" type="Node3D" parent="."]
+position = Vector3(-2.85, 24, -389)
+
+[node name="Stem" type="Node3D" parent="FinalRightLamp0"]
+position = Vector3(0, 0.65, 0)
+metadata/visual_size = Vector3(0.16, 1.3, 0.16)
+metadata/visual_material = "Iron"
+
+[node name="Glass" type="Node3D" parent="FinalRightLamp0"]
+position = Vector3(0, 1.48, 0)
+metadata/visual_size = Vector3(0.3, 0.46, 0.3)
+metadata/visual_material = "Warm"
+
+[node name="Cap" type="Node3D" parent="FinalRightLamp0"]
+position = Vector3(0, 1.77, 0)
+metadata/visual_size = Vector3(0.48, 0.1, 0.48)
+metadata/visual_material = "Iron"
+
+[node name="FinalRightChimney1" type="Node3D" parent="."]
+position = Vector3(21.6, 25.7, -381.16)
+metadata/visual_size = Vector3(1.2, 3.4, 1.2)
+metadata/visual_material = "Brick"
+metadata/solid = true
+
+[node name="Body" type="StaticBody3D" parent="FinalRightChimney1"]
+
+[node name="Shape" type="CollisionShape3D" parent="FinalRightChimney1/Body"]
+shape = SubResource("CityCollision1")
+
+[node name="FinalRightChimneyCap1" type="Node3D" parent="."]
+position = Vector3(21.6, 27.46, -381.16)
+metadata/visual_size = Vector3(1.65, 0.18, 1.65)
+metadata/visual_material = "Iron"
+
+[node name="FinalRightLamp1" type="Node3D" parent="."]
+position = Vector3(22.85, 24, -389)
+
+[node name="Stem" type="Node3D" parent="FinalRightLamp1"]
+position = Vector3(0, 0.65, 0)
+metadata/visual_size = Vector3(0.16, 1.3, 0.16)
+metadata/visual_material = "Iron"
+
+[node name="Glass" type="Node3D" parent="FinalRightLamp1"]
+position = Vector3(0, 1.48, 0)
+metadata/visual_size = Vector3(0.3, 0.46, 0.3)
+metadata/visual_material = "Warm"
+
+[node name="Cap" type="Node3D" parent="FinalRightLamp1"]
+position = Vector3(0, 1.77, 0)
+metadata/visual_size = Vector3(0.48, 0.1, 0.48)
+metadata/visual_material = "Iron"
+
+[node name="FinishRoof" type="Node3D" parent="."]
+position = Vector3(0, 24, -421)
+
+[node name="Building" type="Node3D" parent="FinishRoof"]
+position = Vector3(0, -21, 0)
+metadata/visual_size = Vector3(44, 42, 38)
+metadata/visual_material = "Brick"
+metadata/solid = true
+
+[node name="Body" type="StaticBody3D" parent="FinishRoof/Building"]
+
+[node name="Shape" type="CollisionShape3D" parent="FinishRoof/Building/Body"]
+shape = SubResource("CityCollision13")
+
+[node name="Roof" type="Node3D" parent="FinishRoof"]
+position = Vector3(0, 0.035, 0)
+metadata/visual_size = Vector3(44, 0.07, 38)
+metadata/visual_material = "Stone"
+
+[node name="Cornice" type="Node3D" parent="FinishRoof"]
+position = Vector3(0, -0.5, 0)
+metadata/visual_size = Vector3(44.35, 0.28, 38.35)
+metadata/visual_material = "Stone"
+
+[node name="Edge-1" type="Node3D" parent="FinishRoof"]
+position = Vector3(-21.82, 0.12, 0)
+metadata/visual_size = Vector3(0.14, 0.18, 37)
+metadata/visual_material = "Trim"
+
+[node name="Pilaster-1-1" type="Node3D" parent="FinishRoof"]
+position = Vector3(-21.9, -21, -18)
+metadata/visual_size = Vector3(0.3, 42, 0.45)
+metadata/visual_material = "Stone"
+
+[node name="Pilaster-11" type="Node3D" parent="FinishRoof"]
+position = Vector3(-21.9, -21, 18)
+metadata/visual_size = Vector3(0.3, 42, 0.45)
+metadata/visual_material = "Stone"
+
+[node name="Edge1" type="Node3D" parent="FinishRoof"]
+position = Vector3(21.82, 0.12, 0)
+metadata/visual_size = Vector3(0.14, 0.18, 37)
+metadata/visual_material = "Trim"
+
+[node name="Pilaster1-1" type="Node3D" parent="FinishRoof"]
+position = Vector3(21.9, -21, -18)
+metadata/visual_size = Vector3(0.3, 42, 0.45)
+metadata/visual_material = "Stone"
+
+[node name="Pilaster11" type="Node3D" parent="FinishRoof"]
+position = Vector3(21.9, -21, 18)
+metadata/visual_size = Vector3(0.3, 42, 0.45)
+metadata/visual_material = "Stone"
+
+[node name="FinishRoofChimney0" type="Node3D" parent="."]
+position = Vector3(-19.6, 25.7, -431.64)
+metadata/visual_size = Vector3(1.2, 3.4, 1.2)
+metadata/visual_material = "Brick"
+metadata/solid = true
+
+[node name="Body" type="StaticBody3D" parent="FinishRoofChimney0"]
+
+[node name="Shape" type="CollisionShape3D" parent="FinishRoofChimney0/Body"]
+shape = SubResource("CityCollision1")
+
+[node name="FinishRoofChimneyCap0" type="Node3D" parent="."]
+position = Vector3(-19.6, 27.46, -431.64)
+metadata/visual_size = Vector3(1.65, 0.18, 1.65)
+metadata/visual_material = "Iron"
+
+[node name="FinishRoofLamp0" type="Node3D" parent="."]
+position = Vector3(-20.85, 24, -421)
+
+[node name="Stem" type="Node3D" parent="FinishRoofLamp0"]
+position = Vector3(0, 0.65, 0)
+metadata/visual_size = Vector3(0.16, 1.3, 0.16)
+metadata/visual_material = "Iron"
+
+[node name="Glass" type="Node3D" parent="FinishRoofLamp0"]
+position = Vector3(0, 1.48, 0)
+metadata/visual_size = Vector3(0.3, 0.46, 0.3)
+metadata/visual_material = "Warm"
+
+[node name="Cap" type="Node3D" parent="FinishRoofLamp0"]
+position = Vector3(0, 1.77, 0)
+metadata/visual_size = Vector3(0.48, 0.1, 0.48)
+metadata/visual_material = "Iron"
+
+[node name="FinishRoofChimney1" type="Node3D" parent="."]
+position = Vector3(19.6, 25.7, -410.36)
+metadata/visual_size = Vector3(1.2, 3.4, 1.2)
+metadata/visual_material = "Brick"
+metadata/solid = true
+
+[node name="Body" type="StaticBody3D" parent="FinishRoofChimney1"]
+
+[node name="Shape" type="CollisionShape3D" parent="FinishRoofChimney1/Body"]
+shape = SubResource("CityCollision1")
+
+[node name="FinishRoofChimneyCap1" type="Node3D" parent="."]
+position = Vector3(19.6, 27.46, -410.36)
+metadata/visual_size = Vector3(1.65, 0.18, 1.65)
+metadata/visual_material = "Iron"
+
+[node name="FinishRoofLamp1" type="Node3D" parent="."]
+position = Vector3(20.85, 24, -421)
+
+[node name="Stem" type="Node3D" parent="FinishRoofLamp1"]
+position = Vector3(0, 0.65, 0)
+metadata/visual_size = Vector3(0.16, 1.3, 0.16)
+metadata/visual_material = "Iron"
+
+[node name="Glass" type="Node3D" parent="FinishRoofLamp1"]
+position = Vector3(0, 1.48, 0)
+metadata/visual_size = Vector3(0.3, 0.46, 0.3)
+metadata/visual_material = "Warm"
+
+[node name="Cap" type="Node3D" parent="FinishRoofLamp1"]
+position = Vector3(0, 1.77, 0)
+metadata/visual_size = Vector3(0.48, 0.1, 0.48)
+metadata/visual_material = "Iron"
+
+[node name="IntroCatchA" type="Node3D" parent="."]
+position = Vector3(16, 9.75, -28.5)
+rotation = Vector3(0, 0, 0)
+metadata/visual_size = Vector3(6, 0.5, 11.5)
+metadata/visual_material = "Iron"
+metadata/solid = true
+
+[node name="Body" type="StaticBody3D" parent="IntroCatchA"]
+
+[node name="Shape" type="CollisionShape3D" parent="IntroCatchA/Body"]
+shape = SubResource("CityCollision14")
+
+[node name="IntroCatchRamp" type="Node3D" parent="."]
+position = Vector3(16, 10.755953, -38.554233)
+rotation = Vector3(0.218669, 0, 0)
+metadata/visual_size = Vector3(6, 0.5, 9.719544)
+metadata/visual_material = "Iron"
+metadata/solid = true
+
+[node name="Body" type="StaticBody3D" parent="IntroCatchRamp"]
+
+[node name="Shape" type="CollisionShape3D" parent="IntroCatchRamp/Body"]
+shape = SubResource("CityCollision15")
+
+[node name="IntroCatchLanding" type="Node3D" parent="."]
+position = Vector3(16, 11.75, -45)
+rotation = Vector3(0, 0, 0)
+metadata/visual_size = Vector3(6, 0.5, 4.5)
+metadata/visual_material = "Iron"
+metadata/solid = true
+
+[node name="Body" type="StaticBody3D" parent="IntroCatchLanding"]
+
+[node name="Shape" type="CollisionShape3D" parent="IntroCatchLanding/Body"]
+shape = SubResource("CityCollision16")
+
+[node name="IntroCatchJoin" type="Node3D" parent="."]
+position = Vector3(12, 11.75, -47)
+rotation = Vector3(0, 1.570796, 0)
+metadata/visual_size = Vector3(6, 0.5, 8.5)
+metadata/visual_material = "Iron"
+metadata/solid = true
+
+[node name="Body" type="StaticBody3D" parent="IntroCatchJoin"]
+
+[node name="Shape" type="CollisionShape3D" parent="IntroCatchJoin/Body"]
+shape = SubResource("CityCollision17")
+
+[node name="GapSafeEntry" type="Node3D" parent="."]
+position = Vector3(-12, 11.75, -94)
+rotation = Vector3(0, 0.197396, 0)
+metadata/visual_size = Vector3(6, 0.5, 20.896078)
+metadata/visual_material = "Iron"
+metadata/solid = true
+
+[node name="Body" type="StaticBody3D" parent="GapSafeEntry"]
+
+[node name="Shape" type="CollisionShape3D" parent="GapSafeEntry/Body"]
+shape = SubResource("CityCollision18")
+
+[node name="GapSafeCross" type="Node3D" parent="."]
+position = Vector3(0, 11.75, -116)
+rotation = Vector3(0, -1.227772, 0)
+metadata/visual_size = Vector3(6, 0.5, 30.232137)
+metadata/visual_material = "Iron"
+metadata/solid = true
+
+[node name="Body" type="StaticBody3D" parent="GapSafeCross"]
+
+[node name="Shape" type="CollisionShape3D" parent="GapSafeCross/Body"]
+shape = SubResource("CityCollision19")
+
+[node name="GapSafeExit" type="Node3D" parent="."]
+position = Vector3(13, 11.75, -137)
+rotation = Vector3(0, 0.110657, 0)
+metadata/visual_size = Vector3(6, 0.5, 18.61077)
+metadata/visual_material = "Iron"
+metadata/solid = true
+
+[node name="Body" type="StaticBody3D" parent="GapSafeExit"]
+
+[node name="Shape" type="CollisionShape3D" parent="GapSafeExit/Body"]
+shape = SubResource("CityCollision20")
+
+[node name="CourtyardLowerRamp" type="Node3D" parent="."]
+position = Vector3(22.016113, 13.752006, -171.527191)
+rotation = Vector3(0.126767, -0.534955, 0)
+metadata/visual_size = Vector3(7, 0.5, 32.138584)
+metadata/visual_material = "Iron"
+metadata/solid = true
+
+[node name="Body" type="StaticBody3D" parent="CourtyardLowerRamp"]
+
+[node name="Shape" type="CollisionShape3D" parent="CourtyardLowerRamp/Body"]
+shape = SubResource("CityCollision21")
+
+[node name="CourtyardMiddleRamp" type="Node3D" parent="."]
+position = Vector3(30, 17.753402, -197.0411)
+rotation = Vector3(0.165149, 0, 0)
+metadata/visual_size = Vector3(7, 0.5, 24.83105)
+metadata/visual_material = "Iron"
+metadata/solid = true
+
+[node name="Body" type="StaticBody3D" parent="CourtyardMiddleRamp"]
+
+[node name="Shape" type="CollisionShape3D" parent="CourtyardMiddleRamp/Body"]
+shape = SubResource("CityCollision22")
+
+[node name="CourtyardUpperRamp" type="Node3D" parent="."]
+position = Vector3(30, 21.754033, -220.044721)
+rotation = Vector3(0.179853, 0, 0)
+metadata/visual_size = Vector3(7, 0.5, 22.86068)
+metadata/visual_material = "Iron"
+metadata/solid = true
+
+[node name="Body" type="StaticBody3D" parent="CourtyardUpperRamp"]
+
+[node name="Shape" type="CollisionShape3D" parent="CourtyardUpperRamp/Body"]
+shape = SubResource("CityCollision23")
+
+[node name="CourtyardUpperLanding" type="Node3D" parent="."]
+position = Vector3(30, 23.75, -234)
+rotation = Vector3(0, 0, 0)
+metadata/visual_size = Vector3(7, 0.5, 6.5)
+metadata/visual_material = "Iron"
+metadata/solid = true
+
+[node name="Body" type="StaticBody3D" parent="CourtyardUpperLanding"]
+
+[node name="Shape" type="CollisionShape3D" parent="CourtyardUpperLanding/Body"]
+shape = SubResource("CityCollision24")
+
+[node name="CourtyardUpperJoin" type="Node3D" parent="."]
+position = Vector3(22, 23.75, -237)
+rotation = Vector3(0, 1.570796, 0)
+metadata/visual_size = Vector3(7, 0.5, 16.5)
+metadata/visual_material = "Iron"
+metadata/solid = true
+
+[node name="Body" type="StaticBody3D" parent="CourtyardUpperJoin"]
+
+[node name="Shape" type="CollisionShape3D" parent="CourtyardUpperJoin/Body"]
+shape = SubResource("CityCollision25")
+
+[node name="ChainLowEntry" type="Node3D" parent="."]
+position = Vector3(-22.486388, 22.750906, -254.983666)
+rotation = Vector3(-0.085152, 0.694738, 0)
+metadata/visual_size = Vector3(7, 0.5, 24.015952)
+metadata/visual_material = "Iron"
+metadata/solid = true
+
+[node name="Body" type="StaticBody3D" parent="ChainLowEntry"]
+
+[node name="Shape" type="CollisionShape3D" parent="ChainLowEntry/Body"]
+shape = SubResource("CityCollision26")
+
+[node name="ChainLowStraight" type="Node3D" parent="."]
+position = Vector3(-30, 21.75, -289.5)
+rotation = Vector3(0, 0, 0)
+metadata/visual_size = Vector3(7, 0.5, 51.5)
+metadata/visual_material = "Iron"
+metadata/solid = true
+
+[node name="Body" type="StaticBody3D" parent="ChainLowStraight"]
+
+[node name="Shape" type="CollisionShape3D" parent="ChainLowStraight/Body"]
+shape = SubResource("CityCollision27")
+
+[node name="ChainLowRise" type="Node3D" parent="."]
+position = Vector3(-25.475408, 22.752717, -320.027324)
+rotation = Vector3(0.147578, -0.732815, 0)
+metadata/visual_size = Vector3(7, 0.5, 14.101471)
+metadata/visual_material = "Iron"
+metadata/solid = true
+
+[node name="Body" type="StaticBody3D" parent="ChainLowRise"]
+
+[node name="Shape" type="CollisionShape3D" parent="ChainLowRise/Body"]
+shape = SubResource("CityCollision28")
+
+[node name="ChainLowExit" type="Node3D" parent="."]
+position = Vector3(-15.5, 23.75, -328.5)
+rotation = Vector3(0, -1.004067, 0)
+metadata/visual_size = Vector3(7, 0.5, 13.538405)
+metadata/visual_material = "Iron"
+metadata/solid = true
+
+[node name="Body" type="StaticBody3D" parent="ChainLowExit"]
+
+[node name="Shape" type="CollisionShape3D" parent="ChainLowExit/Body"]
+shape = SubResource("CityCollision29")
+
+[node name="FinalSafeEntry" type="Node3D" parent="."]
+position = Vector3(-9, 23.75, -347.5)
+rotation = Vector3(0, 0.094952, 0)
+metadata/visual_size = Vector3(6, 0.5, 21.595023)
+metadata/visual_material = "Iron"
+metadata/solid = true
+
+[node name="Body" type="StaticBody3D" parent="FinalSafeEntry"]
+
+[node name="Shape" type="CollisionShape3D" parent="FinalSafeEntry/Body"]
+shape = SubResource("CityCollision30")
+
+[node name="FinalSafeCross" type="Node3D" parent="."]
+position = Vector3(0, 23.75, -375.5)
+rotation = Vector3(0, -0.761013, 0)
+metadata/visual_size = Vector3(6, 0.5, 29.5)
+metadata/visual_material = "Iron"
+metadata/solid = true
+
+[node name="Body" type="StaticBody3D" parent="FinalSafeCross"]
+
+[node name="Shape" type="CollisionShape3D" parent="FinalSafeCross/Body"]
+shape = SubResource("CityCollision31")
+
+[node name="FinalSafeExit" type="Node3D" parent="."]
+position = Vector3(7.5, 23.75, -404.5)
+rotation = Vector3(0, 0.257324, 0)
+metadata/visual_size = Vector3(6, 0.5, 20.146883)
+metadata/visual_material = "Iron"
+metadata/solid = true
+
+[node name="Body" type="StaticBody3D" parent="FinalSafeExit"]
+
+[node name="Shape" type="CollisionShape3D" parent="FinalSafeExit/Body"]
+shape = SubResource("CityCollision32")
+
+[node name="GapExpertBeam" type="Node3D" parent="."]
+position = Vector3(0, 12, -109)
+metadata/visual_size = Vector3(1.7, 0.5, 12)
+metadata/visual_material = "Iron"
+metadata/solid = true
+
+[node name="Body" type="StaticBody3D" parent="GapExpertBeam"]
+
+[node name="Shape" type="CollisionShape3D" parent="GapExpertBeam/Body"]
+shape = SubResource("CityCollision33")
+
+[node name="GapCraneMast" type="Node3D" parent="."]
+position = Vector3(0, 18, -97)
+metadata/visual_size = Vector3(1, 12, 1)
+metadata/visual_material = "Iron"
+
+[node name="GapCraneArm" type="Node3D" parent="."]
+position = Vector3(0, 24, -112)
+metadata/visual_size = Vector3(0.45, 0.45, 30)
+metadata/visual_material = "Iron"
+
+[node name="TowerCraneMast" type="Node3D" parent="."]
+position = Vector3(-19, 27, -187)
+metadata/visual_size = Vector3(0.7, 18, 0.7)
+metadata/visual_material = "Iron"
+
+[node name="TowerCraneArm" type="Node3D" parent="."]
+position = Vector3(-9, 34, -181)
+metadata/visual_size = Vector3(21, 0.35, 0.35)
+metadata/visual_material = "Iron"
+
+[node name="IntroRing" parent="." instance=ExtResource("Anchor")]
+position = Vector3(0, 16, -37)
+show_label = false
+architectural_fixture = true
+
+[node name="IntroRingBeam" type="Node3D" parent="."]
+position = Vector3(0, 16.68, -37)
+metadata/visual_size = Vector3(4, 0.2, 0.22)
+metadata/visual_material = "Iron"
+
+[node name="IntroRingHanger" type="Node3D" parent="."]
+position = Vector3(0, 16.39, -37)
+metadata/visual_size = Vector3(0.12, 0.58, 0.12)
+metadata/visual_material = "Iron"
+
+[node name="GapLeftRing" parent="." instance=ExtResource("Anchor")]
+position = Vector3(-10, 16, -101)
+show_label = false
+architectural_fixture = true
+
+[node name="GapLeftRingBeam" type="Node3D" parent="."]
+position = Vector3(-10, 16.68, -101)
+metadata/visual_size = Vector3(4, 0.2, 0.22)
+metadata/visual_material = "Iron"
+
+[node name="GapLeftRingHanger" type="Node3D" parent="."]
+position = Vector3(-10, 16.39, -101)
+metadata/visual_size = Vector3(0.12, 0.58, 0.12)
+metadata/visual_material = "Iron"
+
+[node name="GapRightRing" parent="." instance=ExtResource("Anchor")]
+position = Vector3(8, 16, -117)
+show_label = false
+architectural_fixture = true
+
+[node name="GapRightRingBeam" type="Node3D" parent="."]
+position = Vector3(8, 16.68, -117)
+metadata/visual_size = Vector3(4, 0.2, 0.22)
+metadata/visual_material = "Iron"
+
+[node name="GapRightRingHanger" type="Node3D" parent="."]
+position = Vector3(8, 16.39, -117)
+metadata/visual_size = Vector3(0.12, 0.58, 0.12)
+metadata/visual_material = "Iron"
+
+[node name="GapExitRing" parent="." instance=ExtResource("Anchor")]
+position = Vector3(8, 16, -134)
+show_label = false
+architectural_fixture = true
+
+[node name="GapExitRingBeam" type="Node3D" parent="."]
+position = Vector3(8, 16.68, -134)
+metadata/visual_size = Vector3(4, 0.2, 0.22)
+metadata/visual_material = "Iron"
+
+[node name="GapExitRingHanger" type="Node3D" parent="."]
+position = Vector3(8, 16.39, -134)
+metadata/visual_size = Vector3(0.12, 0.58, 0.12)
+metadata/visual_material = "Iron"
+
+[node name="GapSkipRing" parent="." instance=ExtResource("Anchor")]
+position = Vector3(0, 19, -111)
+show_label = false
+architectural_fixture = true
+
+[node name="GapSkipRingBeam" type="Node3D" parent="."]
+position = Vector3(0, 19.68, -111)
+metadata/visual_size = Vector3(4, 0.2, 0.22)
+metadata/visual_material = "Iron"
+
+[node name="GapSkipRingHanger" type="Node3D" parent="."]
+position = Vector3(0, 19.39, -111)
+metadata/visual_size = Vector3(0.12, 0.58, 0.12)
+metadata/visual_material = "Iron"
+
+[node name="CourtyardLowRing" parent="." instance=ExtResource("Anchor")]
+position = Vector3(-8, 23, -176)
+show_label = false
+architectural_fixture = true
+
+[node name="CourtyardLowRingBeam" type="Node3D" parent="."]
+position = Vector3(-8, 23.68, -176)
+metadata/visual_size = Vector3(4, 0.2, 0.22)
+metadata/visual_material = "Iron"
+
+[node name="CourtyardLowRingHanger" type="Node3D" parent="."]
+position = Vector3(-8, 23.39, -176)
+metadata/visual_size = Vector3(0.12, 0.58, 0.12)
+metadata/visual_material = "Iron"
+
+[node name="CourtyardMidRing" parent="." instance=ExtResource("Anchor")]
+position = Vector3(8, 26, -192)
+show_label = false
+architectural_fixture = true
+
+[node name="CourtyardMidRingBeam" type="Node3D" parent="."]
+position = Vector3(8, 26.68, -192)
+metadata/visual_size = Vector3(4, 0.2, 0.22)
+metadata/visual_material = "Iron"
+
+[node name="CourtyardMidRingHanger" type="Node3D" parent="."]
+position = Vector3(8, 26.39, -192)
+metadata/visual_size = Vector3(0.12, 0.58, 0.12)
+metadata/visual_material = "Iron"
+
+[node name="CourtyardTopRing" parent="." instance=ExtResource("Anchor")]
+position = Vector3(0, 30, -212)
+show_label = false
+architectural_fixture = true
+
+[node name="CourtyardTopRingBeam" type="Node3D" parent="."]
+position = Vector3(0, 30.68, -212)
+metadata/visual_size = Vector3(4, 0.2, 0.22)
+metadata/visual_material = "Iron"
+
+[node name="CourtyardTopRingHanger" type="Node3D" parent="."]
+position = Vector3(0, 30.39, -212)
+metadata/visual_size = Vector3(0.12, 0.58, 0.12)
+metadata/visual_material = "Iron"
+
+[node name="CourtyardSkipRing" parent="." instance=ExtResource("Anchor")]
+position = Vector3(0, 30, -181)
+show_label = false
+architectural_fixture = true
+
+[node name="CourtyardSkipRingBeam" type="Node3D" parent="."]
+position = Vector3(0, 30.68, -181)
+metadata/visual_size = Vector3(4, 0.2, 0.22)
+metadata/visual_material = "Iron"
+
+[node name="CourtyardSkipRingHanger" type="Node3D" parent="."]
+position = Vector3(0, 30.39, -181)
+metadata/visual_size = Vector3(0.12, 0.58, 0.12)
+metadata/visual_material = "Iron"
+
+[node name="ChainLeftRing" parent="." instance=ExtResource("Anchor")]
+position = Vector3(-7, 28, -267)
+show_label = false
+architectural_fixture = true
+
+[node name="ChainLeftRingBeam" type="Node3D" parent="."]
+position = Vector3(-7, 28.68, -267)
+metadata/visual_size = Vector3(4, 0.2, 0.22)
+metadata/visual_material = "Iron"
+
+[node name="ChainLeftRingHanger" type="Node3D" parent="."]
+position = Vector3(-7, 28.39, -267)
+metadata/visual_size = Vector3(0.12, 0.58, 0.12)
+metadata/visual_material = "Iron"
+
+[node name="ChainRightRing" parent="." instance=ExtResource("Anchor")]
+position = Vector3(7, 29, -287)
+show_label = false
+architectural_fixture = true
+
+[node name="ChainRightRingBeam" type="Node3D" parent="."]
+position = Vector3(7, 29.68, -287)
+metadata/visual_size = Vector3(4, 0.2, 0.22)
+metadata/visual_material = "Iron"
+
+[node name="ChainRightRingHanger" type="Node3D" parent="."]
+position = Vector3(7, 29.39, -287)
+metadata/visual_size = Vector3(0.12, 0.58, 0.12)
+metadata/visual_material = "Iron"
+
+[node name="ChainExitRing" parent="." instance=ExtResource("Anchor")]
+position = Vector3(0, 29, -310)
+show_label = false
+architectural_fixture = true
+
+[node name="ChainExitRingBeam" type="Node3D" parent="."]
+position = Vector3(0, 29.68, -310)
+metadata/visual_size = Vector3(4, 0.2, 0.22)
+metadata/visual_material = "Iron"
+
+[node name="ChainExitRingHanger" type="Node3D" parent="."]
+position = Vector3(0, 29.39, -310)
+metadata/visual_size = Vector3(0.12, 0.58, 0.12)
+metadata/visual_material = "Iron"
+
+[node name="FinalLeftRing" parent="." instance=ExtResource("Anchor")]
+position = Vector3(-8, 28, -350)
+show_label = false
+architectural_fixture = true
+
+[node name="FinalLeftRingBeam" type="Node3D" parent="."]
+position = Vector3(-8, 28.68, -350)
+metadata/visual_size = Vector3(4, 0.2, 0.22)
+metadata/visual_material = "Iron"
+
+[node name="FinalLeftRingHanger" type="Node3D" parent="."]
+position = Vector3(-8, 28.39, -350)
+metadata/visual_size = Vector3(0.12, 0.58, 0.12)
+metadata/visual_material = "Iron"
+
+[node name="FinalRightRing" parent="." instance=ExtResource("Anchor")]
+position = Vector3(8, 28, -378)
+show_label = false
+architectural_fixture = true
+
+[node name="FinalRightRingBeam" type="Node3D" parent="."]
+position = Vector3(8, 28.68, -378)
+metadata/visual_size = Vector3(4, 0.2, 0.22)
+metadata/visual_material = "Iron"
+
+[node name="FinalRightRingHanger" type="Node3D" parent="."]
+position = Vector3(8, 28.39, -378)
+metadata/visual_size = Vector3(0.12, 0.58, 0.12)
+metadata/visual_material = "Iron"
+
+[node name="FinishRing" parent="." instance=ExtResource("Anchor")]
+position = Vector3(0, 29, -408)
+show_label = false
+architectural_fixture = true
+
+[node name="FinishRingBeam" type="Node3D" parent="."]
+position = Vector3(0, 29.68, -408)
+metadata/visual_size = Vector3(4, 0.2, 0.22)
+metadata/visual_material = "Iron"
+
+[node name="FinishRingHanger" type="Node3D" parent="."]
+position = Vector3(0, 29.39, -408)
+metadata/visual_size = Vector3(0.12, 0.58, 0.12)
+metadata/visual_material = "Iron"
+
+[node name="StartGate" type="Area3D" parent="."]
+position = Vector3(0, 21, 4)
+collision_layer = 0
+collision_mask = 4
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="StartGate"]
+shape = SubResource("Gate")
+
+[node name="Post-1" type="Node3D" parent="StartGate"]
+position = Vector3(-16, -5, 0)
+metadata/visual_size = Vector3(0.35, 8, 0.35)
+metadata/visual_material = "Iron"
+
+[node name="Lamp-1" type="Node3D" parent="StartGate"]
+position = Vector3(-16, -0.6, 0)
+metadata/visual_size = Vector3(0.6, 0.9, 0.6)
+metadata/visual_material = "Warm"
+
+[node name="Post1" type="Node3D" parent="StartGate"]
+position = Vector3(16, -5, 0)
+metadata/visual_size = Vector3(0.35, 8, 0.35)
+metadata/visual_material = "Iron"
+
+[node name="Lamp1" type="Node3D" parent="StartGate"]
+position = Vector3(16, -0.6, 0)
+metadata/visual_size = Vector3(0.6, 0.9, 0.6)
+metadata/visual_material = "Warm"
+
+[node name="Lintel" type="Node3D" parent="StartGate"]
+position = Vector3(0, -0.05, 0)
+metadata/visual_size = Vector3(32.4, 0.3, 0.3)
+metadata/visual_material = "Iron"
+
+[node name="Sign" type="Label3D" parent="StartGate"]
+position = Vector3(0, 0.65, 0.16)
+text = "VEILRUN"
+font_size = 38
+pixel_size = 0.006
+outline_size = 8
+modulate = Color(0.88, 0.80, 0.64, 1)
+
+[node name="Checkpoint1" type="Area3D" parent="."]
+position = Vector3(0, 21, -60)
+collision_layer = 0
+collision_mask = 4
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Checkpoint1"]
+shape = SubResource("Gate")
+
+[node name="Post-1" type="Node3D" parent="Checkpoint1"]
+position = Vector3(-16, -5, 0)
+metadata/visual_size = Vector3(0.35, 8, 0.35)
+metadata/visual_material = "Iron"
+
+[node name="Lamp-1" type="Node3D" parent="Checkpoint1"]
+position = Vector3(-16, -0.6, 0)
+metadata/visual_size = Vector3(0.6, 0.9, 0.6)
+metadata/visual_material = "Warm"
+
+[node name="Post1" type="Node3D" parent="Checkpoint1"]
+position = Vector3(16, -5, 0)
+metadata/visual_size = Vector3(0.35, 8, 0.35)
+metadata/visual_material = "Iron"
+
+[node name="Lamp1" type="Node3D" parent="Checkpoint1"]
+position = Vector3(16, -0.6, 0)
+metadata/visual_size = Vector3(0.6, 0.9, 0.6)
+metadata/visual_material = "Warm"
+
+[node name="Lintel" type="Node3D" parent="Checkpoint1"]
+position = Vector3(0, -0.05, 0)
+metadata/visual_size = Vector3(32.4, 0.3, 0.3)
+metadata/visual_material = "Iron"
+
+[node name="Sign" type="Label3D" parent="Checkpoint1"]
+position = Vector3(0, 0.65, 0.16)
+text = "01  /  THE EAVES"
+font_size = 38
+pixel_size = 0.006
+outline_size = 8
+modulate = Color(0.88, 0.80, 0.64, 1)
+
+[node name="Respawn" type="Marker3D" parent="Checkpoint1"]
+position = Vector3(0, -8.45, -4)
+
+[node name="Checkpoint2" type="Area3D" parent="."]
+position = Vector3(0, 21, -150)
+collision_layer = 0
+collision_mask = 4
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Checkpoint2"]
+shape = SubResource("Gate")
+
+[node name="Post-1" type="Node3D" parent="Checkpoint2"]
+position = Vector3(-16, -5, 0)
+metadata/visual_size = Vector3(0.35, 8, 0.35)
+metadata/visual_material = "Iron"
+
+[node name="Lamp-1" type="Node3D" parent="Checkpoint2"]
+position = Vector3(-16, -0.6, 0)
+metadata/visual_size = Vector3(0.6, 0.9, 0.6)
+metadata/visual_material = "Warm"
+
+[node name="Post1" type="Node3D" parent="Checkpoint2"]
+position = Vector3(16, -5, 0)
+metadata/visual_size = Vector3(0.35, 8, 0.35)
+metadata/visual_material = "Iron"
+
+[node name="Lamp1" type="Node3D" parent="Checkpoint2"]
+position = Vector3(16, -0.6, 0)
+metadata/visual_size = Vector3(0.6, 0.9, 0.6)
+metadata/visual_material = "Warm"
+
+[node name="Lintel" type="Node3D" parent="Checkpoint2"]
+position = Vector3(0, -0.05, 0)
+metadata/visual_size = Vector3(32.4, 0.3, 0.3)
+metadata/visual_material = "Iron"
+
+[node name="Sign" type="Label3D" parent="Checkpoint2"]
+position = Vector3(0, 0.65, 0.16)
+text = "02  /  BRAIDED SPAN"
+font_size = 38
+pixel_size = 0.006
+outline_size = 8
+modulate = Color(0.88, 0.80, 0.64, 1)
+
+[node name="Respawn" type="Marker3D" parent="Checkpoint2"]
+position = Vector3(0, -8.45, -4)
+
+[node name="Checkpoint3" type="Area3D" parent="."]
+position = Vector3(0, 33, -243)
+collision_layer = 0
+collision_mask = 4
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Checkpoint3"]
+shape = SubResource("Gate")
+
+[node name="Post-1" type="Node3D" parent="Checkpoint3"]
+position = Vector3(-16, -5, 0)
+metadata/visual_size = Vector3(0.35, 8, 0.35)
+metadata/visual_material = "Iron"
+
+[node name="Lamp-1" type="Node3D" parent="Checkpoint3"]
+position = Vector3(-16, -0.6, 0)
+metadata/visual_size = Vector3(0.6, 0.9, 0.6)
+metadata/visual_material = "Warm"
+
+[node name="Post1" type="Node3D" parent="Checkpoint3"]
+position = Vector3(16, -5, 0)
+metadata/visual_size = Vector3(0.35, 8, 0.35)
+metadata/visual_material = "Iron"
+
+[node name="Lamp1" type="Node3D" parent="Checkpoint3"]
+position = Vector3(16, -0.6, 0)
+metadata/visual_size = Vector3(0.6, 0.9, 0.6)
+metadata/visual_material = "Warm"
+
+[node name="Lintel" type="Node3D" parent="Checkpoint3"]
+position = Vector3(0, -0.05, 0)
+metadata/visual_size = Vector3(32.4, 0.3, 0.3)
+metadata/visual_material = "Iron"
+
+[node name="Sign" type="Label3D" parent="Checkpoint3"]
+position = Vector3(0, 0.65, 0.16)
+text = "03  /  CLOCKCOURT"
+font_size = 38
+pixel_size = 0.006
+outline_size = 8
+modulate = Color(0.88, 0.80, 0.64, 1)
+
+[node name="Respawn" type="Marker3D" parent="Checkpoint3"]
+position = Vector3(0, -8.45, -4)
+
+[node name="Checkpoint4" type="Area3D" parent="."]
+position = Vector3(0, 33, -335)
+collision_layer = 0
+collision_mask = 4
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Checkpoint4"]
+shape = SubResource("Gate")
+
+[node name="Post-1" type="Node3D" parent="Checkpoint4"]
+position = Vector3(-16, -5, 0)
+metadata/visual_size = Vector3(0.35, 8, 0.35)
+metadata/visual_material = "Iron"
+
+[node name="Lamp-1" type="Node3D" parent="Checkpoint4"]
+position = Vector3(-16, -0.6, 0)
+metadata/visual_size = Vector3(0.6, 0.9, 0.6)
+metadata/visual_material = "Warm"
+
+[node name="Post1" type="Node3D" parent="Checkpoint4"]
+position = Vector3(16, -5, 0)
+metadata/visual_size = Vector3(0.35, 8, 0.35)
+metadata/visual_material = "Iron"
+
+[node name="Lamp1" type="Node3D" parent="Checkpoint4"]
+position = Vector3(16, -0.6, 0)
+metadata/visual_size = Vector3(0.6, 0.9, 0.6)
+metadata/visual_material = "Warm"
+
+[node name="Lintel" type="Node3D" parent="Checkpoint4"]
+position = Vector3(0, -0.05, 0)
+metadata/visual_size = Vector3(32.4, 0.3, 0.3)
+metadata/visual_material = "Iron"
+
+[node name="Sign" type="Label3D" parent="Checkpoint4"]
+position = Vector3(0, 0.65, 0.16)
+text = "04  /  IRON CURRENT"
+font_size = 38
+pixel_size = 0.006
+outline_size = 8
+modulate = Color(0.88, 0.80, 0.64, 1)
+
+[node name="Respawn" type="Marker3D" parent="Checkpoint4"]
+position = Vector3(0, -8.45, -4)
+
+[node name="FinishGate" type="Area3D" parent="."]
+position = Vector3(0, 33, -426)
+collision_layer = 0
+collision_mask = 4
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="FinishGate"]
+shape = SubResource("Gate")
+
+[node name="Post-1" type="Node3D" parent="FinishGate"]
+position = Vector3(-16, -5, 0)
+metadata/visual_size = Vector3(0.35, 8, 0.35)
+metadata/visual_material = "Iron"
+
+[node name="Lamp-1" type="Node3D" parent="FinishGate"]
+position = Vector3(-16, -0.6, 0)
+metadata/visual_size = Vector3(0.6, 0.9, 0.6)
+metadata/visual_material = "Warm"
+
+[node name="Post1" type="Node3D" parent="FinishGate"]
+position = Vector3(16, -5, 0)
+metadata/visual_size = Vector3(0.35, 8, 0.35)
+metadata/visual_material = "Iron"
+
+[node name="Lamp1" type="Node3D" parent="FinishGate"]
+position = Vector3(16, -0.6, 0)
+metadata/visual_size = Vector3(0.6, 0.9, 0.6)
+metadata/visual_material = "Warm"
+
+[node name="Lintel" type="Node3D" parent="FinishGate"]
+position = Vector3(0, -0.05, 0)
+metadata/visual_size = Vector3(32.4, 0.3, 0.3)
+metadata/visual_material = "Iron"
+
+[node name="Sign" type="Label3D" parent="FinishGate"]
+position = Vector3(0, 0.65, 0.16)
+text = "LAST LIGHT   /   FINISH"
+font_size = 72
+pixel_size = 0.006
+outline_size = 8
+modulate = Color(0.88, 0.80, 0.64, 1)
+
+[node name="RouteChevron0" type="Node3D" parent="."]
+position = Vector3(0, 12.1, -12)
+rotation = Vector3(0, 0, 0)
+
+[node name="Wing-1" type="Node3D" parent="RouteChevron0"]
+position = Vector3(-0.38, 0, 0)
+rotation = Vector3(0, -0.785398, 0)
+metadata/visual_size = Vector3(0.14, 0.06, 1.15)
+metadata/visual_material = "Trim"
+
+[node name="Wing1" type="Node3D" parent="RouteChevron0"]
+position = Vector3(0.38, 0, 0)
+rotation = Vector3(0, 0.785398, 0)
+metadata/visual_size = Vector3(0.14, 0.06, 1.15)
+metadata/visual_material = "Trim"
+
+[node name="RouteChevron1" type="Node3D" parent="."]
+position = Vector3(0, 12.1, -43)
+rotation = Vector3(0, 0, 0)
+
+[node name="Wing-1" type="Node3D" parent="RouteChevron1"]
+position = Vector3(-0.38, 0, 0)
+rotation = Vector3(0, -0.785398, 0)
+metadata/visual_size = Vector3(0.14, 0.06, 1.15)
+metadata/visual_material = "Trim"
+
+[node name="Wing1" type="Node3D" parent="RouteChevron1"]
+position = Vector3(0.38, 0, 0)
+rotation = Vector3(0, 0.785398, 0)
+metadata/visual_size = Vector3(0.14, 0.06, 1.15)
+metadata/visual_material = "Trim"
+
+[node name="RouteChevron2" type="Node3D" parent="."]
+position = Vector3(0, 12.1, -68)
+rotation = Vector3(0, 0, 0)
+
+[node name="Wing-1" type="Node3D" parent="RouteChevron2"]
+position = Vector3(-0.38, 0, 0)
+rotation = Vector3(0, -0.785398, 0)
+metadata/visual_size = Vector3(0.14, 0.06, 1.15)
+metadata/visual_material = "Trim"
+
+[node name="Wing1" type="Node3D" parent="RouteChevron2"]
+position = Vector3(0.38, 0, 0)
+rotation = Vector3(0, 0.785398, 0)
+metadata/visual_size = Vector3(0.14, 0.06, 1.15)
+metadata/visual_material = "Trim"
+
+[node name="RouteChevron3" type="Node3D" parent="."]
+position = Vector3(-10, 12.1, -87)
+rotation = Vector3(0, 0, 0)
+
+[node name="Wing-1" type="Node3D" parent="RouteChevron3"]
+position = Vector3(-0.38, 0, 0)
+rotation = Vector3(0, -0.785398, 0)
+metadata/visual_size = Vector3(0.14, 0.06, 1.15)
+metadata/visual_material = "Trim"
+
+[node name="Wing1" type="Node3D" parent="RouteChevron3"]
+position = Vector3(0.38, 0, 0)
+rotation = Vector3(0, 0.785398, 0)
+metadata/visual_size = Vector3(0.14, 0.06, 1.15)
+metadata/visual_material = "Trim"
+
+[node name="RouteChevron4" type="Node3D" parent="."]
+position = Vector3(-14, 12.1, -112)
+rotation = Vector3(0, 0, 0)
+
+[node name="Wing-1" type="Node3D" parent="RouteChevron4"]
+position = Vector3(-0.38, 0, 0)
+rotation = Vector3(0, -0.785398, 0)
+metadata/visual_size = Vector3(0.14, 0.06, 1.15)
+metadata/visual_material = "Trim"
+
+[node name="Wing1" type="Node3D" parent="RouteChevron4"]
+position = Vector3(0.38, 0, 0)
+rotation = Vector3(0, 0.785398, 0)
+metadata/visual_size = Vector3(0.14, 0.06, 1.15)
+metadata/visual_material = "Trim"
+
+[node name="RouteChevron5" type="Node3D" parent="."]
+position = Vector3(12, 12.1, -136)
+rotation = Vector3(0, 0, 0)
+
+[node name="Wing-1" type="Node3D" parent="RouteChevron5"]
+position = Vector3(-0.38, 0, 0)
+rotation = Vector3(0, -0.785398, 0)
+metadata/visual_size = Vector3(0.14, 0.06, 1.15)
+metadata/visual_material = "Trim"
+
+[node name="Wing1" type="Node3D" parent="RouteChevron5"]
+position = Vector3(0.38, 0, 0)
+rotation = Vector3(0, 0.785398, 0)
+metadata/visual_size = Vector3(0.14, 0.06, 1.15)
+metadata/visual_material = "Trim"
+
+[node name="RouteChevron6" type="Node3D" parent="."]
+position = Vector3(0, 12.1, -145)
+rotation = Vector3(0, 0, 0)
+
+[node name="Wing-1" type="Node3D" parent="RouteChevron6"]
+position = Vector3(-0.38, 0, 0)
+rotation = Vector3(0, -0.785398, 0)
+metadata/visual_size = Vector3(0.14, 0.06, 1.15)
+metadata/visual_material = "Trim"
+
+[node name="Wing1" type="Node3D" parent="RouteChevron6"]
+position = Vector3(0.38, 0, 0)
+rotation = Vector3(0, 0.785398, 0)
+metadata/visual_size = Vector3(0.14, 0.06, 1.15)
+metadata/visual_material = "Trim"
+
+[node name="RouteChevron7" type="Node3D" parent="."]
+position = Vector3(0, 24.1, -228)
+rotation = Vector3(0, 0, 0)
+
+[node name="Wing-1" type="Node3D" parent="RouteChevron7"]
+position = Vector3(-0.38, 0, 0)
+rotation = Vector3(0, -0.785398, 0)
+metadata/visual_size = Vector3(0.14, 0.06, 1.15)
+metadata/visual_material = "Trim"
+
+[node name="Wing1" type="Node3D" parent="RouteChevron7"]
+position = Vector3(0.38, 0, 0)
+rotation = Vector3(0, 0.785398, 0)
+metadata/visual_size = Vector3(0.14, 0.06, 1.15)
+metadata/visual_material = "Trim"
+
+[node name="RouteChevron8" type="Node3D" parent="."]
+position = Vector3(0, 24.1, -249)
+rotation = Vector3(0, 0, 0)
+
+[node name="Wing-1" type="Node3D" parent="RouteChevron8"]
+position = Vector3(-0.38, 0, 0)
+rotation = Vector3(0, -0.785398, 0)
+metadata/visual_size = Vector3(0.14, 0.06, 1.15)
+metadata/visual_material = "Trim"
+
+[node name="Wing1" type="Node3D" parent="RouteChevron8"]
+position = Vector3(0.38, 0, 0)
+rotation = Vector3(0, 0.785398, 0)
+metadata/visual_size = Vector3(0.14, 0.06, 1.15)
+metadata/visual_material = "Trim"
+
+[node name="RouteChevron9" type="Node3D" parent="."]
+position = Vector3(-8, 24.1, -272)
+rotation = Vector3(0, 0, 0)
+
+[node name="Wing-1" type="Node3D" parent="RouteChevron9"]
+position = Vector3(-0.38, 0, 0)
+rotation = Vector3(0, -0.785398, 0)
+metadata/visual_size = Vector3(0.14, 0.06, 1.15)
+metadata/visual_material = "Trim"
+
+[node name="Wing1" type="Node3D" parent="RouteChevron9"]
+position = Vector3(0.38, 0, 0)
+rotation = Vector3(0, 0.785398, 0)
+metadata/visual_size = Vector3(0.14, 0.06, 1.15)
+metadata/visual_material = "Trim"
+
+[node name="RouteChevron10" type="Node3D" parent="."]
+position = Vector3(7, 24.1, -300)
+rotation = Vector3(0, 0, 0)
+
+[node name="Wing-1" type="Node3D" parent="RouteChevron10"]
+position = Vector3(-0.38, 0, 0)
+rotation = Vector3(0, -0.785398, 0)
+metadata/visual_size = Vector3(0.14, 0.06, 1.15)
+metadata/visual_material = "Trim"
+
+[node name="Wing1" type="Node3D" parent="RouteChevron10"]
+position = Vector3(0.38, 0, 0)
+rotation = Vector3(0, 0.785398, 0)
+metadata/visual_size = Vector3(0.14, 0.06, 1.15)
+metadata/visual_material = "Trim"
+
+[node name="RouteChevron11" type="Node3D" parent="."]
+position = Vector3(0, 24.1, -331)
+rotation = Vector3(0, 0, 0)
+
+[node name="Wing-1" type="Node3D" parent="RouteChevron11"]
+position = Vector3(-0.38, 0, 0)
+rotation = Vector3(0, -0.785398, 0)
+metadata/visual_size = Vector3(0.14, 0.06, 1.15)
+metadata/visual_material = "Trim"
+
+[node name="Wing1" type="Node3D" parent="RouteChevron11"]
+position = Vector3(0.38, 0, 0)
+rotation = Vector3(0, 0.785398, 0)
+metadata/visual_size = Vector3(0.14, 0.06, 1.15)
+metadata/visual_material = "Trim"
+
+[node name="RouteChevron12" type="Node3D" parent="."]
+position = Vector3(-8, 24.1, -350)
+rotation = Vector3(0, 0, 0)
+
+[node name="Wing-1" type="Node3D" parent="RouteChevron12"]
+position = Vector3(-0.38, 0, 0)
+rotation = Vector3(0, -0.785398, 0)
+metadata/visual_size = Vector3(0.14, 0.06, 1.15)
+metadata/visual_material = "Trim"
+
+[node name="Wing1" type="Node3D" parent="RouteChevron12"]
+position = Vector3(0.38, 0, 0)
+rotation = Vector3(0, 0.785398, 0)
+metadata/visual_size = Vector3(0.14, 0.06, 1.15)
+metadata/visual_material = "Trim"
+
+[node name="RouteChevron13" type="Node3D" parent="."]
+position = Vector3(8, 24.1, -386)
+rotation = Vector3(0, 0, 0)
+
+[node name="Wing-1" type="Node3D" parent="RouteChevron13"]
+position = Vector3(-0.38, 0, 0)
+rotation = Vector3(0, -0.785398, 0)
+metadata/visual_size = Vector3(0.14, 0.06, 1.15)
+metadata/visual_material = "Trim"
+
+[node name="Wing1" type="Node3D" parent="RouteChevron13"]
+position = Vector3(0.38, 0, 0)
+rotation = Vector3(0, 0.785398, 0)
+metadata/visual_size = Vector3(0.14, 0.06, 1.15)
+metadata/visual_material = "Trim"
+
+[node name="RouteChevron14" type="Node3D" parent="."]
+position = Vector3(0, 24.1, -412)
+rotation = Vector3(0, 0, 0)
+
+[node name="Wing-1" type="Node3D" parent="RouteChevron14"]
+position = Vector3(-0.38, 0, 0)
+rotation = Vector3(0, -0.785398, 0)
+metadata/visual_size = Vector3(0.14, 0.06, 1.15)
+metadata/visual_material = "Trim"
+
+[node name="Wing1" type="Node3D" parent="RouteChevron14"]
+position = Vector3(0.38, 0, 0)
+rotation = Vector3(0, 0.785398, 0)
+metadata/visual_size = Vector3(0.14, 0.06, 1.15)
+metadata/visual_material = "Trim"
+
+[node name="CitySilhouette0" type="Node3D" parent="."]
+position = Vector3(-46, 1, -10)
+metadata/visual_size = Vector3(23, 38, 34)
+metadata/visual_material = "Silhouette"
+
+[node name="CityCornice0" type="Node3D" parent="."]
+position = Vector3(-46, 19.7, -10)
+metadata/visual_size = Vector3(23.4, 0.4, 34.4)
+metadata/visual_material = "Stone"
+
+[node name="CityStack0" type="Node3D" parent="."]
+position = Vector3(-49, 22, -10)
+metadata/visual_size = Vector3(2, 4, 2)
+metadata/visual_material = "Brick"
+
+[node name="CitySilhouette1" type="Node3D" parent="."]
+position = Vector3(48, 7, -37)
+metadata/visual_size = Vector3(22, 50, 25)
+metadata/visual_material = "Silhouette"
+
+[node name="CityCornice1" type="Node3D" parent="."]
+position = Vector3(48, 31.7, -37)
+metadata/visual_size = Vector3(22.4, 0.4, 25.4)
+metadata/visual_material = "Stone"
+
+[node name="CityStack1" type="Node3D" parent="."]
+position = Vector3(45, 34, -37)
+metadata/visual_size = Vector3(2, 4, 2)
+metadata/visual_material = "Brick"
+
+[node name="CitySilhouette2" type="Node3D" parent="."]
+position = Vector3(-42, 5, -80)
+metadata/visual_size = Vector3(21, 46, 30)
+metadata/visual_material = "Silhouette"
+
+[node name="CityCornice2" type="Node3D" parent="."]
+position = Vector3(-42, 27.7, -80)
+metadata/visual_size = Vector3(21.4, 0.4, 30.4)
+metadata/visual_material = "Stone"
+
+[node name="CityStack2" type="Node3D" parent="."]
+position = Vector3(-45, 30, -80)
+metadata/visual_size = Vector3(2, 4, 2)
+metadata/visual_material = "Brick"
+
+[node name="CitySilhouette3" type="Node3D" parent="."]
+position = Vector3(52, 9, -105)
+metadata/visual_size = Vector3(25, 54, 27)
+metadata/visual_material = "Silhouette"
+
+[node name="CityCornice3" type="Node3D" parent="."]
+position = Vector3(52, 35.7, -105)
+metadata/visual_size = Vector3(25.4, 0.4, 27.4)
+metadata/visual_material = "Stone"
+
+[node name="CityStack3" type="Node3D" parent="."]
+position = Vector3(49, 38, -105)
+metadata/visual_size = Vector3(2, 4, 2)
+metadata/visual_material = "Brick"
+
+[node name="CitySilhouette4" type="Node3D" parent="."]
+position = Vector3(-50, 12, -152)
+metadata/visual_size = Vector3(22, 60, 25)
+metadata/visual_material = "Silhouette"
+
+[node name="CityCornice4" type="Node3D" parent="."]
+position = Vector3(-50, 41.7, -152)
+metadata/visual_size = Vector3(22.4, 0.4, 25.4)
+metadata/visual_material = "Stone"
+
+[node name="CityStack4" type="Node3D" parent="."]
+position = Vector3(-53, 44, -152)
+metadata/visual_size = Vector3(2, 4, 2)
+metadata/visual_material = "Brick"
+
+[node name="CitySilhouette5" type="Node3D" parent="."]
+position = Vector3(50, 9.5, -189)
+metadata/visual_size = Vector3(21, 55, 24)
+metadata/visual_material = "Silhouette"
+
+[node name="CityCornice5" type="Node3D" parent="."]
+position = Vector3(50, 36.7, -189)
+metadata/visual_size = Vector3(21.4, 0.4, 24.4)
+metadata/visual_material = "Stone"
+
+[node name="CityStack5" type="Node3D" parent="."]
+position = Vector3(47, 39, -189)
+metadata/visual_size = Vector3(2, 4, 2)
+metadata/visual_material = "Brick"
+
+[node name="CitySilhouette6" type="Node3D" parent="."]
+position = Vector3(-51, 12.5, -228)
+metadata/visual_size = Vector3(29, 61, 27)
+metadata/visual_material = "Silhouette"
+
+[node name="CityCornice6" type="Node3D" parent="."]
+position = Vector3(-51, 42.7, -228)
+metadata/visual_size = Vector3(29.4, 0.4, 27.4)
+metadata/visual_material = "Stone"
+
+[node name="CityStack6" type="Node3D" parent="."]
+position = Vector3(-54, 45, -228)
+metadata/visual_size = Vector3(2, 4, 2)
+metadata/visual_material = "Brick"
+
+[node name="CitySilhouette7" type="Node3D" parent="."]
+position = Vector3(49, 8.5, -264)
+metadata/visual_size = Vector3(23, 53, 29)
+metadata/visual_material = "Silhouette"
+
+[node name="CityCornice7" type="Node3D" parent="."]
+position = Vector3(49, 34.7, -264)
+metadata/visual_size = Vector3(23.4, 0.4, 29.4)
+metadata/visual_material = "Stone"
+
+[node name="CityStack7" type="Node3D" parent="."]
+position = Vector3(46, 37, -264)
+metadata/visual_size = Vector3(2, 4, 2)
+metadata/visual_material = "Brick"
+
+[node name="CitySilhouette8" type="Node3D" parent="."]
+position = Vector3(-56, 6.5, -301)
+metadata/visual_size = Vector3(23, 49, 21)
+metadata/visual_material = "Silhouette"
+
+[node name="CityCornice8" type="Node3D" parent="."]
+position = Vector3(-56, 30.7, -301)
+metadata/visual_size = Vector3(23.4, 0.4, 21.4)
+metadata/visual_material = "Stone"
+
+[node name="CityStack8" type="Node3D" parent="."]
+position = Vector3(-59, 33, -301)
+metadata/visual_size = Vector3(2, 4, 2)
+metadata/visual_material = "Brick"
+
+[node name="CitySilhouette9" type="Node3D" parent="."]
+position = Vector3(52, 11, -340)
+metadata/visual_size = Vector3(28, 58, 24)
+metadata/visual_material = "Silhouette"
+
+[node name="CityCornice9" type="Node3D" parent="."]
+position = Vector3(52, 39.7, -340)
+metadata/visual_size = Vector3(28.4, 0.4, 24.4)
+metadata/visual_material = "Stone"
+
+[node name="CityStack9" type="Node3D" parent="."]
+position = Vector3(49, 42, -340)
+metadata/visual_size = Vector3(2, 4, 2)
+metadata/visual_material = "Brick"
+
+[node name="CitySilhouette10" type="Node3D" parent="."]
+position = Vector3(-50, 9, -381)
+metadata/visual_size = Vector3(21, 54, 24)
+metadata/visual_material = "Silhouette"
+
+[node name="CityCornice10" type="Node3D" parent="."]
+position = Vector3(-50, 35.7, -381)
+metadata/visual_size = Vector3(21.4, 0.4, 24.4)
+metadata/visual_material = "Stone"
+
+[node name="CityStack10" type="Node3D" parent="."]
+position = Vector3(-53, 38, -381)
+metadata/visual_size = Vector3(2, 4, 2)
+metadata/visual_material = "Brick"
+
+[node name="CitySilhouette11" type="Node3D" parent="."]
+position = Vector3(51, 12.5, -421)
+metadata/visual_size = Vector3(21, 61, 28)
+metadata/visual_material = "Silhouette"
+
+[node name="CityCornice11" type="Node3D" parent="."]
+position = Vector3(51, 42.7, -421)
+metadata/visual_size = Vector3(21.4, 0.4, 28.4)
+metadata/visual_material = "Stone"
+
+[node name="CityStack11" type="Node3D" parent="."]
+position = Vector3(48, 45, -421)
+metadata/visual_size = Vector3(2, 4, 2)
+metadata/visual_material = "Brick"
+
+[node name="CitySilhouette12" type="Node3D" parent="."]
+position = Vector3(-70, 16, -445)
+metadata/visual_size = Vector3(30, 68, 31)
+metadata/visual_material = "Silhouette"
+
+[node name="CityCornice12" type="Node3D" parent="."]
+position = Vector3(-70, 49.7, -445)
+metadata/visual_size = Vector3(30.4, 0.4, 31.4)
+metadata/visual_material = "Stone"
+
+[node name="CityStack12" type="Node3D" parent="."]
+position = Vector3(-73, 52, -445)
+metadata/visual_size = Vector3(2, 4, 2)
+metadata/visual_material = "Brick"
+
+[node name="CitySilhouette13" type="Node3D" parent="."]
+position = Vector3(73, 19, -448)
+metadata/visual_size = Vector3(25, 74, 29)
+metadata/visual_material = "Silhouette"
+
+[node name="CityCornice13" type="Node3D" parent="."]
+position = Vector3(73, 55.7, -448)
+metadata/visual_size = Vector3(25.4, 0.4, 29.4)
+metadata/visual_material = "Stone"
+
+[node name="CityStack13" type="Node3D" parent="."]
+position = Vector3(70, 58, -448)
+metadata/visual_size = Vector3(2, 4, 2)
+metadata/visual_material = "Brick"
+
+[node name="StreetDatum" type="Node3D" parent="."]
+position = Vector3(0, -18.5, -215)
+metadata/visual_size = Vector3(180, 1, 510)
+metadata/visual_material = "Iron"
+
+[node name="FinishTower-1" type="Node3D" parent="."]
+position = Vector3(-22, 31, -426)
+metadata/visual_size = Vector3(2.2, 14, 2.2)
+metadata/visual_material = "Brick"
+
+[node name="FinishBeacon-1" type="Node3D" parent="."]
+position = Vector3(-22, 38.5, -426)
+metadata/visual_size = Vector3(1.5, 1.5, 1.5)
+metadata/visual_material = "Warm"
+
+[node name="FinishTower1" type="Node3D" parent="."]
+position = Vector3(22, 31, -426)
+metadata/visual_size = Vector3(2.2, 14, 2.2)
+metadata/visual_material = "Brick"
+
+[node name="FinishBeacon1" type="Node3D" parent="."]
+position = Vector3(22, 38.5, -426)
+metadata/visual_size = Vector3(1.5, 1.5, 1.5)
+metadata/visual_material = "Warm"
+
+[node name="CityDistrict" parent="." instance=ExtResource("CityDistrict")]

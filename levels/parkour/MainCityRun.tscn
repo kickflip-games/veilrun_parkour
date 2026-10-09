@@ -1,0 +1,211 @@
+[gd_scene format=3]
+
+[ext_resource type="Script" path="res://levels/parkour/parkour_trial.gd" id="Trial"]
+
+[ext_resource type="PackedScene" path="res://scenes/player/player.tscn" id="Player"]
+
+[ext_resource type="Script" path="res://scenes/parkour/city_checkpoint.gd" id="CP"]
+
+[ext_resource type="Sky" path="res://scenes/parkour/city_sky.tres" id="Sky"]
+
+[ext_resource type="PackedScene" path="res://levels/parkour/city/01_eaves.tscn" id="Sector0"]
+
+[ext_resource type="PackedScene" path="res://levels/parkour/city/02_chimney_row.tscn" id="Sector1"]
+
+[ext_resource type="PackedScene" path="res://levels/parkour/city/03_blackglass.tscn" id="Sector2"]
+
+[ext_resource type="PackedScene" path="res://levels/parkour/city/04_underway.tscn" id="Sector3"]
+
+[ext_resource type="PackedScene" path="res://levels/parkour/city/05_bellmaker.tscn" id="Sector4"]
+
+[ext_resource type="PackedScene" path="res://levels/parkour/city/06_high_ward.tscn" id="Sector5"]
+
+[ext_resource type="PackedScene" path="res://levels/parkour/city/07_long_fall.tscn" id="Sector6"]
+
+[sub_resource type="Environment" id="Mist"]
+background_mode = 2
+sky = ExtResource("Sky")
+ambient_light_source = 3
+ambient_light_color = Color(0.48, 0.57, 0.70, 1)
+ambient_light_energy = 0.72
+fog_enabled = true
+fog_light_color = Color(0.22, 0.28, 0.36, 1)
+fog_density = 0.0027
+fog_sky_affect = 0.30
+fog_height = -8.0
+fog_height_density = 0.015
+
+[sub_resource type="BoxShape3D" id="Gate"]
+size = Vector3(24, 55, 5)
+
+[node name="MainCityRun" type="Node3D"]
+script = ExtResource("Trial")
+course_id = "veilrun_city_v1"
+course_title = "VEILRUN · CITY RUN"
+checkpoint_paths = Array[NodePath]([NodePath("Checkpoint1"), NodePath("Checkpoint2"), NodePath("Checkpoint3"), NodePath("Checkpoint4"), NodePath("Checkpoint5"), NodePath("Checkpoint6")])
+finish_path = NodePath("FinishGate")
+sector_names = PackedStringArray("THE EAVES", "CHIMNEY ROW", "BLACKGLASS DESCENT", "THE UNDERWAY", "BELLMAKER'S TURN", "THE HIGH WARD", "THE LONG FALL")
+sector_retry_enabled = true
+fall_height = -36.0
+grapple_range = 30.0
+acquisition_horizontal_degrees = 20.0
+acquisition_vertical_degrees = 42.0
+course_intro = "Hold PULL to bend your line · Let go to fly"
+metadata/safe_route_length = 2110.894
+metadata/target_first_competent_seconds = Vector2(180, 360)
+
+[node name="WorldEnvironment" type="WorldEnvironment" parent="."]
+environment = SubResource("Mist")
+
+[node name="Sun" type="DirectionalLight3D" parent="."]
+rotation = Vector3(-0.9, -0.5, 0)
+light_color = Color(0.65, 0.72, 0.85, 1)
+light_energy = 0.95
+shadow_enabled = true
+directional_shadow_max_distance = 85.0
+directional_shadow_fade_start = 0.7
+
+[node name="Player" parent="." instance=ExtResource("Player")]
+position = Vector3(0, 24.55, 12)
+parkour_mode = true
+surf_mode = true
+use_momentum_pull = true
+vertical_look_enabled = false
+parkour_speed_limit = 32.0
+
+[node name="PlayerSpawn" type="Marker3D" parent="."]
+position = Vector3(0, 24.55, 12)
+
+[node name="CitySections" type="Node3D" parent="."]
+
+[node name="Sector01" parent="CitySections" instance=ExtResource("Sector0")]
+
+[node name="Sector02" parent="CitySections" instance=ExtResource("Sector1")]
+
+[node name="Sector03" parent="CitySections" instance=ExtResource("Sector2")]
+
+[node name="Sector04" parent="CitySections" instance=ExtResource("Sector3")]
+
+[node name="Sector05" parent="CitySections" instance=ExtResource("Sector4")]
+
+[node name="Sector06" parent="CitySections" instance=ExtResource("Sector5")]
+
+[node name="Sector07" parent="CitySections" instance=ExtResource("Sector6")]
+
+[node name="StartGate" type="Area3D" parent="."]
+position = Vector3(0, 28, 0)
+collision_layer = 0
+collision_mask = 4
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="StartGate"]
+shape = SubResource("Gate")
+
+[node name="Checkpoint1" type="Area3D" parent="."]
+position = Vector3(0.000000, 48.000000, -253.000000)
+rotation = Vector3(0, -0.000000, 0)
+collision_layer = 0
+collision_mask = 4
+script = ExtResource("CP")
+checkpoint_id = "city_cp_1"
+sector_name = "CHIMNEY ROW"
+order_index = 1
+initial_velocity = Vector3(0.000000, 0.000000, -12.000000)
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Checkpoint1"]
+shape = SubResource("Gate")
+
+[node name="Respawn" type="Marker3D" parent="Checkpoint1"]
+position = Vector3(0, -19.450000, -4)
+
+[node name="Checkpoint2" type="Area3D" parent="."]
+position = Vector3(-0.849535, 52.000000, -496.927301)
+rotation = Vector3(0, 0.170735, 0)
+collision_layer = 0
+collision_mask = 4
+script = ExtResource("CP")
+checkpoint_id = "city_cp_2"
+sector_name = "BLACKGLASS DESCENT"
+order_index = 2
+initial_velocity = Vector3(-2.038883, 0.000000, -11.825521)
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Checkpoint2"]
+shape = SubResource("Gate")
+
+[node name="Respawn" type="Marker3D" parent="Checkpoint2"]
+position = Vector3(0, -20.340614, -4)
+
+[node name="Checkpoint3" type="Area3D" parent="."]
+position = Vector3(0.000000, 28.000000, -760.000000)
+rotation = Vector3(0, -0.000000, 0)
+collision_layer = 0
+collision_mask = 4
+script = ExtResource("CP")
+checkpoint_id = "city_cp_3"
+sector_name = "THE UNDERWAY"
+order_index = 3
+initial_velocity = Vector3(0.000000, 0.000000, -12.000000)
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Checkpoint3"]
+shape = SubResource("Gate")
+
+[node name="Respawn" type="Marker3D" parent="Checkpoint3"]
+position = Vector3(0, -19.450000, -4)
+
+[node name="Checkpoint4" type="Area3D" parent="."]
+position = Vector3(0.000000, 32.000000, -995.000000)
+rotation = Vector3(0, -0.000000, 0)
+collision_layer = 0
+collision_mask = 4
+script = ExtResource("CP")
+checkpoint_id = "city_cp_4"
+sector_name = "BELLMAKER'S TURN"
+order_index = 4
+initial_velocity = Vector3(0.000000, 0.000000, -12.000000)
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Checkpoint4"]
+shape = SubResource("Gate")
+
+[node name="Respawn" type="Marker3D" parent="Checkpoint4"]
+position = Vector3(0, -19.450000, -4)
+
+[node name="Checkpoint5" type="Area3D" parent="."]
+position = Vector3(130.000000, 38.000000, -1075.000000)
+rotation = Vector3(0, -0.000000, 0)
+collision_layer = 0
+collision_mask = 4
+script = ExtResource("CP")
+checkpoint_id = "city_cp_5"
+sector_name = "THE HIGH WARD"
+order_index = 5
+initial_velocity = Vector3(0.000000, 0.000000, -12.000000)
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Checkpoint5"]
+shape = SubResource("Gate")
+
+[node name="Respawn" type="Marker3D" parent="Checkpoint5"]
+position = Vector3(0, -19.021506, -4)
+
+[node name="Checkpoint6" type="Area3D" parent="."]
+position = Vector3(127.763932, 88.000000, -1344.472136)
+rotation = Vector3(0, 0.463648, 0)
+collision_layer = 0
+collision_mask = 4
+script = ExtResource("CP")
+checkpoint_id = "city_cp_6"
+sector_name = "THE LONG FALL"
+order_index = 6
+initial_velocity = Vector3(-5.366563, 0.000000, -10.733126)
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Checkpoint6"]
+shape = SubResource("Gate")
+
+[node name="Respawn" type="Marker3D" parent="Checkpoint6"]
+position = Vector3(0, -20.612001, -4)
+
+[node name="FinishGate" type="Area3D" parent="."]
+position = Vector3(130, 42, -1635)
+collision_layer = 0
+collision_mask = 4
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="FinishGate"]
+shape = SubResource("Gate")

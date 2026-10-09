@@ -1,0 +1,25 @@
+[remap]
+
+importer="wavefront_obj"
+importer_version=1
+type="Mesh"
+uid="uid://d028ufr7nmpfo"
+path="res://.godot/imported/city_8_stone.obj-567adcfa043b00a25a47e5f512875815.mesh"
+
+[deps]
+
+files=["res://.godot/imported/city_8_stone.obj-567adcfa043b00a25a47e5f512875815.mesh"]
+
+source_file="res://assets/rooftop_city/course_meshes/parkour_trial/city_8_stone.obj"
+dest_files=["res://.godot/imported/city_8_stone.obj-567adcfa043b00a25a47e5f512875815.mesh", "res://.godot/imported/city_8_stone.obj-567adcfa043b00a25a47e5f512875815.mesh"]
+
+[params]
+
+generate_tangents=true
+generate_lods=true
+generate_shadow_mesh=true
+generate_lightmap_uv2=false
+generate_lightmap_uv2_texel_size=0.2
+scale_mesh=Vector3(1, 1, 1)
+offset_mesh=Vector3(0, 0, 0)
+force_disable_mesh_compression=false

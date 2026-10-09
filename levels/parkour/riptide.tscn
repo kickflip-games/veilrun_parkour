@@ -1,0 +1,1357 @@
+[gd_scene format=3]
+
+[ext_resource type="Sky" path="res://scenes/parkour/city_sky.tres" id="CitySky"]
+[ext_resource type="PackedScene" path="res://levels/parkour/riptide_city_scenery.tscn" id="CityScenery"]
+
+[ext_resource type="Material" path="res://scenes/parkour/city_roof.tres" id="CityRoof"]
+
+[ext_resource type="Script" path="res://levels/parkour/parkour_trial.gd" id="Trial"]
+[ext_resource type="PackedScene" path="res://scenes/player/player.tscn" id="Player"]
+[ext_resource type="PackedScene" path="res://scenes/parkour/grapple_anchor.tscn" id="Anchor"]
+[ext_resource type="PackedScene" path="res://scenes/parkour/spring_pad.tscn" id="Spring"]
+
+[sub_resource type="Environment" id="Environment"]
+background_mode = 2
+sky = ExtResource("CitySky")
+ambient_light_source = 3
+ambient_light_color = Color(0.48, 0.57, 0.70, 1)
+ambient_light_energy = 0.62
+fog_enabled = true
+fog_light_color = Color(0.22, 0.28, 0.36, 1)
+fog_density = 0.0037
+fog_sky_affect = 0.35
+fog_height = -38
+fog_height_density = 0.045
+
+[sub_resource type="StandardMaterial3D" id="White"]
+shading_mode = 0
+albedo_color = Color(0.92, 0.92, 0.92, 1)
+
+[sub_resource type="StandardMaterial3D" id="Dark"]
+shading_mode = 0
+albedo_color = Color(0.62, 0.67, 0.72, 1)
+
+[sub_resource type="StandardMaterial3D" id="Hazard"]
+shading_mode = 0
+albedo_color = Color(0.5, 0.015, 0.025, 1)
+
+[sub_resource type="BoxShape3D" id="StartShape"]
+size = Vector3(18, 12, 2)
+
+[sub_resource type="BoxShape3D" id="GateShape"]
+size = Vector3(36, 12, 2)
+
+[sub_resource type="BoxMesh" id="ArrowStem"]
+material = SubResource("Dark")
+size = Vector3(0.32, 0.04, 2.8)
+
+[sub_resource type="BoxMesh" id="ArrowWing"]
+material = SubResource("Dark")
+size = Vector3(0.32, 0.04, 1.7)
+
+[node name="Riptide" type="Node3D"]
+script = ExtResource("Trial")
+course_id = "riptide_v1"
+course_title = "RIPTIDE · SURF RUN"
+checkpoint_paths = Array[NodePath]([NodePath("Checkpoint1"), NodePath("Checkpoint2"), NodePath("Checkpoint3"), NodePath("Checkpoint4")])
+finish_path = NodePath("FinishGate")
+sector_names = PackedStringArray("DROP IN", "V CHANNEL", "BANK TRANSFER", "THREAD THE BRIDGE", "REBOUND SPRINT")
+fall_height = -34.0
+metadata/safe_route_length = 436.0
+metadata/bank_angle_degrees = 52.0
+
+[node name="WorldEnvironment" type="WorldEnvironment" parent="."]
+environment = SubResource("Environment")
+
+[node name="Sun" type="DirectionalLight3D" parent="."]
+rotation = Vector3(-0.9, -0.5, 0)
+light_color = Color(0.48, 0.60, 0.78, 1)
+light_energy = 0.85
+
+[node name="Player" parent="." instance=ExtResource("Player")]
+position = Vector3(0, 18.55, 12)
+parkour_mode = true
+surf_mode = true
+hook_exit_speed = 22.0
+
+[node name="OpeningDeck" type="Node3D" parent="."]
+transform = Transform3D(-1, 0, 0, 0, 1, 0, 0, 0, -1, 0, 17.5, 6.5)
+
+[node name="Road" type="CSGBox3D" parent="OpeningDeck"]
+position = Vector3(0, 0, 0)
+use_collision = true
+size = Vector3(18, 1, 25)
+material = ExtResource("CityRoof")
+
+[node name="LeftEdge" type="CSGBox3D" parent="OpeningDeck"]
+position = Vector3(-8.88, 0.535, 0)
+size = Vector3(0.18, 0.04, 23)
+material = SubResource("White")
+
+[node name="RightEdge" type="CSGBox3D" parent="OpeningDeck"]
+position = Vector3(8.88, 0.535, 0)
+size = Vector3(0.18, 0.04, 23)
+material = SubResource("White")
+
+[node name="DropInRamp" type="Node3D" parent="."]
+transform = Transform3D(-1, 0, 0, 0, 0.980581, -0.196116, 0, -0.196116, -0.980581, 0, 11.00971, -37.401942)
+
+[node name="Road" type="CSGBox3D" parent="DropInRamp"]
+position = Vector3(0, 0, 0)
+use_collision = true
+size = Vector3(18, 1, 66.287254)
+material = ExtResource("CityRoof")
+
+[node name="LeftEdge" type="CSGBox3D" parent="DropInRamp"]
+position = Vector3(-8.88, 0.535, 0)
+size = Vector3(0.18, 0.04, 66.287254)
+material = SubResource("White")
+
+[node name="RightEdge" type="CSGBox3D" parent="DropInRamp"]
+position = Vector3(8.88, 0.535, 0)
+size = Vector3(0.18, 0.04, 66.287254)
+material = SubResource("White")
+
+[node name="Checkpoint1Deck" type="Node3D" parent="."]
+transform = Transform3D(-1, 0, 0, 0, 1, 0, 0, 0, -1, 0, 4.5, -80)
+
+[node name="Road" type="CSGBox3D" parent="Checkpoint1Deck"]
+position = Vector3(0, 0, 0)
+use_collision = true
+size = Vector3(32, 1, 22)
+material = ExtResource("CityRoof")
+
+[node name="LeftEdge" type="CSGBox3D" parent="Checkpoint1Deck"]
+position = Vector3(-15.88, 0.535, 0)
+size = Vector3(0.18, 0.04, 20)
+material = SubResource("White")
+
+[node name="RightEdge" type="CSGBox3D" parent="Checkpoint1Deck"]
+position = Vector3(15.88, 0.535, 0)
+size = Vector3(0.18, 0.04, 20)
+material = SubResource("White")
+
+[node name="VKeel" type="Node3D" parent="."]
+transform = Transform3D(-1, 0, 0, 0, 0.992278, -0.124035, 0, -0.124035, -0.992278, 0, -0.496139, -129.937983)
+
+[node name="Road" type="CSGBox3D" parent="VKeel"]
+position = Vector3(0, 0, 0)
+use_collision = true
+size = Vector3(10, 1, 80.622577)
+material = ExtResource("CityRoof")
+
+[node name="LeftEdge" type="CSGBox3D" parent="VKeel"]
+position = Vector3(-4.88, 0.535, 0)
+size = Vector3(0.18, 0.04, 80.622577)
+material = SubResource("White")
+
+[node name="RightEdge" type="CSGBox3D" parent="VKeel"]
+position = Vector3(4.88, 0.535, 0)
+size = Vector3(0.18, 0.04, 80.622577)
+material = SubResource("White")
+
+[node name="Checkpoint2Deck" type="Node3D" parent="."]
+transform = Transform3D(-1, 0, 0, 0, 1, 0, 0, 0, -1, 0, -5.5, -180)
+
+[node name="Road" type="CSGBox3D" parent="Checkpoint2Deck"]
+position = Vector3(0, 0, 0)
+use_collision = true
+size = Vector3(32, 1, 22)
+material = ExtResource("CityRoof")
+
+[node name="LeftEdge" type="CSGBox3D" parent="Checkpoint2Deck"]
+position = Vector3(-15.88, 0.535, 0)
+size = Vector3(0.18, 0.04, 20)
+material = SubResource("White")
+
+[node name="RightEdge" type="CSGBox3D" parent="Checkpoint2Deck"]
+position = Vector3(15.88, 0.535, 0)
+size = Vector3(0.18, 0.04, 20)
+material = SubResource("White")
+
+[node name="TransferKeel" type="Node3D" parent="."]
+transform = Transform3D(-0.919145, 0.041153, 0.391764, 0, 0.994528, -0.10447, -0.393919, -0.096023, -0.914115, 14.979424, -9.497264, -224.951988)
+
+[node name="Road" type="CSGBox3D" parent="TransferKeel"]
+position = Vector3(0, 0, 0)
+use_collision = true
+size = Vector3(10, 1, 76.576759)
+material = ExtResource("CityRoof")
+
+[node name="LeftEdge" type="CSGBox3D" parent="TransferKeel"]
+position = Vector3(-4.88, 0.535, 0)
+size = Vector3(0.18, 0.04, 76.576759)
+material = SubResource("White")
+
+[node name="RightEdge" type="CSGBox3D" parent="TransferKeel"]
+position = Vector3(4.88, 0.535, 0)
+size = Vector3(0.18, 0.04, 76.576759)
+material = SubResource("White")
+
+[node name="Checkpoint3Deck" type="Node3D" parent="."]
+transform = Transform3D(-1, 0, 0, 0, 1, 0, 0, 0, -1, 30, -13.5, -270)
+
+[node name="Road" type="CSGBox3D" parent="Checkpoint3Deck"]
+position = Vector3(0, 0, 0)
+use_collision = true
+size = Vector3(32, 1, 22)
+material = ExtResource("CityRoof")
+
+[node name="LeftEdge" type="CSGBox3D" parent="Checkpoint3Deck"]
+position = Vector3(-15.88, 0.535, 0)
+size = Vector3(0.18, 0.04, 20)
+material = SubResource("White")
+
+[node name="RightEdge" type="CSGBox3D" parent="Checkpoint3Deck"]
+position = Vector3(15.88, 0.535, 0)
+size = Vector3(0.18, 0.04, 20)
+material = SubResource("White")
+
+[node name="BridgeApproach" type="Node3D" parent="."]
+transform = Transform3D(-0.980581, 0.012793, 0.195698, 0, 0.99787, -0.065233, -0.196116, -0.063966, -0.978492, 37.493603, -15.998935, -317.468017)
+
+[node name="Road" type="CSGBox3D" parent="BridgeApproach"]
+position = Vector3(0, 0, 0)
+use_collision = true
+size = Vector3(18, 1, 76.648549)
+material = ExtResource("CityRoof")
+
+[node name="LeftEdge" type="CSGBox3D" parent="BridgeApproach"]
+position = Vector3(-8.88, 0.535, 0)
+size = Vector3(0.18, 0.04, 76.648549)
+material = SubResource("White")
+
+[node name="RightEdge" type="CSGBox3D" parent="BridgeApproach"]
+position = Vector3(8.88, 0.535, 0)
+size = Vector3(0.18, 0.04, 76.648549)
+material = SubResource("White")
+
+[node name="Checkpoint4Deck" type="Node3D" parent="."]
+transform = Transform3D(-1, 0, 0, 0, 1, 0, 0, 0, -1, 45, -18.5, -366.5)
+
+[node name="Road" type="CSGBox3D" parent="Checkpoint4Deck"]
+position = Vector3(0, 0, 0)
+use_collision = true
+size = Vector3(32, 1, 25)
+material = ExtResource("CityRoof")
+
+[node name="LeftEdge" type="CSGBox3D" parent="Checkpoint4Deck"]
+position = Vector3(-15.88, 0.535, 0)
+size = Vector3(0.18, 0.04, 23)
+material = SubResource("White")
+
+[node name="RightEdge" type="CSGBox3D" parent="Checkpoint4Deck"]
+position = Vector3(15.88, 0.535, 0)
+size = Vector3(0.18, 0.04, 23)
+material = SubResource("White")
+
+[node name="HomeStraight" type="Node3D" parent="."]
+transform = Transform3D(-1, 0, 0, 0, 1, 0, 0, 0, -1, 45, -18.5, -408)
+
+[node name="Road" type="CSGBox3D" parent="HomeStraight"]
+position = Vector3(0, 0, 0)
+use_collision = true
+size = Vector3(20, 1, 62)
+material = ExtResource("CityRoof")
+
+[node name="LeftEdge" type="CSGBox3D" parent="HomeStraight"]
+position = Vector3(-9.88, 0.535, 0)
+size = Vector3(0.18, 0.04, 60)
+material = SubResource("White")
+
+[node name="RightEdge" type="CSGBox3D" parent="HomeStraight"]
+position = Vector3(9.88, 0.535, 0)
+size = Vector3(0.18, 0.04, 60)
+material = SubResource("White")
+
+[node name="VLeft01" type="Node3D" parent="."]
+transform = Transform3D(0.615661, 0.785688, 0.060465, -0.788011, 0.613846, 0.04724, 0, -0.076731, 0.997052, -9.255348, 9.295266, -94.975062)
+metadata/bank_angle = 52.0
+
+[node name="Bank" type="CSGBox3D" parent="VLeft01"]
+position = Vector3(0, 0, 0)
+use_collision = true
+size = Vector3(14.279167, 0.65, 12.029569)
+material = ExtResource("CityRoof")
+
+[node name="VLeft02" type="Node3D" parent="."]
+transform = Transform3D(0.615661, 0.785688, 0.060465, -0.788011, 0.613846, 0.04724, 0, -0.076731, 0.997052, -9.255348, 8.045266, -104.975062)
+metadata/bank_angle = 52.0
+
+[node name="Bank" type="CSGBox3D" parent="VLeft02"]
+position = Vector3(0, 0, 0)
+use_collision = true
+size = Vector3(14.279167, 0.65, 12.029569)
+material = ExtResource("CityRoof")
+
+[node name="VLeft03" type="Node3D" parent="."]
+transform = Transform3D(0.615661, 0.785688, 0.060465, -0.788011, 0.613846, 0.04724, 0, -0.076731, 0.997052, -9.255348, 6.795266, -114.975062)
+metadata/bank_angle = 52.0
+
+[node name="Bank" type="CSGBox3D" parent="VLeft03"]
+position = Vector3(0, 0, 0)
+use_collision = true
+size = Vector3(14.279167, 0.65, 12.029569)
+material = ExtResource("CityRoof")
+
+[node name="VLeft04" type="Node3D" parent="."]
+transform = Transform3D(0.615661, 0.785688, 0.060465, -0.788011, 0.613846, 0.04724, 0, -0.076731, 0.997052, -9.255348, 5.545266, -124.975062)
+metadata/bank_angle = 52.0
+
+[node name="Bank" type="CSGBox3D" parent="VLeft04"]
+position = Vector3(0, 0, 0)
+use_collision = true
+size = Vector3(14.279167, 0.65, 12.029569)
+material = ExtResource("CityRoof")
+
+[node name="VLeft05" type="Node3D" parent="."]
+transform = Transform3D(0.615661, 0.785688, 0.060465, -0.788011, 0.613846, 0.04724, 0, -0.076731, 0.997052, -9.255348, 4.295266, -134.975062)
+metadata/bank_angle = 52.0
+
+[node name="Bank" type="CSGBox3D" parent="VLeft05"]
+position = Vector3(0, 0, 0)
+use_collision = true
+size = Vector3(14.279167, 0.65, 12.029569)
+material = ExtResource("CityRoof")
+
+[node name="VLeft06" type="Node3D" parent="."]
+transform = Transform3D(0.615661, 0.785688, 0.060465, -0.788011, 0.613846, 0.04724, 0, -0.076731, 0.997052, -9.255348, 3.045266, -144.975062)
+metadata/bank_angle = 52.0
+
+[node name="Bank" type="CSGBox3D" parent="VLeft06"]
+position = Vector3(0, 0, 0)
+use_collision = true
+size = Vector3(14.279167, 0.65, 12.029569)
+material = ExtResource("CityRoof")
+
+[node name="VLeft07" type="Node3D" parent="."]
+transform = Transform3D(0.615661, 0.785688, 0.060465, -0.788011, 0.613846, 0.04724, 0, -0.076731, 0.997052, -9.255348, 1.795266, -154.975062)
+metadata/bank_angle = 52.0
+
+[node name="Bank" type="CSGBox3D" parent="VLeft07"]
+position = Vector3(0, 0, 0)
+use_collision = true
+size = Vector3(14.279167, 0.65, 12.029569)
+material = ExtResource("CityRoof")
+
+[node name="VLeft08" type="Node3D" parent="."]
+transform = Transform3D(0.615661, 0.785688, 0.060465, -0.788011, 0.613846, 0.04724, 0, -0.076731, 0.997052, -9.255348, 0.545266, -164.975062)
+metadata/bank_angle = 52.0
+
+[node name="Bank" type="CSGBox3D" parent="VLeft08"]
+position = Vector3(0, 0, 0)
+use_collision = true
+size = Vector3(14.279167, 0.65, 12.029569)
+material = ExtResource("CityRoof")
+
+[node name="VLeftLip" type="Node3D" parent="."]
+transform = Transform3D(-1, 0, 0, 0, 0.992278, -0.124035, 0, -0.124035, -0.992278, -13, 10.254688, -129.997519)
+
+[node name="Road" type="CSGBox3D" parent="VLeftLip"]
+position = Vector3(0, 0, 0)
+size = Vector3(0.2, 0.04, 80.622577)
+material = SubResource("White")
+
+[node name="VRight01" type="Node3D" parent="."]
+transform = Transform3D(0.615661, -0.785688, -0.060465, 0.788011, 0.613846, 0.04724, 0, -0.076731, 0.997052, 9.255348, 9.295266, -94.975062)
+metadata/bank_angle = 52.0
+
+[node name="Bank" type="CSGBox3D" parent="VRight01"]
+position = Vector3(0, 0, 0)
+use_collision = true
+size = Vector3(14.279167, 0.65, 12.029569)
+material = ExtResource("CityRoof")
+
+[node name="VRight02" type="Node3D" parent="."]
+transform = Transform3D(0.615661, -0.785688, -0.060465, 0.788011, 0.613846, 0.04724, 0, -0.076731, 0.997052, 9.255348, 8.045266, -104.975062)
+metadata/bank_angle = 52.0
+
+[node name="Bank" type="CSGBox3D" parent="VRight02"]
+position = Vector3(0, 0, 0)
+use_collision = true
+size = Vector3(14.279167, 0.65, 12.029569)
+material = ExtResource("CityRoof")
+
+[node name="VRight03" type="Node3D" parent="."]
+transform = Transform3D(0.615661, -0.785688, -0.060465, 0.788011, 0.613846, 0.04724, 0, -0.076731, 0.997052, 9.255348, 6.795266, -114.975062)
+metadata/bank_angle = 52.0
+
+[node name="Bank" type="CSGBox3D" parent="VRight03"]
+position = Vector3(0, 0, 0)
+use_collision = true
+size = Vector3(14.279167, 0.65, 12.029569)
+material = ExtResource("CityRoof")
+
+[node name="VRight04" type="Node3D" parent="."]
+transform = Transform3D(0.615661, -0.785688, -0.060465, 0.788011, 0.613846, 0.04724, 0, -0.076731, 0.997052, 9.255348, 5.545266, -124.975062)
+metadata/bank_angle = 52.0
+
+[node name="Bank" type="CSGBox3D" parent="VRight04"]
+position = Vector3(0, 0, 0)
+use_collision = true
+size = Vector3(14.279167, 0.65, 12.029569)
+material = ExtResource("CityRoof")
+
+[node name="VRight05" type="Node3D" parent="."]
+transform = Transform3D(0.615661, -0.785688, -0.060465, 0.788011, 0.613846, 0.04724, 0, -0.076731, 0.997052, 9.255348, 4.295266, -134.975062)
+metadata/bank_angle = 52.0
+
+[node name="Bank" type="CSGBox3D" parent="VRight05"]
+position = Vector3(0, 0, 0)
+use_collision = true
+size = Vector3(14.279167, 0.65, 12.029569)
+material = ExtResource("CityRoof")
+
+[node name="VRight06" type="Node3D" parent="."]
+transform = Transform3D(0.615661, -0.785688, -0.060465, 0.788011, 0.613846, 0.04724, 0, -0.076731, 0.997052, 9.255348, 3.045266, -144.975062)
+metadata/bank_angle = 52.0
+
+[node name="Bank" type="CSGBox3D" parent="VRight06"]
+position = Vector3(0, 0, 0)
+use_collision = true
+size = Vector3(14.279167, 0.65, 12.029569)
+material = ExtResource("CityRoof")
+
+[node name="VRight07" type="Node3D" parent="."]
+transform = Transform3D(0.615661, -0.785688, -0.060465, 0.788011, 0.613846, 0.04724, 0, -0.076731, 0.997052, 9.255348, 1.795266, -154.975062)
+metadata/bank_angle = 52.0
+
+[node name="Bank" type="CSGBox3D" parent="VRight07"]
+position = Vector3(0, 0, 0)
+use_collision = true
+size = Vector3(14.279167, 0.65, 12.029569)
+material = ExtResource("CityRoof")
+
+[node name="VRight08" type="Node3D" parent="."]
+transform = Transform3D(0.615661, -0.785688, -0.060465, 0.788011, 0.613846, 0.04724, 0, -0.076731, 0.997052, 9.255348, 0.545266, -164.975062)
+metadata/bank_angle = 52.0
+
+[node name="Bank" type="CSGBox3D" parent="VRight08"]
+position = Vector3(0, 0, 0)
+use_collision = true
+size = Vector3(14.279167, 0.65, 12.029569)
+material = ExtResource("CityRoof")
+
+[node name="VRightLip" type="Node3D" parent="."]
+transform = Transform3D(-1, 0, 0, 0, 0.992278, -0.124035, 0, -0.124035, -0.992278, 13, 10.254688, -129.997519)
+
+[node name="Road" type="CSGBox3D" parent="VRightLip"]
+position = Vector3(0, 0, 0)
+size = Vector3(0.2, 0.04, 80.622577)
+material = SubResource("White")
+
+[node name="TransferLeft01" type="Node3D" parent="."]
+transform = Transform3D(0.565882, 0.748209, -0.346354, -0.788011, 0.614378, 0.039733, 0.242521, 0.250446, 0.937262, -6.640473, -0.579906, -198.001669)
+metadata/bank_angle = 52.0
+
+[node name="Bank" type="CSGBox3D" parent="TransferLeft01"]
+position = Vector3(0, 0, 0)
+use_collision = true
+size = Vector3(14.082165, 0.65, 11.539604)
+material = ExtResource("CityRoof")
+
+[node name="TransferLeft02" type="Node3D" parent="."]
+transform = Transform3D(0.565882, 0.748209, -0.346354, -0.788011, 0.614378, 0.039733, 0.242521, 0.250446, 0.937262, -2.890473, -1.579906, -206.751669)
+metadata/bank_angle = 52.0
+
+[node name="Bank" type="CSGBox3D" parent="TransferLeft02"]
+position = Vector3(0, 0, 0)
+use_collision = true
+size = Vector3(14.082165, 0.65, 11.539604)
+material = ExtResource("CityRoof")
+
+[node name="TransferLeft03" type="Node3D" parent="."]
+transform = Transform3D(0.565882, 0.748209, -0.346354, -0.788011, 0.614378, 0.039733, 0.242521, 0.250446, 0.937262, 0.859527, -2.579906, -215.501669)
+metadata/bank_angle = 52.0
+
+[node name="Bank" type="CSGBox3D" parent="TransferLeft03"]
+position = Vector3(0, 0, 0)
+use_collision = true
+size = Vector3(14.082165, 0.65, 11.539604)
+material = ExtResource("CityRoof")
+
+[node name="TransferLeft04" type="Node3D" parent="."]
+transform = Transform3D(0.565882, 0.748209, -0.346354, -0.788011, 0.614378, 0.039733, 0.242521, 0.250446, 0.937262, 4.609527, -3.579906, -224.251669)
+metadata/bank_angle = 52.0
+
+[node name="Bank" type="CSGBox3D" parent="TransferLeft04"]
+position = Vector3(0, 0, 0)
+use_collision = true
+size = Vector3(14.082165, 0.65, 11.539604)
+material = ExtResource("CityRoof")
+
+[node name="TransferLeft05" type="Node3D" parent="."]
+transform = Transform3D(0.565882, 0.748209, -0.346354, -0.788011, 0.614378, 0.039733, 0.242521, 0.250446, 0.937262, 8.359527, -4.579906, -233.001669)
+metadata/bank_angle = 52.0
+
+[node name="Bank" type="CSGBox3D" parent="TransferLeft05"]
+position = Vector3(0, 0, 0)
+use_collision = true
+size = Vector3(14.082165, 0.65, 11.539604)
+material = ExtResource("CityRoof")
+
+[node name="TransferLeft06" type="Node3D" parent="."]
+transform = Transform3D(0.565882, 0.748209, -0.346354, -0.788011, 0.614378, 0.039733, 0.242521, 0.250446, 0.937262, 12.109527, -5.579906, -241.751669)
+metadata/bank_angle = 52.0
+
+[node name="Bank" type="CSGBox3D" parent="TransferLeft06"]
+position = Vector3(0, 0, 0)
+use_collision = true
+size = Vector3(14.082165, 0.65, 11.539604)
+material = ExtResource("CityRoof")
+
+[node name="TransferLeft07" type="Node3D" parent="."]
+transform = Transform3D(0.565882, 0.748209, -0.346354, -0.788011, 0.614378, 0.039733, 0.242521, 0.250446, 0.937262, 15.859527, -6.579906, -250.501669)
+metadata/bank_angle = 52.0
+
+[node name="Bank" type="CSGBox3D" parent="TransferLeft07"]
+position = Vector3(0, 0, 0)
+use_collision = true
+size = Vector3(14.082165, 0.65, 11.539604)
+material = ExtResource("CityRoof")
+
+[node name="TransferLeft08" type="Node3D" parent="."]
+transform = Transform3D(0.565882, 0.748209, -0.346354, -0.788011, 0.614378, 0.039733, 0.242521, 0.250446, 0.937262, 19.609527, -7.579906, -259.251669)
+metadata/bank_angle = 52.0
+
+[node name="Bank" type="CSGBox3D" parent="TransferLeft08"]
+position = Vector3(0, 0, 0)
+use_collision = true
+size = Vector3(14.082165, 0.65, 11.539604)
+material = ExtResource("CityRoof")
+
+[node name="TransferLeftLip" type="Node3D" parent="."]
+transform = Transform3D(-0.919145, 0.041153, 0.391764, 0, 0.994528, -0.10447, -0.393919, -0.096023, -0.914115, 3.050292, 1.254642, -230.11903)
+
+[node name="Road" type="CSGBox3D" parent="TransferLeftLip"]
+position = Vector3(0, 0, 0)
+size = Vector3(0.2, 0.04, 76.576759)
+material = SubResource("White")
+
+[node name="TransferRight01" type="Node3D" parent="."]
+transform = Transform3D(0.565882, -0.697364, -0.439842, 0.788011, 0.614378, 0.039733, 0.242521, -0.369085, 0.897196, 10.373948, -0.579906, -190.709774)
+metadata/bank_angle = 52.0
+
+[node name="Bank" type="CSGBox3D" parent="TransferRight01"]
+position = Vector3(0, 0, 0)
+use_collision = true
+size = Vector3(14.082165, 0.65, 11.539604)
+material = ExtResource("CityRoof")
+
+[node name="TransferRight02" type="Node3D" parent="."]
+transform = Transform3D(0.565882, -0.697364, -0.439842, 0.788011, 0.614378, 0.039733, 0.242521, -0.369085, 0.897196, 14.123948, -1.579906, -199.459774)
+metadata/bank_angle = 52.0
+
+[node name="Bank" type="CSGBox3D" parent="TransferRight02"]
+position = Vector3(0, 0, 0)
+use_collision = true
+size = Vector3(14.082165, 0.65, 11.539604)
+material = ExtResource("CityRoof")
+
+[node name="TransferRight03" type="Node3D" parent="."]
+transform = Transform3D(0.565882, -0.697364, -0.439842, 0.788011, 0.614378, 0.039733, 0.242521, -0.369085, 0.897196, 17.873948, -2.579906, -208.209774)
+metadata/bank_angle = 52.0
+
+[node name="Bank" type="CSGBox3D" parent="TransferRight03"]
+position = Vector3(0, 0, 0)
+use_collision = true
+size = Vector3(14.082165, 0.65, 11.539604)
+material = ExtResource("CityRoof")
+
+[node name="TransferRight04" type="Node3D" parent="."]
+transform = Transform3D(0.565882, -0.697364, -0.439842, 0.788011, 0.614378, 0.039733, 0.242521, -0.369085, 0.897196, 21.623948, -3.579906, -216.959774)
+metadata/bank_angle = 52.0
+
+[node name="Bank" type="CSGBox3D" parent="TransferRight04"]
+position = Vector3(0, 0, 0)
+use_collision = true
+size = Vector3(14.082165, 0.65, 11.539604)
+material = ExtResource("CityRoof")
+
+[node name="TransferRight05" type="Node3D" parent="."]
+transform = Transform3D(0.565882, -0.697364, -0.439842, 0.788011, 0.614378, 0.039733, 0.242521, -0.369085, 0.897196, 25.373948, -4.579906, -225.709774)
+metadata/bank_angle = 52.0
+
+[node name="Bank" type="CSGBox3D" parent="TransferRight05"]
+position = Vector3(0, 0, 0)
+use_collision = true
+size = Vector3(14.082165, 0.65, 11.539604)
+material = ExtResource("CityRoof")
+
+[node name="TransferRight06" type="Node3D" parent="."]
+transform = Transform3D(0.565882, -0.697364, -0.439842, 0.788011, 0.614378, 0.039733, 0.242521, -0.369085, 0.897196, 29.123948, -5.579906, -234.459774)
+metadata/bank_angle = 52.0
+
+[node name="Bank" type="CSGBox3D" parent="TransferRight06"]
+position = Vector3(0, 0, 0)
+use_collision = true
+size = Vector3(14.082165, 0.65, 11.539604)
+material = ExtResource("CityRoof")
+
+[node name="TransferRight07" type="Node3D" parent="."]
+transform = Transform3D(0.565882, -0.697364, -0.439842, 0.788011, 0.614378, 0.039733, 0.242521, -0.369085, 0.897196, 32.873948, -6.579906, -243.209774)
+metadata/bank_angle = 52.0
+
+[node name="Bank" type="CSGBox3D" parent="TransferRight07"]
+position = Vector3(0, 0, 0)
+use_collision = true
+size = Vector3(14.082165, 0.65, 11.539604)
+material = ExtResource("CityRoof")
+
+[node name="TransferRight08" type="Node3D" parent="."]
+transform = Transform3D(0.565882, -0.697364, -0.439842, 0.788011, 0.614378, 0.039733, 0.242521, -0.369085, 0.897196, 36.623948, -7.579906, -251.959774)
+metadata/bank_angle = 52.0
+
+[node name="Bank" type="CSGBox3D" parent="TransferRight08"]
+position = Vector3(0, 0, 0)
+use_collision = true
+size = Vector3(14.082165, 0.65, 11.539604)
+material = ExtResource("CityRoof")
+
+[node name="TransferRightLip" type="Node3D" parent="."]
+transform = Transform3D(-0.919145, 0.041153, 0.391764, 0, 0.994528, -0.10447, -0.393919, -0.096023, -0.914115, 26.948062, 1.254642, -219.877129)
+
+[node name="Road" type="CSGBox3D" parent="TransferRightLip"]
+position = Vector3(0, 0, 0)
+size = Vector3(0.2, 0.04, 76.576759)
+material = SubResource("White")
+
+[node name="BridgeLeft01" type="Node3D" parent="."]
+transform = Transform3D(0.603706, 0.77997, -0.164883, -0.788011, 0.615163, 0.024759, 0.120741, 0.114983, 0.986002, 21.58795, -8.302384, -285.135748)
+metadata/bank_angle = 52.0
+
+[node name="Bank" type="CSGBox3D" parent="BridgeLeft01"]
+position = Vector3(0, 0, 0)
+use_collision = true
+size = Vector3(13.644381, 0.65, 8.804197)
+material = ExtResource("CityRoof")
+
+[node name="BridgeLeft02" type="Node3D" parent="."]
+transform = Transform3D(0.603706, 0.77997, -0.164883, -0.788011, 0.615163, 0.024759, 0.120741, 0.114983, 0.986002, 22.921284, -8.746828, -291.802415)
+metadata/bank_angle = 52.0
+
+[node name="Bank" type="CSGBox3D" parent="BridgeLeft02"]
+position = Vector3(0, 0, 0)
+use_collision = true
+size = Vector3(13.644381, 0.65, 8.804197)
+material = ExtResource("CityRoof")
+
+[node name="BridgeLeft03" type="Node3D" parent="."]
+transform = Transform3D(0.603706, 0.77997, -0.164883, -0.788011, 0.615163, 0.024759, 0.120741, 0.114983, 0.986002, 24.254617, -9.191272, -298.469081)
+metadata/bank_angle = 52.0
+
+[node name="Bank" type="CSGBox3D" parent="BridgeLeft03"]
+position = Vector3(0, 0, 0)
+use_collision = true
+size = Vector3(13.644381, 0.65, 8.804197)
+material = ExtResource("CityRoof")
+
+[node name="BridgeLeftLip" type="Node3D" parent="."]
+transform = Transform3D(-0.980581, 0.012793, 0.195698, 0, 0.99787, -0.065233, -0.196116, -0.063966, -0.978492, 19.252195, -3.412091, -292.54823)
+
+[node name="Road" type="CSGBox3D" parent="BridgeLeftLip"]
+position = Vector3(0, 0, 0)
+size = Vector3(0.2, 0.04, 20.439613)
+material = SubResource("White")
+
+[node name="BridgeRight01" type="Node3D" parent="."]
+transform = Transform3D(0.603706, -0.764196, -0.227032, 0.788011, 0.615163, 0.024759, 0.120741, -0.19385, 0.973573, 39.740257, -8.302384, -281.505287)
+metadata/bank_angle = 52.0
+
+[node name="Bank" type="CSGBox3D" parent="BridgeRight01"]
+position = Vector3(0, 0, 0)
+use_collision = true
+size = Vector3(13.644381, 0.65, 8.804197)
+material = ExtResource("CityRoof")
+
+[node name="BridgeRight02" type="Node3D" parent="."]
+transform = Transform3D(0.603706, -0.764196, -0.227032, 0.788011, 0.615163, 0.024759, 0.120741, -0.19385, 0.973573, 41.07359, -8.746828, -288.171953)
+metadata/bank_angle = 52.0
+
+[node name="Bank" type="CSGBox3D" parent="BridgeRight02"]
+position = Vector3(0, 0, 0)
+use_collision = true
+size = Vector3(13.644381, 0.65, 8.804197)
+material = ExtResource("CityRoof")
+
+[node name="BridgeRight03" type="Node3D" parent="."]
+transform = Transform3D(0.603706, -0.764196, -0.227032, 0.788011, 0.615163, 0.024759, 0.120741, -0.19385, 0.973573, 42.406923, -9.191272, -294.83862)
+metadata/bank_angle = 52.0
+
+[node name="Bank" type="CSGBox3D" parent="BridgeRight03"]
+position = Vector3(0, 0, 0)
+use_collision = true
+size = Vector3(13.644381, 0.65, 8.804197)
+material = ExtResource("CityRoof")
+
+[node name="BridgeRightLip" type="Node3D" parent="."]
+transform = Transform3D(-0.980581, 0.012793, 0.195698, 0, 0.99787, -0.065233, -0.196116, -0.063966, -0.978492, 44.747293, -3.412091, -287.449211)
+
+[node name="Road" type="CSGBox3D" parent="BridgeRightLip"]
+position = Vector3(0, 0, 0)
+size = Vector3(0.2, 0.04, 20.439613)
+material = SubResource("White")
+
+[node name="Underbridge" type="Node3D" parent="."]
+position = Vector3(43.4, -17.466667, -347)
+rotation = Vector3(0, -0.197396, 0)
+
+[node name="LeftWall" type="CSGBox3D" parent="Underbridge"]
+position = Vector3(-7.5, 2.25, 0)
+use_collision = true
+size = Vector3(17, 4.5, 2)
+material = ExtResource("CityRoof")
+
+[node name="RightWall" type="CSGBox3D" parent="Underbridge"]
+position = Vector3(12.5, 2.25, 0)
+use_collision = true
+size = Vector3(7, 4.5, 2)
+material = ExtResource("CityRoof")
+
+[node name="Roof" type="CSGBox3D" parent="Underbridge"]
+position = Vector3(0, 5, 0)
+use_collision = true
+size = Vector3(34, 1, 6)
+material = ExtResource("CityRoof")
+
+[node name="LeftSlotLine" type="CSGBox3D" parent="Underbridge"]
+position = Vector3(1, 2.25, 1.06)
+size = Vector3(0.15, 4.5, 0.06)
+material = SubResource("White")
+
+[node name="RightSlotLine" type="CSGBox3D" parent="Underbridge"]
+position = Vector3(9, 2.25, 1.06)
+size = Vector3(0.15, 4.5, 0.06)
+material = SubResource("White")
+
+[node name="TopSlotLine" type="CSGBox3D" parent="Underbridge"]
+position = Vector3(5, 4.5, 1.06)
+size = Vector3(8, 0.15, 0.06)
+material = SubResource("White")
+
+[node name="SlotSign" type="Label3D" parent="Underbridge"]
+position = Vector3(5, 5.9, 1.3)
+billboard = 1
+pixel_size = 0.007
+font_size = 42
+outline_size = 8
+text = "THREAD THE RIGHT SLOT"
+
+[node name="DropInSpring" parent="." instance=ExtResource("Spring")]
+position = Vector3(0, 18.08, -1)
+launch_direction = Vector3(0, 0.22, -1)
+launch_strength = 18
+lateral_retention = 0.4
+
+[node name="DropInAnchorA" parent="." instance=ExtResource("Anchor")]
+position = Vector3(0, 24, -20)
+
+[node name="DropInAnchorB" parent="." instance=ExtResource("Anchor")]
+position = Vector3(0, 17, -42)
+
+[node name="DropInAnchorC" parent="." instance=ExtResource("Anchor")]
+position = Vector3(0, 12, -63)
+
+[node name="VAnchor1" parent="." instance=ExtResource("Anchor")]
+position = Vector3(8, 10.75, -108)
+
+[node name="VAnchor2" parent="." instance=ExtResource("Anchor")]
+position = Vector3(-8, 8.75, -124)
+
+[node name="VAnchor3" parent="." instance=ExtResource("Anchor")]
+position = Vector3(8, 6.75, -140)
+
+[node name="VAnchor4" parent="." instance=ExtResource("Anchor")]
+position = Vector3(-8, 4.75, -156)
+
+[node name="VExitAnchor" parent="." instance=ExtResource("Anchor")]
+position = Vector3(0, 1, -174)
+
+[node name="TransferAnchor1" parent="." instance=ExtResource("Anchor")]
+position = Vector3(13.655869, 1.319278, -201.554966)
+
+[node name="TransferAnchor2" parent="." instance=ExtResource("Anchor")]
+position = Vector3(5.252257, -0.361445, -222.563995)
+
+[node name="TransferAnchor3" parent="." instance=ExtResource("Anchor")]
+position = Vector3(26.261287, -2.042167, -230.967607)
+
+[node name="TransferAnchor4" parent="." instance=ExtResource("Anchor")]
+position = Vector3(17.857675, -3.722889, -251.976636)
+
+[node name="TransferExitAnchor" parent="." instance=ExtResource("Anchor")]
+position = Vector3(30, -7, -267)
+
+[node name="BridgeEntryAnchor" parent="." instance=ExtResource("Anchor")]
+position = Vector3(32, -7, -292)
+
+[node name="BridgeMidAnchor" parent="." instance=ExtResource("Anchor")]
+position = Vector3(35, -9, -307)
+
+[node name="BridgeReleaseAnchor" parent="." instance=ExtResource("Anchor")]
+position = Vector3(39, -10, -320)
+
+[node name="SlotApproachAnchor" parent="." instance=ExtResource("Anchor")]
+position = Vector3(48.3029, -13.1, -336.0194)
+
+[node name="ExitRebound" parent="." instance=ExtResource("Spring")]
+position = Vector3(45, -17.92, -374)
+launch_direction = Vector3(0, 0.55, -1)
+launch_strength = 24
+lateral_retention = 0.4
+
+[node name="ExitAnchorA" parent="." instance=ExtResource("Anchor")]
+position = Vector3(45, -12, -395)
+
+[node name="ExitAnchorB" parent="." instance=ExtResource("Anchor")]
+position = Vector3(45, -12, -417)
+
+[node name="StartArrow" type="Node3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 18.07, 6)
+
+[node name="WhitePaint" type="CSGBox3D" parent="StartArrow"]
+position = Vector3(0, -0.04, 0)
+size = Vector3(3.4, 0.02, 4.2)
+material = SubResource("White")
+
+[node name="Stem" type="MeshInstance3D" parent="StartArrow"]
+mesh = SubResource("ArrowStem")
+
+[node name="LeftWing" type="MeshInstance3D" parent="StartArrow"]
+position = Vector3(-0.55, 0, -0.85)
+rotation = Vector3(0, -0.785398, 0)
+mesh = SubResource("ArrowWing")
+
+[node name="RightWing" type="MeshInstance3D" parent="StartArrow"]
+position = Vector3(0.55, 0, -0.85)
+rotation = Vector3(0, 0.785398, 0)
+mesh = SubResource("ArrowWing")
+
+[node name="DropArrow" type="Node3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 0.980581, 0.196116, 0, -0.196116, 0.980581, 0, 12.07, -35)
+
+[node name="WhitePaint" type="CSGBox3D" parent="DropArrow"]
+position = Vector3(0, -0.04, 0)
+size = Vector3(3.4, 0.02, 4.2)
+material = SubResource("White")
+
+[node name="Stem" type="MeshInstance3D" parent="DropArrow"]
+mesh = SubResource("ArrowStem")
+
+[node name="LeftWing" type="MeshInstance3D" parent="DropArrow"]
+position = Vector3(-0.55, 0, -0.85)
+rotation = Vector3(0, -0.785398, 0)
+mesh = SubResource("ArrowWing")
+
+[node name="RightWing" type="MeshInstance3D" parent="DropArrow"]
+position = Vector3(0.55, 0, -0.85)
+rotation = Vector3(0, 0.785398, 0)
+mesh = SubResource("ArrowWing")
+
+[node name="CatchArrow" type="Node3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 5.07, -75)
+
+[node name="WhitePaint" type="CSGBox3D" parent="CatchArrow"]
+position = Vector3(0, -0.04, 0)
+size = Vector3(3.4, 0.02, 4.2)
+material = SubResource("White")
+
+[node name="Stem" type="MeshInstance3D" parent="CatchArrow"]
+mesh = SubResource("ArrowStem")
+
+[node name="LeftWing" type="MeshInstance3D" parent="CatchArrow"]
+position = Vector3(-0.55, 0, -0.85)
+rotation = Vector3(0, -0.785398, 0)
+mesh = SubResource("ArrowWing")
+
+[node name="RightWing" type="MeshInstance3D" parent="CatchArrow"]
+position = Vector3(0.55, 0, -0.85)
+rotation = Vector3(0, 0.785398, 0)
+mesh = SubResource("ArrowWing")
+
+[node name="VArrow" type="Node3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 0.992278, 0.124035, 0, -0.124035, 0.992278, 0, 0.07, -130)
+
+[node name="WhitePaint" type="CSGBox3D" parent="VArrow"]
+position = Vector3(0, -0.04, 0)
+size = Vector3(3.4, 0.02, 4.2)
+material = SubResource("White")
+
+[node name="Stem" type="MeshInstance3D" parent="VArrow"]
+mesh = SubResource("ArrowStem")
+
+[node name="LeftWing" type="MeshInstance3D" parent="VArrow"]
+position = Vector3(-0.55, 0, -0.85)
+rotation = Vector3(0, -0.785398, 0)
+mesh = SubResource("ArrowWing")
+
+[node name="RightWing" type="MeshInstance3D" parent="VArrow"]
+position = Vector3(0.55, 0, -0.85)
+rotation = Vector3(0, 0.785398, 0)
+mesh = SubResource("ArrowWing")
+
+[node name="TransferArrow" type="Node3D" parent="."]
+transform = Transform3D(0.919145, 0.041153, -0.391764, 0, 0.994528, 0.10447, 0.393919, -0.096023, 0.914115, 15, -8.93, -225)
+
+[node name="WhitePaint" type="CSGBox3D" parent="TransferArrow"]
+position = Vector3(0, -0.04, 0)
+size = Vector3(3.4, 0.02, 4.2)
+material = SubResource("White")
+
+[node name="Stem" type="MeshInstance3D" parent="TransferArrow"]
+mesh = SubResource("ArrowStem")
+
+[node name="LeftWing" type="MeshInstance3D" parent="TransferArrow"]
+position = Vector3(-0.55, 0, -0.85)
+rotation = Vector3(0, -0.785398, 0)
+mesh = SubResource("ArrowWing")
+
+[node name="RightWing" type="MeshInstance3D" parent="TransferArrow"]
+position = Vector3(0.55, 0, -0.85)
+rotation = Vector3(0, 0.785398, 0)
+mesh = SubResource("ArrowWing")
+
+[node name="TransferExitArrow" type="Node3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 30, -12.93, -275)
+
+[node name="WhitePaint" type="CSGBox3D" parent="TransferExitArrow"]
+position = Vector3(0, -0.04, 0)
+size = Vector3(3.4, 0.02, 4.2)
+material = SubResource("White")
+
+[node name="Stem" type="MeshInstance3D" parent="TransferExitArrow"]
+mesh = SubResource("ArrowStem")
+
+[node name="LeftWing" type="MeshInstance3D" parent="TransferExitArrow"]
+position = Vector3(-0.55, 0, -0.85)
+rotation = Vector3(0, -0.785398, 0)
+mesh = SubResource("ArrowWing")
+
+[node name="RightWing" type="MeshInstance3D" parent="TransferExitArrow"]
+position = Vector3(0.55, 0, -0.85)
+rotation = Vector3(0, 0.785398, 0)
+mesh = SubResource("ArrowWing")
+
+[node name="ReleaseArrow" type="Node3D" parent="."]
+transform = Transform3D(0.980581, 0.012793, -0.195698, 0, 0.99787, 0.065233, 0.196116, -0.063966, 0.978492, 36, -14.93, -310)
+
+[node name="WhitePaint" type="CSGBox3D" parent="ReleaseArrow"]
+position = Vector3(0, -0.04, 0)
+size = Vector3(3.4, 0.02, 4.2)
+material = SubResource("White")
+
+[node name="Stem" type="MeshInstance3D" parent="ReleaseArrow"]
+mesh = SubResource("ArrowStem")
+
+[node name="LeftWing" type="MeshInstance3D" parent="ReleaseArrow"]
+position = Vector3(-0.55, 0, -0.85)
+rotation = Vector3(0, -0.785398, 0)
+mesh = SubResource("ArrowWing")
+
+[node name="RightWing" type="MeshInstance3D" parent="ReleaseArrow"]
+position = Vector3(0.55, 0, -0.85)
+rotation = Vector3(0, 0.785398, 0)
+mesh = SubResource("ArrowWing")
+
+[node name="SlotArrow" type="Node3D" parent="."]
+transform = Transform3D(0.980581, 0.012793, -0.195698, 0, 0.99787, 0.065233, 0.196116, -0.063966, 0.978492, 46.9029, -16.93, -339.0194)
+
+[node name="WhitePaint" type="CSGBox3D" parent="SlotArrow"]
+position = Vector3(0, -0.04, 0)
+size = Vector3(3.4, 0.02, 4.2)
+material = SubResource("White")
+
+[node name="Stem" type="MeshInstance3D" parent="SlotArrow"]
+mesh = SubResource("ArrowStem")
+
+[node name="LeftWing" type="MeshInstance3D" parent="SlotArrow"]
+position = Vector3(-0.55, 0, -0.85)
+rotation = Vector3(0, -0.785398, 0)
+mesh = SubResource("ArrowWing")
+
+[node name="RightWing" type="MeshInstance3D" parent="SlotArrow"]
+position = Vector3(0.55, 0, -0.85)
+rotation = Vector3(0, 0.785398, 0)
+mesh = SubResource("ArrowWing")
+
+[node name="RejoinArrow" type="Node3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 45, -17.93, -358)
+
+[node name="WhitePaint" type="CSGBox3D" parent="RejoinArrow"]
+position = Vector3(0, -0.04, 0)
+size = Vector3(3.4, 0.02, 4.2)
+material = SubResource("White")
+
+[node name="Stem" type="MeshInstance3D" parent="RejoinArrow"]
+mesh = SubResource("ArrowStem")
+
+[node name="LeftWing" type="MeshInstance3D" parent="RejoinArrow"]
+position = Vector3(-0.55, 0, -0.85)
+rotation = Vector3(0, -0.785398, 0)
+mesh = SubResource("ArrowWing")
+
+[node name="RightWing" type="MeshInstance3D" parent="RejoinArrow"]
+position = Vector3(0.55, 0, -0.85)
+rotation = Vector3(0, 0.785398, 0)
+mesh = SubResource("ArrowWing")
+
+[node name="SprintArrow" type="Node3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 45, -17.93, -405)
+
+[node name="WhitePaint" type="CSGBox3D" parent="SprintArrow"]
+position = Vector3(0, -0.04, 0)
+size = Vector3(3.4, 0.02, 4.2)
+material = SubResource("White")
+
+[node name="Stem" type="MeshInstance3D" parent="SprintArrow"]
+mesh = SubResource("ArrowStem")
+
+[node name="LeftWing" type="MeshInstance3D" parent="SprintArrow"]
+position = Vector3(-0.55, 0, -0.85)
+rotation = Vector3(0, -0.785398, 0)
+mesh = SubResource("ArrowWing")
+
+[node name="RightWing" type="MeshInstance3D" parent="SprintArrow"]
+position = Vector3(0.55, 0, -0.85)
+rotation = Vector3(0, 0.785398, 0)
+mesh = SubResource("ArrowWing")
+
+[node name="StartGate" type="Area3D" parent="."]
+position = Vector3(0, 24, 0)
+rotation = Vector3(0, 0, 0)
+collision_layer = 0
+collision_mask = 4
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="StartGate"]
+shape = SubResource("StartShape")
+
+[node name="LeftPost" type="CSGBox3D" parent="StartGate"]
+position = Vector3(-9, 0, 0)
+size = Vector3(0.3, 12, 0.35)
+material = SubResource("White")
+
+[node name="RightPost" type="CSGBox3D" parent="StartGate"]
+position = Vector3(9, 0, 0)
+size = Vector3(0.3, 12, 0.35)
+material = SubResource("White")
+
+[node name="Crossbar" type="CSGBox3D" parent="StartGate"]
+position = Vector3(0, 6, 0)
+size = Vector3(18, 0.35, 0.35)
+material = SubResource("White")
+
+[node name="TimingLine" type="CSGBox3D" parent="StartGate"]
+position = Vector3(0, -5.965, 0)
+size = Vector3(18, 0.04, 1)
+material = SubResource("White")
+
+[node name="Sign" type="Label3D" parent="StartGate"]
+position = Vector3(0, 7, 0)
+billboard = 1
+pixel_size = 0.007
+font_size = 68
+outline_size = 8
+text = "START"
+
+[node name="Checkpoint1" type="Area3D" parent="."]
+position = Vector3(0, 11, -78)
+rotation = Vector3(0, 0, 0)
+collision_layer = 0
+collision_mask = 4
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Checkpoint1"]
+shape = SubResource("GateShape")
+
+[node name="LeftPost" type="CSGBox3D" parent="Checkpoint1"]
+position = Vector3(-18, 0, 0)
+size = Vector3(0.3, 12, 0.35)
+material = SubResource("White")
+
+[node name="RightPost" type="CSGBox3D" parent="Checkpoint1"]
+position = Vector3(18, 0, 0)
+size = Vector3(0.3, 12, 0.35)
+material = SubResource("White")
+
+[node name="Crossbar" type="CSGBox3D" parent="Checkpoint1"]
+position = Vector3(0, 6, 0)
+size = Vector3(36, 0.35, 0.35)
+material = SubResource("White")
+
+[node name="TimingLine" type="CSGBox3D" parent="Checkpoint1"]
+position = Vector3(0, -5.965, 0)
+size = Vector3(36, 0.04, 1)
+material = SubResource("White")
+
+[node name="Sign" type="Label3D" parent="Checkpoint1"]
+position = Vector3(0, 7, 0)
+billboard = 1
+pixel_size = 0.007
+font_size = 68
+outline_size = 8
+text = "01 / 04"
+
+[node name="Respawn" type="Marker3D" parent="Checkpoint1"]
+position = Vector3(0, -5.45, -3)
+rotation = Vector3(0, 0, 0)
+
+[node name="Checkpoint2" type="Area3D" parent="."]
+position = Vector3(0, 1, -180)
+rotation = Vector3(0, 0, 0)
+collision_layer = 0
+collision_mask = 4
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Checkpoint2"]
+shape = SubResource("GateShape")
+
+[node name="LeftPost" type="CSGBox3D" parent="Checkpoint2"]
+position = Vector3(-18, 0, 0)
+size = Vector3(0.3, 12, 0.35)
+material = SubResource("White")
+
+[node name="RightPost" type="CSGBox3D" parent="Checkpoint2"]
+position = Vector3(18, 0, 0)
+size = Vector3(0.3, 12, 0.35)
+material = SubResource("White")
+
+[node name="Crossbar" type="CSGBox3D" parent="Checkpoint2"]
+position = Vector3(0, 6, 0)
+size = Vector3(36, 0.35, 0.35)
+material = SubResource("White")
+
+[node name="TimingLine" type="CSGBox3D" parent="Checkpoint2"]
+position = Vector3(0, -5.965, 0)
+size = Vector3(36, 0.04, 1)
+material = SubResource("White")
+
+[node name="Sign" type="Label3D" parent="Checkpoint2"]
+position = Vector3(0, 7, 0)
+billboard = 1
+pixel_size = 0.007
+font_size = 68
+outline_size = 8
+text = "02 / 04"
+
+[node name="Respawn" type="Marker3D" parent="Checkpoint2"]
+position = Vector3(0, -5.45, -3)
+rotation = Vector3(0, -0.404892, 0)
+
+[node name="Checkpoint3" type="Area3D" parent="."]
+position = Vector3(30, -7, -270)
+rotation = Vector3(0, 0, 0)
+collision_layer = 0
+collision_mask = 4
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Checkpoint3"]
+shape = SubResource("GateShape")
+
+[node name="LeftPost" type="CSGBox3D" parent="Checkpoint3"]
+position = Vector3(-18, 0, 0)
+size = Vector3(0.3, 12, 0.35)
+material = SubResource("White")
+
+[node name="RightPost" type="CSGBox3D" parent="Checkpoint3"]
+position = Vector3(18, 0, 0)
+size = Vector3(0.3, 12, 0.35)
+material = SubResource("White")
+
+[node name="Crossbar" type="CSGBox3D" parent="Checkpoint3"]
+position = Vector3(0, 6, 0)
+size = Vector3(36, 0.35, 0.35)
+material = SubResource("White")
+
+[node name="TimingLine" type="CSGBox3D" parent="Checkpoint3"]
+position = Vector3(0, -5.965, 0)
+size = Vector3(36, 0.04, 1)
+material = SubResource("White")
+
+[node name="Sign" type="Label3D" parent="Checkpoint3"]
+position = Vector3(0, 7, 0)
+billboard = 1
+pixel_size = 0.007
+font_size = 68
+outline_size = 8
+text = "03 / 04"
+
+[node name="Respawn" type="Marker3D" parent="Checkpoint3"]
+position = Vector3(0, -5.45, -3)
+rotation = Vector3(0, -0.197396, 0)
+
+[node name="Checkpoint4" type="Area3D" parent="."]
+position = Vector3(45, -12, -365)
+rotation = Vector3(0, 0, 0)
+collision_layer = 0
+collision_mask = 4
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Checkpoint4"]
+shape = SubResource("GateShape")
+
+[node name="LeftPost" type="CSGBox3D" parent="Checkpoint4"]
+position = Vector3(-18, 0, 0)
+size = Vector3(0.3, 12, 0.35)
+material = SubResource("White")
+
+[node name="RightPost" type="CSGBox3D" parent="Checkpoint4"]
+position = Vector3(18, 0, 0)
+size = Vector3(0.3, 12, 0.35)
+material = SubResource("White")
+
+[node name="Crossbar" type="CSGBox3D" parent="Checkpoint4"]
+position = Vector3(0, 6, 0)
+size = Vector3(36, 0.35, 0.35)
+material = SubResource("White")
+
+[node name="TimingLine" type="CSGBox3D" parent="Checkpoint4"]
+position = Vector3(0, -5.965, 0)
+size = Vector3(36, 0.04, 1)
+material = SubResource("White")
+
+[node name="Sign" type="Label3D" parent="Checkpoint4"]
+position = Vector3(0, 7, 0)
+billboard = 1
+pixel_size = 0.007
+font_size = 68
+outline_size = 8
+text = "04 / 04"
+
+[node name="Respawn" type="Marker3D" parent="Checkpoint4"]
+position = Vector3(0, -5.45, -3)
+rotation = Vector3(0, 0, 0)
+
+[node name="FinishGate" type="Area3D" parent="."]
+position = Vector3(45, -12, -425)
+rotation = Vector3(0, 0, 0)
+collision_layer = 0
+collision_mask = 4
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="FinishGate"]
+shape = SubResource("GateShape")
+
+[node name="LeftPost" type="CSGBox3D" parent="FinishGate"]
+position = Vector3(-18, 0, 0)
+size = Vector3(0.3, 12, 0.35)
+material = SubResource("White")
+
+[node name="RightPost" type="CSGBox3D" parent="FinishGate"]
+position = Vector3(18, 0, 0)
+size = Vector3(0.3, 12, 0.35)
+material = SubResource("White")
+
+[node name="Crossbar" type="CSGBox3D" parent="FinishGate"]
+position = Vector3(0, 6, 0)
+size = Vector3(36, 0.35, 0.35)
+material = SubResource("White")
+
+[node name="TimingLine" type="CSGBox3D" parent="FinishGate"]
+position = Vector3(0, -5.965, 0)
+size = Vector3(36, 0.04, 1)
+material = SubResource("White")
+
+[node name="Sign" type="Label3D" parent="FinishGate"]
+position = Vector3(0, 7, 0)
+billboard = 1
+pixel_size = 0.007
+font_size = 68
+outline_size = 8
+text = "FINISH"
+
+[node name="Title" type="Label3D" parent="."]
+position = Vector3(0, 24, 11)
+billboard = 1
+pixel_size = 0.007
+font_size = 44
+outline_size = 8
+text = "RIPTIDE\nSURF RUN"
+
+[node name="DropSign" type="Label3D" parent="."]
+position = Vector3(0, 24, -9)
+billboard = 1
+pixel_size = 0.007
+font_size = 44
+outline_size = 8
+text = "01  DROP IN\nRide the descent · steer into a bank"
+
+[node name="VSign" type="Label3D" parent="."]
+position = Vector3(0, 11, -88)
+billboard = 1
+pixel_size = 0.007
+font_size = 44
+outline_size = 8
+text = "02  V CHANNEL\nCarve the slopes · keep your speed"
+
+[node name="TransferSign" type="Label3D" parent="."]
+position = Vector3(5, 1, -188)
+billboard = 1
+pixel_size = 0.007
+font_size = 44
+outline_size = 8
+text = "03  BANK TRANSFER\nSwitch sides · follow the diagonal"
+
+[node name="BridgeSign" type="Label3D" parent="."]
+position = Vector3(30, -7, -282)
+billboard = 1
+pixel_size = 0.007
+font_size = 44
+outline_size = 8
+text = "04  THREAD THE BRIDGE\nRelease early · right-hand opening"
+
+[node name="ReleaseSign" type="Label3D" parent="."]
+position = Vector3(37, -8, -311)
+billboard = 1
+pixel_size = 0.007
+font_size = 44
+outline_size = 8
+text = "RETURN TO THE KEEL\nAim right · keep low under the bridge"
+
+[node name="ExitSign" type="Label3D" parent="."]
+position = Vector3(45, -12, -371)
+billboard = 1
+pixel_size = 0.007
+font_size = 44
+outline_size = 8
+text = "05  REBOUND SPRINT\nOptional spring · finish ahead"
+
+[node name="SafetySign" type="Label3D" parent="."]
+position = Vector3(13, 22, -10)
+billboard = 1
+pixel_size = 0.007
+font_size = 44
+outline_size = 8
+text = "WHITE = TRACK\nLower keel = continuous recovery"
+
+[node name="Support1" type="CSGBox3D" parent="."]
+position = Vector3(0, -9, 8)
+size = Vector3(3, 52, 3)
+material = ExtResource("CityRoof")
+
+[node name="Support2" type="CSGBox3D" parent="."]
+position = Vector3(0, -15.5, -80)
+size = Vector3(3, 39, 3)
+material = ExtResource("CityRoof")
+
+[node name="Support3" type="CSGBox3D" parent="."]
+position = Vector3(0, -20.5, -180)
+size = Vector3(3, 29, 3)
+material = ExtResource("CityRoof")
+
+[node name="Support4" type="CSGBox3D" parent="."]
+position = Vector3(30, -24.5, -270)
+size = Vector3(3, 21, 3)
+material = ExtResource("CityRoof")
+
+[node name="Support5" type="CSGBox3D" parent="."]
+position = Vector3(45, -27, -368)
+size = Vector3(3, 16, 3)
+material = ExtResource("CityRoof")
+
+[node name="Support6" type="CSGBox3D" parent="."]
+position = Vector3(45, -27, -418)
+size = Vector3(3, 16, 3)
+material = ExtResource("CityRoof")
+
+[node name="Void" type="CSGBox3D" parent="."]
+visible = false
+position = Vector3(15, -35.5, -209)
+size = Vector3(150, 1, 490)
+material = SubResource("Hazard")
+
+[node name="CityScenery" parent="." instance=ExtResource("CityScenery")]

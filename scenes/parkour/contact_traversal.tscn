@@ -1,0 +1,57 @@
+[gd_scene load_steps=9 format=3]
+[ext_resource type="Script" path="res://scenes/parkour/contact_traversal.gd" id="Script"]
+[sub_resource type="BoxShape3D" id="Volume"]
+size = Vector3(4, 2, 6)
+[sub_resource type="StandardMaterial3D" id="Iron"]
+albedo_color = Color(0.14, 0.16, 0.18, 1)
+roughness = 0.9
+[sub_resource type="BoxMesh" id="Deck"]
+material = SubResource("Iron")
+size = Vector3(4, 0.08, 6)
+[sub_resource type="StandardMaterial3D" id="Amber"]
+shading_mode = 0
+albedo_color = Color(0.76, 0.46, 0.2, 1)
+[sub_resource type="BoxMesh" id="DirectionBar"]
+material = SubResource("Amber")
+size = Vector3(1.1, 0.035, 0.09)
+[sub_resource type="StandardMaterial3D" id="Mist"]
+transparency = 1
+shading_mode = 0
+billboard_mode = 1
+albedo_color = Color(0.72, 0.77, 0.8, 0.3)
+[sub_resource type="QuadMesh" id="MistQuad"]
+material = SubResource("Mist")
+size = Vector2(0.3, 0.55)
+[node name="ContactTraversal" type="Area3D"]
+collision_layer = 0
+collision_mask = 4
+script = ExtResource("Script")
+[node name="CollisionShape3D" type="CollisionShape3D" parent="."]
+position = Vector3(0, 1, 0)
+shape = SubResource("Volume")
+[node name="Deck" type="MeshInstance3D" parent="."]
+mesh = SubResource("Deck")
+[node name="DirectionMarks" type="Node3D" parent="."]
+position = Vector3(0, 0.08, 0)
+[node name="Left" type="MeshInstance3D" parent="DirectionMarks"]
+position = Vector3(-0.43, 0, 0.3)
+rotation_degrees = Vector3(0, -35, 0)
+mesh = SubResource("DirectionBar")
+[node name="Right" type="MeshInstance3D" parent="DirectionMarks"]
+position = Vector3(0.43, 0, 0.3)
+rotation_degrees = Vector3(0, 35, 0)
+mesh = SubResource("DirectionBar")
+[node name="Steam" type="CPUParticles3D" parent="."]
+emitting = false
+amount = 12
+lifetime = 1.5
+mesh = SubResource("MistQuad")
+emission_shape = 3
+emission_box_extents = Vector3(1.5, 0.1, 2)
+direction = Vector3(0, 1, 0)
+spread = 12.0
+gravity = Vector3(0, 0, 0)
+initial_velocity_min = 2.0
+initial_velocity_max = 3.0
+scale_amount_min = 0.6
+scale_amount_max = 1.0

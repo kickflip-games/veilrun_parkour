@@ -1,0 +1,25 @@
+[remap]
+
+importer="wavefront_obj"
+importer_version=1
+type="Mesh"
+uid="uid://bvrekwbr5c813"
+path="res://.godot/imported/city_15_silhouette.obj-0f9a3e2fc65e1bf2a72e3ef8a9354925.mesh"
+
+[deps]
+
+files=["res://.godot/imported/city_15_silhouette.obj-0f9a3e2fc65e1bf2a72e3ef8a9354925.mesh"]
+
+source_file="res://assets/main_city/meshes/05_bellmaker/city_15_silhouette.obj"
+dest_files=["res://.godot/imported/city_15_silhouette.obj-0f9a3e2fc65e1bf2a72e3ef8a9354925.mesh", "res://.godot/imported/city_15_silhouette.obj-0f9a3e2fc65e1bf2a72e3ef8a9354925.mesh"]
+
+[params]
+
+generate_tangents=true
+generate_lods=true
+generate_shadow_mesh=true
+generate_lightmap_uv2=false
+generate_lightmap_uv2_texel_size=0.2
+scale_mesh=Vector3(1, 1, 1)
+offset_mesh=Vector3(0, 0, 0)
+force_disable_mesh_compression=false

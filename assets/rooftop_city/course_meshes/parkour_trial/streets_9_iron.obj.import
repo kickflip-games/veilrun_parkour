@@ -1,0 +1,25 @@
+[remap]
+
+importer="wavefront_obj"
+importer_version=1
+type="Mesh"
+uid="uid://dr6t5hyyjbsx2"
+path="res://.godot/imported/streets_9_iron.obj-c5e19b1cc70547474244be7bd41f430b.mesh"
+
+[deps]
+
+files=["res://.godot/imported/streets_9_iron.obj-c5e19b1cc70547474244be7bd41f430b.mesh"]
+
+source_file="res://assets/rooftop_city/course_meshes/parkour_trial/streets_9_iron.obj"
+dest_files=["res://.godot/imported/streets_9_iron.obj-c5e19b1cc70547474244be7bd41f430b.mesh", "res://.godot/imported/streets_9_iron.obj-c5e19b1cc70547474244be7bd41f430b.mesh"]
+
+[params]
+
+generate_tangents=true
+generate_lods=true
+generate_shadow_mesh=true
+generate_lightmap_uv2=false
+generate_lightmap_uv2_texel_size=0.2
+scale_mesh=Vector3(1, 1, 1)
+offset_mesh=Vector3(0, 0, 0)
+force_disable_mesh_compression=false

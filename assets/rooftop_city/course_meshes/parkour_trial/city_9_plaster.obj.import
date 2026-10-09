@@ -1,0 +1,25 @@
+[remap]
+
+importer="wavefront_obj"
+importer_version=1
+type="Mesh"
+uid="uid://dwaswqeu68wvp"
+path="res://.godot/imported/city_9_plaster.obj-3eeb9ab20abb48d327e09cf11d73103d.mesh"
+
+[deps]
+
+files=["res://.godot/imported/city_9_plaster.obj-3eeb9ab20abb48d327e09cf11d73103d.mesh"]
+
+source_file="res://assets/rooftop_city/course_meshes/parkour_trial/city_9_plaster.obj"
+dest_files=["res://.godot/imported/city_9_plaster.obj-3eeb9ab20abb48d327e09cf11d73103d.mesh", "res://.godot/imported/city_9_plaster.obj-3eeb9ab20abb48d327e09cf11d73103d.mesh"]
+
+[params]
+
+generate_tangents=true
+generate_lods=true
+generate_shadow_mesh=true
+generate_lightmap_uv2=false
+generate_lightmap_uv2_texel_size=0.2
+scale_mesh=Vector3(1, 1, 1)
+offset_mesh=Vector3(0, 0, 0)
+force_disable_mesh_compression=false

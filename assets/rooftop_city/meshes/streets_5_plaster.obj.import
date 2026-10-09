@@ -1,0 +1,25 @@
+[remap]
+
+importer="wavefront_obj"
+importer_version=1
+type="Mesh"
+uid="uid://do388jvxyjh2p"
+path="res://.godot/imported/streets_5_plaster.obj-19e587817ac131a9589d4473dd2d7cbf.mesh"
+
+[deps]
+
+files=["res://.godot/imported/streets_5_plaster.obj-19e587817ac131a9589d4473dd2d7cbf.mesh"]
+
+source_file="res://assets/rooftop_city/meshes/streets_5_plaster.obj"
+dest_files=["res://.godot/imported/streets_5_plaster.obj-19e587817ac131a9589d4473dd2d7cbf.mesh", "res://.godot/imported/streets_5_plaster.obj-19e587817ac131a9589d4473dd2d7cbf.mesh"]
+
+[params]
+
+generate_tangents=true
+generate_lods=true
+generate_shadow_mesh=true
+generate_lightmap_uv2=false
+generate_lightmap_uv2_texel_size=0.2
+scale_mesh=Vector3(1, 1, 1)
+offset_mesh=Vector3(0, 0, 0)
+force_disable_mesh_compression=false

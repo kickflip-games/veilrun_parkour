@@ -1,0 +1,42 @@
+[gd_scene load_steps=6 format=3]
+[ext_resource type="Script" path="res://scenes/parkour/grapple_anchor.gd" id="Anchor"]
+[sub_resource type="TorusMesh" id="Ring"]
+inner_radius = 0.47
+outer_radius = 0.61
+rings = 16
+ring_segments = 6
+[sub_resource type="SphereMesh" id="Core"]
+radius = 0.16
+height = 0.32
+radial_segments = 12
+rings = 6
+[sub_resource type="BoxMesh" id="Mount"]
+size = Vector3(0.18, 0.48, 0.18)
+[sub_resource type="SphereShape3D" id="Body"]
+radius = 0.35
+[node name="Anchor" type="StaticBody3D" groups=["grapple_anchors"]]
+collision_layer = 2
+collision_mask = 0
+script = ExtResource("Anchor")
+[node name="CollisionShape3D" type="CollisionShape3D" parent="."]
+shape = SubResource("Body")
+[node name="Diamond" type="Node3D" parent="."]
+[node name="RingFront" type="MeshInstance3D" parent="Diamond"]
+rotation_degrees = Vector3(90, 0, 0)
+mesh = SubResource("Ring")
+[node name="RingSide" type="MeshInstance3D" parent="Diamond"]
+rotation_degrees = Vector3(0, 0, 90)
+mesh = SubResource("Ring")
+[node name="Mount" type="MeshInstance3D" parent="Diamond"]
+position = Vector3(0, -0.66, 0)
+mesh = SubResource("Mount")
+[node name="Core" type="MeshInstance3D" parent="Diamond"]
+mesh = SubResource("Core")
+[node name="HookSign" type="Label3D" parent="."]
+position = Vector3(0, 1.1, 0)
+billboard = 1
+no_depth_test = false
+text = "ANCHOR"
+font_size = 42
+pixel_size = 0.006
+outline_size = 8

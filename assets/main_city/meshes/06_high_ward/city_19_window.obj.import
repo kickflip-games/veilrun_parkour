@@ -1,0 +1,25 @@
+[remap]
+
+importer="wavefront_obj"
+importer_version=1
+type="Mesh"
+uid="uid://sfayh7it6mq"
+path="res://.godot/imported/city_19_window.obj-6eb2c89df0b051609db870155c70bb66.mesh"
+
+[deps]
+
+files=["res://.godot/imported/city_19_window.obj-6eb2c89df0b051609db870155c70bb66.mesh"]
+
+source_file="res://assets/main_city/meshes/06_high_ward/city_19_window.obj"
+dest_files=["res://.godot/imported/city_19_window.obj-6eb2c89df0b051609db870155c70bb66.mesh", "res://.godot/imported/city_19_window.obj-6eb2c89df0b051609db870155c70bb66.mesh"]
+
+[params]
+
+generate_tangents=true
+generate_lods=true
+generate_shadow_mesh=true
+generate_lightmap_uv2=false
+generate_lightmap_uv2_texel_size=0.2
+scale_mesh=Vector3(1, 1, 1)
+offset_mesh=Vector3(0, 0, 0)
+force_disable_mesh_compression=false

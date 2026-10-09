@@ -1,0 +1,380 @@
+[gd_scene format=3]
+
+[ext_resource type="ArrayMesh" path="res://assets/main_city/meshes/04_underway/city_11_brick.obj" id="Mesh0"]
+[ext_resource type="ArrayMesh" path="res://assets/main_city/meshes/04_underway/city_11_glass.obj" id="Mesh1"]
+[ext_resource type="ArrayMesh" path="res://assets/main_city/meshes/04_underway/city_11_iron.obj" id="Mesh2"]
+[ext_resource type="ArrayMesh" path="res://assets/main_city/meshes/04_underway/city_11_silhouette.obj" id="Mesh3"]
+[ext_resource type="ArrayMesh" path="res://assets/main_city/meshes/04_underway/city_11_stone.obj" id="Mesh4"]
+[ext_resource type="ArrayMesh" path="res://assets/main_city/meshes/04_underway/city_11_window.obj" id="Mesh5"]
+[ext_resource type="ArrayMesh" path="res://assets/main_city/meshes/04_underway/city_12_brick.obj" id="Mesh6"]
+[ext_resource type="ArrayMesh" path="res://assets/main_city/meshes/04_underway/city_12_glass.obj" id="Mesh7"]
+[ext_resource type="ArrayMesh" path="res://assets/main_city/meshes/04_underway/city_12_iron.obj" id="Mesh8"]
+[ext_resource type="ArrayMesh" path="res://assets/main_city/meshes/04_underway/city_12_silhouette.obj" id="Mesh9"]
+[ext_resource type="ArrayMesh" path="res://assets/main_city/meshes/04_underway/city_12_slate.obj" id="Mesh10"]
+[ext_resource type="ArrayMesh" path="res://assets/main_city/meshes/04_underway/city_12_stone.obj" id="Mesh11"]
+[ext_resource type="ArrayMesh" path="res://assets/main_city/meshes/04_underway/city_12_timber.obj" id="Mesh12"]
+[ext_resource type="ArrayMesh" path="res://assets/main_city/meshes/04_underway/city_12_warm.obj" id="Mesh13"]
+[ext_resource type="ArrayMesh" path="res://assets/main_city/meshes/04_underway/city_12_window.obj" id="Mesh14"]
+[ext_resource type="ArrayMesh" path="res://assets/main_city/meshes/04_underway/city_13_brick.obj" id="Mesh15"]
+[ext_resource type="ArrayMesh" path="res://assets/main_city/meshes/04_underway/city_13_glass.obj" id="Mesh16"]
+[ext_resource type="ArrayMesh" path="res://assets/main_city/meshes/04_underway/city_13_iron.obj" id="Mesh17"]
+[ext_resource type="ArrayMesh" path="res://assets/main_city/meshes/04_underway/city_13_silhouette.obj" id="Mesh18"]
+[ext_resource type="ArrayMesh" path="res://assets/main_city/meshes/04_underway/city_13_slate.obj" id="Mesh19"]
+[ext_resource type="ArrayMesh" path="res://assets/main_city/meshes/04_underway/city_13_stone.obj" id="Mesh20"]
+[ext_resource type="ArrayMesh" path="res://assets/main_city/meshes/04_underway/city_13_timber.obj" id="Mesh21"]
+[ext_resource type="ArrayMesh" path="res://assets/main_city/meshes/04_underway/city_13_warm.obj" id="Mesh22"]
+[ext_resource type="ArrayMesh" path="res://assets/main_city/meshes/04_underway/city_13_window.obj" id="Mesh23"]
+[ext_resource type="ArrayMesh" path="res://assets/main_city/meshes/04_underway/city_14_brick.obj" id="Mesh24"]
+[ext_resource type="ArrayMesh" path="res://assets/main_city/meshes/04_underway/city_14_glass.obj" id="Mesh25"]
+[ext_resource type="ArrayMesh" path="res://assets/main_city/meshes/04_underway/city_14_iron.obj" id="Mesh26"]
+[ext_resource type="ArrayMesh" path="res://assets/main_city/meshes/04_underway/city_14_silhouette.obj" id="Mesh27"]
+[ext_resource type="ArrayMesh" path="res://assets/main_city/meshes/04_underway/city_14_slate.obj" id="Mesh28"]
+[ext_resource type="ArrayMesh" path="res://assets/main_city/meshes/04_underway/city_14_stone.obj" id="Mesh29"]
+[ext_resource type="ArrayMesh" path="res://assets/main_city/meshes/04_underway/city_14_timber.obj" id="Mesh30"]
+[ext_resource type="ArrayMesh" path="res://assets/main_city/meshes/04_underway/city_14_warm.obj" id="Mesh31"]
+[ext_resource type="ArrayMesh" path="res://assets/main_city/meshes/04_underway/city_14_window.obj" id="Mesh32"]
+[ext_resource type="ArrayMesh" path="res://assets/main_city/meshes/04_underway/city_15_brick.obj" id="Mesh33"]
+[ext_resource type="ArrayMesh" path="res://assets/main_city/meshes/04_underway/city_15_glass.obj" id="Mesh34"]
+[ext_resource type="ArrayMesh" path="res://assets/main_city/meshes/04_underway/city_15_iron.obj" id="Mesh35"]
+[ext_resource type="ArrayMesh" path="res://assets/main_city/meshes/04_underway/city_15_slate.obj" id="Mesh36"]
+[ext_resource type="ArrayMesh" path="res://assets/main_city/meshes/04_underway/city_15_stone.obj" id="Mesh37"]
+[ext_resource type="ArrayMesh" path="res://assets/main_city/meshes/04_underway/city_15_timber.obj" id="Mesh38"]
+[ext_resource type="ArrayMesh" path="res://assets/main_city/meshes/04_underway/city_15_warm.obj" id="Mesh39"]
+[ext_resource type="ArrayMesh" path="res://assets/main_city/meshes/04_underway/city_15_window.obj" id="Mesh40"]
+[ext_resource type="Texture2D" path="res://assets/rooftop_city/textures/wall_brick_small_stone.png" id="TextureBrick"]
+[ext_resource type="Texture2D" path="res://assets/rooftop_city/textures/wall_stone.png" id="TextureStone"]
+[ext_resource type="Texture2D" path="res://assets/rooftop_city/textures/roof_clay_grey_center.png" id="TextureSlate"]
+[ext_resource type="Texture2D" path="res://assets/rooftop_city/textures/wall_stone.png" id="TexturePlaster"]
+[ext_resource type="Texture2D" path="res://assets/rooftop_city/textures/wall_timber.png" id="TextureTimber"]
+[ext_resource type="Texture2D" path="res://assets/rooftop_city/textures/floor_stone_pattern.png" id="TextureCobble"]
+[ext_resource type="Texture2D" path="res://assets/rooftop_city/textures/window_tall_rounded.png" id="TextureGlass"]
+[ext_resource type="Texture2D" path="res://assets/rooftop_city/textures/window_tall_rounded_lit.png" id="TextureWindow"]
+[ext_resource type="Texture2D" path="res://assets/rooftop_city/textures/wall_brick_small_stone.png" id="TextureSilhouette"]
+
+[sub_resource type="StandardMaterial3D" id="Brick"]
+albedo_color = Color(0.36, 0.36, 0.4, 1)
+roughness = 0.93
+albedo_texture = ExtResource("TextureBrick")
+texture_filter = 0
+
+[sub_resource type="StandardMaterial3D" id="Stone"]
+albedo_color = Color(0.43, 0.44, 0.49, 1)
+roughness = 0.93
+albedo_texture = ExtResource("TextureStone")
+texture_filter = 0
+
+[sub_resource type="StandardMaterial3D" id="Slate"]
+albedo_color = Color(0.3, 0.36, 0.46, 1)
+roughness = 0.84
+albedo_texture = ExtResource("TextureSlate")
+texture_filter = 0
+
+[sub_resource type="StandardMaterial3D" id="Plaster"]
+albedo_color = Color(0.34, 0.32, 0.33, 1)
+roughness = 0.96
+albedo_texture = ExtResource("TexturePlaster")
+texture_filter = 0
+
+[sub_resource type="StandardMaterial3D" id="Timber"]
+albedo_color = Color(0.28, 0.22, 0.18, 1)
+roughness = 0.95
+albedo_texture = ExtResource("TextureTimber")
+texture_filter = 0
+
+[sub_resource type="StandardMaterial3D" id="Cobble"]
+albedo_color = Color(0.31, 0.34, 0.38, 1)
+roughness = 0.45
+albedo_texture = ExtResource("TextureCobble")
+texture_filter = 0
+
+[sub_resource type="StandardMaterial3D" id="Iron"]
+albedo_color = Color(0.105, 0.115, 0.14, 1)
+roughness = 0.72
+
+[sub_resource type="StandardMaterial3D" id="Trim"]
+albedo_color = Color(0.47, 0.48, 0.49, 1)
+roughness = 0.9
+
+[sub_resource type="StandardMaterial3D" id="Glass"]
+albedo_color = Color(0.22, 0.27, 0.34, 1)
+roughness = 0.55
+albedo_texture = ExtResource("TextureGlass")
+texture_filter = 0
+
+[sub_resource type="StandardMaterial3D" id="Puddle"]
+albedo_color = Color(0.2, 0.25, 0.3, 1)
+roughness = 0.25
+
+[sub_resource type="StandardMaterial3D" id="Warm"]
+albedo_color = Color(0.85, 0.55, 0.24, 1)
+roughness = 1
+shading_mode = 0
+emission_enabled = true
+emission = Color(0.85, 0.55, 0.24, 1)
+emission_energy_multiplier = 0.3
+
+[sub_resource type="StandardMaterial3D" id="Window"]
+albedo_color = Color(0.85, 0.66, 0.38, 1)
+roughness = 1
+albedo_texture = ExtResource("TextureWindow")
+texture_filter = 0
+shading_mode = 0
+emission_enabled = true
+emission = Color(0.85, 0.55, 0.24, 1)
+emission_energy_multiplier = 0.3
+
+[sub_resource type="StandardMaterial3D" id="Silhouette"]
+albedo_color = Color(0.25, 0.28, 0.32, 1)
+roughness = 0.96
+albedo_texture = ExtResource("TextureSilhouette")
+texture_filter = 0
+
+[node name="CityDressing" type="Node3D"]
+metadata/triangle_count = 5478
+metadata/batch_count = 41
+
+[node name="City11Brick" type="MeshInstance3D" parent="."]
+position = Vector3(0, 0, -704)
+mesh = ExtResource("Mesh0")
+material_override = SubResource("Brick")
+cast_shadow = 1
+
+[node name="City11Glass" type="MeshInstance3D" parent="."]
+position = Vector3(0, 0, -704)
+mesh = ExtResource("Mesh1")
+material_override = SubResource("Glass")
+cast_shadow = 0
+
+[node name="City11Iron" type="MeshInstance3D" parent="."]
+position = Vector3(0, 0, -704)
+mesh = ExtResource("Mesh2")
+material_override = SubResource("Iron")
+cast_shadow = 0
+
+[node name="City11Silhouette" type="MeshInstance3D" parent="."]
+position = Vector3(0, 0, -704)
+mesh = ExtResource("Mesh3")
+material_override = SubResource("Silhouette")
+cast_shadow = 0
+
+[node name="City11Stone" type="MeshInstance3D" parent="."]
+position = Vector3(0, 0, -704)
+mesh = ExtResource("Mesh4")
+material_override = SubResource("Stone")
+cast_shadow = 0
+
+[node name="City11Window" type="MeshInstance3D" parent="."]
+position = Vector3(0, 0, -704)
+mesh = ExtResource("Mesh5")
+material_override = SubResource("Window")
+cast_shadow = 0
+
+[node name="City12Brick" type="MeshInstance3D" parent="."]
+position = Vector3(0, 0, -768)
+mesh = ExtResource("Mesh6")
+material_override = SubResource("Brick")
+cast_shadow = 1
+
+[node name="City12Glass" type="MeshInstance3D" parent="."]
+position = Vector3(0, 0, -768)
+mesh = ExtResource("Mesh7")
+material_override = SubResource("Glass")
+cast_shadow = 0
+
+[node name="City12Iron" type="MeshInstance3D" parent="."]
+position = Vector3(0, 0, -768)
+mesh = ExtResource("Mesh8")
+material_override = SubResource("Iron")
+cast_shadow = 0
+
+[node name="City12Silhouette" type="MeshInstance3D" parent="."]
+position = Vector3(0, 0, -768)
+mesh = ExtResource("Mesh9")
+material_override = SubResource("Silhouette")
+cast_shadow = 0
+
+[node name="City12Slate" type="MeshInstance3D" parent="."]
+position = Vector3(0, 0, -768)
+mesh = ExtResource("Mesh10")
+material_override = SubResource("Slate")
+cast_shadow = 1
+
+[node name="City12Stone" type="MeshInstance3D" parent="."]
+position = Vector3(0, 0, -768)
+mesh = ExtResource("Mesh11")
+material_override = SubResource("Stone")
+cast_shadow = 0
+
+[node name="City12Timber" type="MeshInstance3D" parent="."]
+position = Vector3(0, 0, -768)
+mesh = ExtResource("Mesh12")
+material_override = SubResource("Timber")
+cast_shadow = 0
+
+[node name="City12Warm" type="MeshInstance3D" parent="."]
+position = Vector3(0, 0, -768)
+mesh = ExtResource("Mesh13")
+material_override = SubResource("Warm")
+cast_shadow = 0
+
+[node name="City12Window" type="MeshInstance3D" parent="."]
+position = Vector3(0, 0, -768)
+mesh = ExtResource("Mesh14")
+material_override = SubResource("Window")
+cast_shadow = 0
+
+[node name="City13Brick" type="MeshInstance3D" parent="."]
+position = Vector3(0, 0, -832)
+mesh = ExtResource("Mesh15")
+material_override = SubResource("Brick")
+cast_shadow = 1
+
+[node name="City13Glass" type="MeshInstance3D" parent="."]
+position = Vector3(0, 0, -832)
+mesh = ExtResource("Mesh16")
+material_override = SubResource("Glass")
+cast_shadow = 0
+
+[node name="City13Iron" type="MeshInstance3D" parent="."]
+position = Vector3(0, 0, -832)
+mesh = ExtResource("Mesh17")
+material_override = SubResource("Iron")
+cast_shadow = 0
+
+[node name="City13Silhouette" type="MeshInstance3D" parent="."]
+position = Vector3(0, 0, -832)
+mesh = ExtResource("Mesh18")
+material_override = SubResource("Silhouette")
+cast_shadow = 0
+
+[node name="City13Slate" type="MeshInstance3D" parent="."]
+position = Vector3(0, 0, -832)
+mesh = ExtResource("Mesh19")
+material_override = SubResource("Slate")
+cast_shadow = 1
+
+[node name="City13Stone" type="MeshInstance3D" parent="."]
+position = Vector3(0, 0, -832)
+mesh = ExtResource("Mesh20")
+material_override = SubResource("Stone")
+cast_shadow = 0
+
+[node name="City13Timber" type="MeshInstance3D" parent="."]
+position = Vector3(0, 0, -832)
+mesh = ExtResource("Mesh21")
+material_override = SubResource("Timber")
+cast_shadow = 0
+
+[node name="City13Warm" type="MeshInstance3D" parent="."]
+position = Vector3(0, 0, -832)
+mesh = ExtResource("Mesh22")
+material_override = SubResource("Warm")
+cast_shadow = 0
+
+[node name="City13Window" type="MeshInstance3D" parent="."]
+position = Vector3(0, 0, -832)
+mesh = ExtResource("Mesh23")
+material_override = SubResource("Window")
+cast_shadow = 0
+
+[node name="City14Brick" type="MeshInstance3D" parent="."]
+position = Vector3(0, 0, -896)
+mesh = ExtResource("Mesh24")
+material_override = SubResource("Brick")
+cast_shadow = 1
+
+[node name="City14Glass" type="MeshInstance3D" parent="."]
+position = Vector3(0, 0, -896)
+mesh = ExtResource("Mesh25")
+material_override = SubResource("Glass")
+cast_shadow = 0
+
+[node name="City14Iron" type="MeshInstance3D" parent="."]
+position = Vector3(0, 0, -896)
+mesh = ExtResource("Mesh26")
+material_override = SubResource("Iron")
+cast_shadow = 0
+
+[node name="City14Silhouette" type="MeshInstance3D" parent="."]
+position = Vector3(0, 0, -896)
+mesh = ExtResource("Mesh27")
+material_override = SubResource("Silhouette")
+cast_shadow = 0
+
+[node name="City14Slate" type="MeshInstance3D" parent="."]
+position = Vector3(0, 0, -896)
+mesh = ExtResource("Mesh28")
+material_override = SubResource("Slate")
+cast_shadow = 1
+
+[node name="City14Stone" type="MeshInstance3D" parent="."]
+position = Vector3(0, 0, -896)
+mesh = ExtResource("Mesh29")
+material_override = SubResource("Stone")
+cast_shadow = 0
+
+[node name="City14Timber" type="MeshInstance3D" parent="."]
+position = Vector3(0, 0, -896)
+mesh = ExtResource("Mesh30")
+material_override = SubResource("Timber")
+cast_shadow = 0
+
+[node name="City14Warm" type="MeshInstance3D" parent="."]
+position = Vector3(0, 0, -896)
+mesh = ExtResource("Mesh31")
+material_override = SubResource("Warm")
+cast_shadow = 0
+
+[node name="City14Window" type="MeshInstance3D" parent="."]
+position = Vector3(0, 0, -896)
+mesh = ExtResource("Mesh32")
+material_override = SubResource("Window")
+cast_shadow = 0
+
+[node name="City15Brick" type="MeshInstance3D" parent="."]
+position = Vector3(0, 0, -960)
+mesh = ExtResource("Mesh33")
+material_override = SubResource("Brick")
+cast_shadow = 1
+
+[node name="City15Glass" type="MeshInstance3D" parent="."]
+position = Vector3(0, 0, -960)
+mesh = ExtResource("Mesh34")
+material_override = SubResource("Glass")
+cast_shadow = 0
+
+[node name="City15Iron" type="MeshInstance3D" parent="."]
+position = Vector3(0, 0, -960)
+mesh = ExtResource("Mesh35")
+material_override = SubResource("Iron")
+cast_shadow = 0
+
+[node name="City15Slate" type="MeshInstance3D" parent="."]
+position = Vector3(0, 0, -960)
+mesh = ExtResource("Mesh36")
+material_override = SubResource("Slate")
+cast_shadow = 1
+
+[node name="City15Stone" type="MeshInstance3D" parent="."]
+position = Vector3(0, 0, -960)
+mesh = ExtResource("Mesh37")
+material_override = SubResource("Stone")
+cast_shadow = 0
+
+[node name="City15Timber" type="MeshInstance3D" parent="."]
+position = Vector3(0, 0, -960)
+mesh = ExtResource("Mesh38")
+material_override = SubResource("Timber")
+cast_shadow = 0
+
+[node name="City15Warm" type="MeshInstance3D" parent="."]
+position = Vector3(0, 0, -960)
+mesh = ExtResource("Mesh39")
+material_override = SubResource("Warm")
+cast_shadow = 0
+
+[node name="City15Window" type="MeshInstance3D" parent="."]
+position = Vector3(0, 0, -960)
+mesh = ExtResource("Mesh40")
+material_override = SubResource("Window")
+cast_shadow = 0

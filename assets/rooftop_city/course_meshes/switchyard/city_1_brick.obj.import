@@ -1,0 +1,25 @@
+[remap]
+
+importer="wavefront_obj"
+importer_version=1
+type="Mesh"
+uid="uid://celg2cfgve650"
+path="res://.godot/imported/city_1_brick.obj-100a06f3d46dd0fde62ff19b01ef2744.mesh"
+
+[deps]
+
+files=["res://.godot/imported/city_1_brick.obj-100a06f3d46dd0fde62ff19b01ef2744.mesh"]
+
+source_file="res://assets/rooftop_city/course_meshes/switchyard/city_1_brick.obj"
+dest_files=["res://.godot/imported/city_1_brick.obj-100a06f3d46dd0fde62ff19b01ef2744.mesh", "res://.godot/imported/city_1_brick.obj-100a06f3d46dd0fde62ff19b01ef2744.mesh"]
+
+[params]
+
+generate_tangents=true
+generate_lods=true
+generate_shadow_mesh=true
+generate_lightmap_uv2=false
+generate_lightmap_uv2_texel_size=0.2
+scale_mesh=Vector3(1, 1, 1)
+offset_mesh=Vector3(0, 0, 0)
+force_disable_mesh_compression=false

@@ -1,0 +1,13 @@
+[gd_resource type="ShaderMaterial" load_steps=2 format=3]
+
+[ext_resource type="Shader" path="res://scenes/shaders/noir_world.gdshader" id="1"]
+
+[resource]
+render_priority = 0
+shader = ExtResource("1")
+shader_parameter/hi_threshold = 0.70000003325
+shader_parameter/light_threshold = 0.210000009975
+shader_parameter/softness = 0.026000001235
+shader_parameter/shadow_lift = 0.058000002755
+shader_parameter/dot_size = 3.38500015752762
+shader_parameter/paper_grain = 0.10000000149012

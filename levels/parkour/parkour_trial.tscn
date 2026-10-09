@@ -1,0 +1,413 @@
+[gd_scene format=3 uid="uid://beo74jm3gsxt5"]
+
+[ext_resource type="Sky" path="res://scenes/parkour/city_sky.tres" id="CitySky"]
+[ext_resource type="PackedScene" path="res://levels/parkour/parkour_trial_city_scenery.tscn" id="CityScenery"]
+
+[ext_resource type="Material" path="res://scenes/parkour/city_roof.tres" id="CityRoof"]
+
+[ext_resource type="PackedScene" path="res://scenes/parkour/grapple_anchor.tscn" id="Anchor"]
+[ext_resource type="PackedScene" path="res://levels/parkour/long_course.tscn" id="LongCourse"]
+[ext_resource type="PackedScene" uid="uid://giwqconkotrq" path="res://scenes/player/player.tscn" id="Player"]
+[ext_resource type="PackedScene" path="res://scenes/parkour/spring_pad.tscn" id="Spring"]
+[ext_resource type="Script" uid="uid://bmauiwctl0mj" path="res://levels/parkour/parkour_trial.gd" id="Trial"]
+
+[sub_resource type="Environment" id="Environment"]
+background_mode = 2
+sky = ExtResource("CitySky")
+ambient_light_source = 3
+ambient_light_color = Color(0.48, 0.57, 0.70, 1)
+ambient_light_energy = 0.62
+fog_enabled = true
+fog_light_color = Color(0.22, 0.28, 0.36, 1)
+fog_density = 0.0037
+fog_sky_affect = 0.35
+fog_height = -18
+fog_height_density = 0.045
+
+[sub_resource type="BoxShape3D" id="StartShape"]
+size = Vector3(18, 12, 1)
+
+[sub_resource type="StandardMaterial3D" id="Edge"]
+shading_mode = 0
+albedo_color = Color(0.85, 0.85, 0.85, 1)
+
+[sub_resource type="BoxShape3D" id="FinishShape"]
+size = Vector3(18, 12, 1)
+
+[sub_resource type="StandardMaterial3D" id="Hazard"]
+shading_mode = 0
+albedo_color = Color(0.5, 0.015, 0.025, 1)
+
+[node name="ParkourTrial" type="Node3D" unique_id=1802450505]
+script = ExtResource("Trial")
+
+[node name="WorldEnvironment" type="WorldEnvironment" parent="." unique_id=488555596]
+environment = SubResource("Environment")
+
+[node name="Sun" type="DirectionalLight3D" parent="." unique_id=1043385495]
+rotation = Vector3(-0.9, -0.5, 0)
+light_color = Color(0.48, 0.60, 0.78, 1)
+light_energy = 0.85
+
+[node name="Player" parent="." unique_id=1066720878 instance=ExtResource("Player")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.55, 6)
+parkour_mode = true
+hook_exit_speed = 22.0
+
+[node name="OpeningDeck" type="CSGBox3D" parent="." unique_id=1053129424]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.5, -9)
+use_collision = true
+size = Vector3(18, 1, 38)
+material = ExtResource("CityRoof")
+
+[node name="StartGate" type="Area3D" parent="." unique_id=664866239]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 6, -5)
+collision_layer = 0
+collision_mask = 4
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="StartGate" unique_id=1720039851]
+shape = SubResource("StartShape")
+
+[node name="StartGateLeft" type="CSGBox3D" parent="." unique_id=854905444]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -9, 4, -5)
+size = Vector3(0.25, 8, 0.35)
+material = SubResource("Edge")
+
+[node name="StartGateRight" type="CSGBox3D" parent="." unique_id=1670056809]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 9, 4, -5)
+size = Vector3(0.25, 8, 0.35)
+material = SubResource("Edge")
+
+[node name="StartGateTop" type="CSGBox3D" parent="." unique_id=803990356]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 8, -5)
+size = Vector3(18, 0.3, 0.35)
+material = SubResource("Edge")
+
+[node name="StartGateLine" type="CSGBox3D" parent="." unique_id=30123566]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.03, -5)
+size = Vector3(18, 0.04, 1)
+material = SubResource("Edge")
+
+[node name="StartGateSign" type="Label3D" parent="." unique_id=1404416817]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 9, -5)
+pixel_size = 0.007
+billboard = 1
+text = "START"
+font_size = 90
+
+[node name="OpeningSign" type="Label3D" parent="." unique_id=1564143995]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 4, -18)
+pixel_size = 0.007
+billboard = 1
+text = "01  SPRING → AERIAL ANCHOR
+Hold to pull · Let go to release · WASD steers"
+font_size = 48
+
+[node name="OpeningSpring" parent="." unique_id=2129146827 instance=ExtResource("Spring")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.08, -23)
+
+[node name="AerialAnchor" parent="." unique_id=1118958976 instance=ExtResource("Anchor")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 8, -43)
+
+[node name="LandingDeck" type="CSGBox3D" parent="." unique_id=744587438]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2.5, -56)
+use_collision = true
+size = Vector3(18, 1, 28)
+material = ExtResource("CityRoof")
+
+[node name="OpeningRecovery" type="CSGBox3D" parent="." unique_id=2094779711]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -3.5, -40)
+use_collision = true
+size = Vector3(26, 1, 24)
+material = ExtResource("CityRoof")
+
+[node name="OpeningRecoveryRamp" type="CSGBox3D" parent="." unique_id=1083354397]
+transform = Transform3D(1, 0, 0, 0, 0.948683, -0.3162286, 0, 0.3162286, 0.948683, 13, -0.05, -48)
+use_collision = true
+size = Vector3(6, 0.6, 21)
+material = ExtResource("CityRoof")
+
+[node name="OpeningRampLanding" type="CSGBox3D" parent="." unique_id=390886002]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 13, 2.5, -60)
+use_collision = true
+size = Vector3(8, 1, 6)
+material = ExtResource("CityRoof")
+
+[node name="TurnDeck" type="CSGBox3D" parent="." unique_id=457385582]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 24, 2.5, -65)
+use_collision = true
+size = Vector3(48, 1, 16)
+material = ExtResource("CityRoof")
+
+[node name="TurnSign" type="Label3D" parent="." unique_id=1074896714]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 6, -67)
+pixel_size = 0.007
+billboard = 1
+text = "02  TURN RIGHT →
+Release early · Carry your approach"
+font_size = 48
+
+[node name="OptionalTurnAnchor" parent="." unique_id=567722427 instance=ExtResource("Anchor")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 23, 6, -63)
+
+[node name="TurnInnerWall" type="CSGBox3D" parent="." unique_id=173252131]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 20, 7, -79)
+use_collision = true
+size = Vector3(22, 8, 3)
+material = ExtResource("CityRoof")
+
+[node name="SplitApproach" type="CSGBox3D" parent="." unique_id=547544371]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 40, 2.5, -81)
+use_collision = true
+size = Vector3(18, 1, 32)
+material = ExtResource("CityRoof")
+
+[node name="SplitSign" type="Label3D" parent="." unique_id=436470185]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 40, 7, -88)
+pixel_size = 0.007
+billboard = 1
+text = "03  ROUTE SPLIT
+← NARROW / FAST     WIDE / SAFE →"
+font_size = 48
+
+[node name="ShortcutSpring" parent="." unique_id=1106259800 instance=ExtResource("Spring")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 35, 3.08, -93)
+launch_direction = Vector3(0, 0.55, -1)
+launch_strength = 22
+
+[node name="OptionalShortcutAnchor" parent="." unique_id=1266729014 instance=ExtResource("Anchor")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 28, 9, -109)
+
+[node name="ShortcutLanding" type="CSGBox3D" parent="." unique_id=973725912]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 34, 4.5, -123)
+use_collision = true
+size = Vector3(5, 1, 12)
+material = ExtResource("CityRoof")
+
+[node name="ShortcutBridge" type="CSGBox3D" parent="." unique_id=453996708]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 34, 4.5, -140)
+use_collision = true
+size = Vector3(5, 1, 14)
+material = ExtResource("CityRoof")
+
+[node name="ShortcutSign" type="Label3D" parent="." unique_id=462686440]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 34, 7, -119)
+pixel_size = 0.007
+billboard = 1
+text = "NARROW
+Steer right · Jump the next gap"
+font_size = 42
+
+[node name="WideEastConnector" type="CSGBox3D" parent="." unique_id=680145179]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 53, 2.5, -91)
+use_collision = true
+size = Vector3(26, 1, 12)
+material = ExtResource("CityRoof")
+
+[node name="WideOuterDeck" type="CSGBox3D" parent="." unique_id=51774461]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 62, 2.5, -122)
+use_collision = true
+size = Vector3(10, 1, 66)
+material = ExtResource("CityRoof")
+
+[node name="WideReturn" type="CSGBox3D" parent="." unique_id=237811433]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 53, 2.5, -155)
+use_collision = true
+size = Vector3(28, 1, 12)
+material = ExtResource("CityRoof")
+
+[node name="WideSign" type="Label3D" parent="." unique_id=962685018]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 61, 6, -94)
+pixel_size = 0.007
+billboard = 1
+text = "WIDE →
+Continuous walkway"
+font_size = 44
+
+[node name="RecoveryDeck" type="CSGBox3D" parent="." unique_id=54011552]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 41, -0.5, -126)
+use_collision = true
+size = Vector3(44, 1, 74)
+material = ExtResource("CityRoof")
+
+[node name="RecoveryRamp" type="CSGBox3D" parent="." unique_id=1349962818]
+transform = Transform3D(0.9863948, -0.16439344, 0, 0.16439344, 0.9863948, 0, 0, 0, 1, 47.5, 1.35, -137)
+use_collision = true
+size = Vector3(21, 0.6, 8)
+material = ExtResource("CityRoof")
+
+[node name="RecoveryTop" type="CSGBox3D" parent="." unique_id=899851504]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 60, 2.5, -137)
+use_collision = true
+size = Vector3(6, 1, 8)
+material = ExtResource("CityRoof")
+
+[node name="RecoverySign" type="Label3D" parent="." unique_id=918490219]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 48, 3, -139)
+pixel_size = 0.007
+billboard = 1
+text = "RECOVERY → RAMP
+Keep going or R for a clean run"
+font_size = 42
+
+[node name="MergeDeck" type="CSGBox3D" parent="." unique_id=439747560]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 40, 2.5, -166)
+use_collision = true
+size = Vector3(18, 1, 26)
+material = ExtResource("CityRoof")
+
+[node name="ShortcutRamp" type="CSGBox3D" parent="." unique_id=680759096]
+transform = Transform3D(1, 0, 0, 0, 0.98386943, 0.17888808, 0, -0.17888808, 0.98386943, 34, 3.65, -152)
+use_collision = true
+size = Vector3(5, 0.6, 11)
+material = ExtResource("CityRoof")
+
+[node name="FinishRunway" type="CSGBox3D" parent="." unique_id=765005044]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 40, 2.5, -204)
+use_collision = true
+size = Vector3(18, 1, 62)
+material = ExtResource("CityRoof")
+
+[node name="FinishApproach" type="Label3D" parent="." unique_id=689356357]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 40, 7, -176)
+pixel_size = 0.007
+billboard = 1
+text = "04  LONG CIRCUIT
+CHECKPOINT 1 → VELOCITY DRIVE"
+font_size = 52
+
+[node name="Checkpoint1" type="Area3D" parent="." unique_id=1034139029]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 40, 9, -228)
+collision_layer = 0
+collision_mask = 4
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Checkpoint1" unique_id=303298027]
+shape = SubResource("FinishShape")
+
+[node name="Checkpoint1Left" type="CSGBox3D" parent="." unique_id=388812132]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 31, 7, -228)
+size = Vector3(0.25, 8, 0.35)
+material = SubResource("Edge")
+
+[node name="Checkpoint1Right" type="CSGBox3D" parent="." unique_id=336987699]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 49, 7, -228)
+size = Vector3(0.25, 8, 0.35)
+material = SubResource("Edge")
+
+[node name="Checkpoint1Top" type="CSGBox3D" parent="." unique_id=1931837981]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 40, 11, -228)
+size = Vector3(18, 0.3, 0.35)
+material = SubResource("Edge")
+
+[node name="Checkpoint1Line" type="CSGBox3D" parent="." unique_id=757158769]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 40, 3.03, -228)
+size = Vector3(18, 0.04, 1)
+material = SubResource("Edge")
+
+[node name="Checkpoint1Sign" type="Label3D" parent="." unique_id=1345638777]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 40, 12, -228)
+pixel_size = 0.007
+billboard = 1
+text = "CP 1 / 6"
+font_size = 90
+
+[node name="OpeningEdge-1" type="CSGBox3D" parent="." unique_id=565514684]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -8.88, 0.02, -9)
+size = Vector3(0.18, 0.04, 38)
+material = SubResource("Edge")
+
+[node name="OpeningEdge1" type="CSGBox3D" parent="." unique_id=432418107]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 8.88, 0.02, -9)
+size = Vector3(0.18, 0.04, 38)
+material = SubResource("Edge")
+
+[node name="LandingEdge-1" type="CSGBox3D" parent="." unique_id=1441664943]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -8.88, 3.02, -56)
+size = Vector3(0.18, 0.04, 28)
+material = SubResource("Edge")
+
+[node name="LandingEdge1" type="CSGBox3D" parent="." unique_id=1427111853]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 8.88, 3.02, -56)
+size = Vector3(0.18, 0.04, 28)
+material = SubResource("Edge")
+
+[node name="TurnEdge-1" type="CSGBox3D" parent="." unique_id=14603043]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.12, 3.02, -65)
+size = Vector3(0.18, 0.04, 16)
+material = SubResource("Edge")
+
+[node name="TurnEdge1" type="CSGBox3D" parent="." unique_id=1997593879]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 47.88, 3.02, -65)
+size = Vector3(0.18, 0.04, 16)
+material = SubResource("Edge")
+
+[node name="NarrowAEdge-1" type="CSGBox3D" parent="." unique_id=2001532900]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 31.62, 5.02, -123)
+size = Vector3(0.18, 0.04, 12)
+material = SubResource("Edge")
+
+[node name="NarrowAEdge1" type="CSGBox3D" parent="." unique_id=1500985044]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 36.38, 5.02, -123)
+size = Vector3(0.18, 0.04, 12)
+material = SubResource("Edge")
+
+[node name="NarrowBEdge-1" type="CSGBox3D" parent="." unique_id=759680099]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 31.62, 5.02, -140)
+size = Vector3(0.18, 0.04, 14)
+material = SubResource("Edge")
+
+[node name="NarrowBEdge1" type="CSGBox3D" parent="." unique_id=1203926862]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 36.38, 5.02, -140)
+size = Vector3(0.18, 0.04, 14)
+material = SubResource("Edge")
+
+[node name="WideEdge-1" type="CSGBox3D" parent="." unique_id=1991733090]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 57.12, 3.02, -122)
+size = Vector3(0.18, 0.04, 66)
+material = SubResource("Edge")
+
+[node name="WideEdge1" type="CSGBox3D" parent="." unique_id=1233215177]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 66.88, 3.02, -122)
+size = Vector3(0.18, 0.04, 66)
+material = SubResource("Edge")
+
+[node name="RecoveryEdge-1" type="CSGBox3D" parent="." unique_id=619869030]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 19.12, 0.02, -126)
+size = Vector3(0.18, 0.04, 74)
+material = SubResource("Edge")
+
+[node name="RecoveryEdge1" type="CSGBox3D" parent="." unique_id=1418242249]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 62.88, 0.02, -126)
+size = Vector3(0.18, 0.04, 74)
+material = SubResource("Edge")
+
+[node name="FinishEdge-1" type="CSGBox3D" parent="." unique_id=493626221]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 31.12, 3.02, -204)
+size = Vector3(0.18, 0.04, 62)
+material = SubResource("Edge")
+
+[node name="FinishEdge1" type="CSGBox3D" parent="." unique_id=1531340366]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 48.88, 3.02, -204)
+size = Vector3(0.18, 0.04, 62)
+material = SubResource("Edge")
+
+[node name="Void" type="CSGBox3D" parent="." unique_id=1633940782]
+visible = false
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 25, -12.5, -112)
+size = Vector3(125, 1, 280)
+material = SubResource("Hazard")
+
+[node name="VoidSign" type="Label3D" parent="." unique_id=2030607263]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 13, -2, -34)
+pixel_size = 0.007
+billboard = 1
+text = "RED = FALL
+Lower deck = recovery"
+font_size = 40
+
+[node name="Respawn" type="Marker3D" parent="Checkpoint1"]
+position = Vector3(0, -5.45, -4)
+
+[node name="LongCourse" parent="." instance=ExtResource("LongCourse")]
+
+[node name="CityScenery" parent="." instance=ExtResource("CityScenery")]

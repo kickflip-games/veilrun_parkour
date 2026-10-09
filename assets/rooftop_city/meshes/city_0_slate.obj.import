@@ -1,0 +1,25 @@
+[remap]
+
+importer="wavefront_obj"
+importer_version=1
+type="Mesh"
+uid="uid://psyh8u3ma0pw"
+path="res://.godot/imported/city_0_slate.obj-420a88b7fbef9b18ae6ebe9bbc7b1f7d.mesh"
+
+[deps]
+
+files=["res://.godot/imported/city_0_slate.obj-420a88b7fbef9b18ae6ebe9bbc7b1f7d.mesh"]
+
+source_file="res://assets/rooftop_city/meshes/city_0_slate.obj"
+dest_files=["res://.godot/imported/city_0_slate.obj-420a88b7fbef9b18ae6ebe9bbc7b1f7d.mesh", "res://.godot/imported/city_0_slate.obj-420a88b7fbef9b18ae6ebe9bbc7b1f7d.mesh"]
+
+[params]
+
+generate_tangents=true
+generate_lods=true
+generate_shadow_mesh=true
+generate_lightmap_uv2=false
+generate_lightmap_uv2_texel_size=0.2
+scale_mesh=Vector3(1, 1, 1)
+offset_mesh=Vector3(0, 0, 0)
+force_disable_mesh_compression=false

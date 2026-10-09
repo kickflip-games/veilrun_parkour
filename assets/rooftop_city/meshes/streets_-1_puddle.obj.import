@@ -1,0 +1,25 @@
+[remap]
+
+importer="wavefront_obj"
+importer_version=1
+type="Mesh"
+uid="uid://dhy8nrecd2m32"
+path="res://.godot/imported/streets_-1_puddle.obj-44936cd5a4bedf8e308f065627d5a01d.mesh"
+
+[deps]
+
+files=["res://.godot/imported/streets_-1_puddle.obj-44936cd5a4bedf8e308f065627d5a01d.mesh"]
+
+source_file="res://assets/rooftop_city/meshes/streets_-1_puddle.obj"
+dest_files=["res://.godot/imported/streets_-1_puddle.obj-44936cd5a4bedf8e308f065627d5a01d.mesh", "res://.godot/imported/streets_-1_puddle.obj-44936cd5a4bedf8e308f065627d5a01d.mesh"]
+
+[params]
+
+generate_tangents=true
+generate_lods=true
+generate_shadow_mesh=true
+generate_lightmap_uv2=false
+generate_lightmap_uv2_texel_size=0.2
+scale_mesh=Vector3(1, 1, 1)
+offset_mesh=Vector3(0, 0, 0)
+force_disable_mesh_compression=false

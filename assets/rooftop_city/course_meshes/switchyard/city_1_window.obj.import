@@ -1,0 +1,25 @@
+[remap]
+
+importer="wavefront_obj"
+importer_version=1
+type="Mesh"
+uid="uid://bx5438e5on823"
+path="res://.godot/imported/city_1_window.obj-10c44c2c0f6e069d66e3dcf16c40ab33.mesh"
+
+[deps]
+
+files=["res://.godot/imported/city_1_window.obj-10c44c2c0f6e069d66e3dcf16c40ab33.mesh"]
+
+source_file="res://assets/rooftop_city/course_meshes/switchyard/city_1_window.obj"
+dest_files=["res://.godot/imported/city_1_window.obj-10c44c2c0f6e069d66e3dcf16c40ab33.mesh", "res://.godot/imported/city_1_window.obj-10c44c2c0f6e069d66e3dcf16c40ab33.mesh"]
+
+[params]
+
+generate_tangents=true
+generate_lods=true
+generate_shadow_mesh=true
+generate_lightmap_uv2=false
+generate_lightmap_uv2_texel_size=0.2
+scale_mesh=Vector3(1, 1, 1)
+offset_mesh=Vector3(0, 0, 0)
+force_disable_mesh_compression=false

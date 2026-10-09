@@ -1,0 +1,1256 @@
+[gd_scene load_steps=14 format=3]
+
+[ext_resource type="Sky" path="res://scenes/parkour/city_sky.tres" id="CitySky"]
+[ext_resource type="PackedScene" path="res://levels/parkour/switchyard_city_scenery.tscn" id="CityScenery"]
+
+[ext_resource type="Material" path="res://scenes/parkour/city_roof.tres" id="CityRoof"]
+
+[ext_resource type="PackedScene" path="res://scenes/player/player.tscn" id="Player"]
+[ext_resource type="Script" path="res://levels/parkour/parkour_trial.gd" id="Trial"]
+[ext_resource type="PackedScene" path="res://scenes/parkour/grapple_anchor.tscn" id="Anchor"]
+
+[sub_resource type="Environment" id="Environment"]
+background_mode = 2
+sky = ExtResource("CitySky")
+ambient_light_source = 3
+ambient_light_color = Color(0.48, 0.57, 0.70, 1)
+ambient_light_energy = 0.62
+fog_enabled = true
+fog_light_color = Color(0.22, 0.28, 0.36, 1)
+fog_density = 0.0037
+fog_sky_affect = 0.35
+fog_height = -18
+fog_height_density = 0.045
+
+[sub_resource type="StandardMaterial3D" id="Edge"]
+shading_mode = 0
+albedo_color = Color(0.92, 0.92, 0.92, 1)
+
+[sub_resource type="StandardMaterial3D" id="Hazard"]
+shading_mode = 0
+albedo_color = Color(0.5, 0.015, 0.025, 1)
+
+[sub_resource type="StandardMaterial3D" id="ArrowInk"]
+shading_mode = 0
+albedo_color = Color(0.62, 0.67, 0.72, 1)
+
+[sub_resource type="BoxShape3D" id="Gate24"]
+size = Vector3(24, 14, 2)
+
+[sub_resource type="BoxShape3D" id="Gate32"]
+size = Vector3(32, 14, 2)
+
+[sub_resource type="BoxMesh" id="ArrowStem"]
+material = SubResource("ArrowInk")
+size = Vector3(0.32, 0.04, 2.8)
+
+[sub_resource type="BoxMesh" id="ArrowWing"]
+material = SubResource("ArrowInk")
+size = Vector3(0.32, 0.04, 1.7)
+
+[node name="Switchyard" type="Node3D"]
+script = ExtResource("Trial")
+course_id = "switchyard_v1"
+course_title = "SWITCHYARD · PRECISION RUN"
+checkpoint_paths = Array[NodePath]([NodePath("Checkpoint1"), NodePath("Checkpoint2"), NodePath("Checkpoint3"), NodePath("Checkpoint4")])
+finish_path = NodePath("FinishGate")
+sector_names = PackedStringArray("WINDOWS · Follow the openings", "SLALOM · Steer around the pillars", "BANK / TUNNEL · Choose your line", "STAGGERED BRIDGES · Hop or take the outside", "RIGHT TURN · Carry it to the finish")
+metadata/course_length_metres = 387.0
+metadata/design = "Offset apertures, LOS-blocking slalom, raised bank / low tunnel, staggered bridges with wide outside route, 90-degree finish turn"
+
+[node name="WorldEnvironment" type="WorldEnvironment" parent="."]
+environment = SubResource("Environment")
+
+[node name="Sun" type="DirectionalLight3D" parent="."]
+rotation = Vector3(-0.9, -0.5, 0)
+light_color = Color(0.48, 0.60, 0.78, 1)
+light_energy = 0.85
+
+[node name="Player" parent="." instance=ExtResource("Player")]
+position = Vector3(0, 0.55, 6)
+surf_mode = true
+parkour_mode = true
+hook_exit_speed = 22.0
+
+[node name="WindowsRunway" type="CSGBox3D" parent="."]
+position = Vector3(0, -0.5, -37)
+use_collision = true
+size = Vector3(24, 1, 94)
+material = ExtResource("CityRoof")
+
+[node name="WindowsRunwayLeftEdge" type="CSGBox3D" parent="."]
+position = Vector3(-11.88, 0.025, -37)
+size = Vector3(0.18, 0.04, 93.8)
+material = SubResource("Edge")
+
+[node name="WindowsRunwayRightEdge" type="CSGBox3D" parent="."]
+position = Vector3(11.88, 0.025, -37)
+size = Vector3(0.18, 0.04, 93.8)
+material = SubResource("Edge")
+
+[node name="SlalomRunway" type="CSGBox3D" parent="."]
+position = Vector3(0, -0.5, -121)
+use_collision = true
+size = Vector3(24, 1, 78)
+material = ExtResource("CityRoof")
+
+[node name="SlalomRunwayLeftEdge" type="CSGBox3D" parent="."]
+position = Vector3(-11.88, 0.025, -121)
+size = Vector3(0.18, 0.04, 77.8)
+material = SubResource("Edge")
+
+[node name="SlalomRunwayRightEdge" type="CSGBox3D" parent="."]
+position = Vector3(11.88, 0.025, -121)
+size = Vector3(0.18, 0.04, 77.8)
+material = SubResource("Edge")
+
+[node name="WindowsLeftBoundary" type="CSGBox3D" parent="."]
+position = Vector3(-12.5, 6, -36)
+use_collision = true
+size = Vector3(1, 12, 92)
+material = ExtResource("CityRoof")
+
+[node name="SlalomLeftBoundary" type="CSGBox3D" parent="."]
+position = Vector3(-12.5, 6, -121)
+use_collision = true
+size = Vector3(1, 12, 78)
+material = ExtResource("CityRoof")
+
+[node name="WindowsRightBoundary" type="CSGBox3D" parent="."]
+position = Vector3(12.5, 6, -36)
+use_collision = true
+size = Vector3(1, 12, 92)
+material = ExtResource("CityRoof")
+
+[node name="SlalomRightBoundary" type="CSGBox3D" parent="."]
+position = Vector3(12.5, 6, -121)
+use_collision = true
+size = Vector3(1, 12, 78)
+material = ExtResource("CityRoof")
+
+[node name="StartGate" type="Area3D" parent="."]
+position = Vector3(0, 7, -5)
+collision_layer = 0
+collision_mask = 4
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="StartGate"]
+shape = SubResource("Gate24")
+
+[node name="StartGateFrame" type="Node3D" parent="."]
+position = Vector3(0, 0, -5)
+rotation_degrees = Vector3(0, 0, 0)
+
+[node name="Left" type="CSGBox3D" parent="StartGateFrame"]
+position = Vector3(-12, 4.5, 0)
+size = Vector3(0.25, 9, 0.3)
+material = SubResource("Edge")
+
+[node name="Right" type="CSGBox3D" parent="StartGateFrame"]
+position = Vector3(12, 4.5, 0)
+size = Vector3(0.25, 9, 0.3)
+material = SubResource("Edge")
+
+[node name="Top" type="CSGBox3D" parent="StartGateFrame"]
+position = Vector3(0, 9, 0)
+size = Vector3(24, 0.3, 0.3)
+material = SubResource("Edge")
+
+[node name="Line" type="CSGBox3D" parent="StartGateFrame"]
+position = Vector3(0, 0.03, 0)
+size = Vector3(24, 0.04, 1)
+material = SubResource("Edge")
+
+[node name="StartGateSign" type="Label3D" parent="."]
+position = Vector3(0, 10, -5)
+billboard = 1
+text = "START"
+font_size = 70
+pixel_size = 0.007
+outline_size = 10
+
+[node name="WindowsSign" type="Label3D" parent="."]
+position = Vector3(0, 7, -12)
+billboard = 1
+text = "01  OFFSET WINDOWS\nRead the next opening · Keep your momentum"
+font_size = 46
+pixel_size = 0.007
+outline_size = 10
+
+[node name="Window01Left" type="CSGBox3D" parent="."]
+position = Vector3(-11.5, 6, -22)
+use_collision = true
+size = Vector3(1, 12, 2)
+material = ExtResource("CityRoof")
+
+[node name="Window01Right" type="CSGBox3D" parent="."]
+position = Vector3(5.5, 6, -22)
+use_collision = true
+size = Vector3(13, 12, 2)
+material = ExtResource("CityRoof")
+
+[node name="Window01Lintel" type="CSGBox3D" parent="."]
+position = Vector3(-6, 9, -22)
+use_collision = true
+size = Vector3(10, 6, 2)
+material = ExtResource("CityRoof")
+
+[node name="Window01LeftTrim" type="CSGBox3D" parent="."]
+position = Vector3(-11, 3, -20.97)
+size = Vector3(0.12, 6, 0.06)
+material = SubResource("Edge")
+
+[node name="Window01RightTrim" type="CSGBox3D" parent="."]
+position = Vector3(-1, 3, -20.97)
+size = Vector3(0.12, 6, 0.06)
+material = SubResource("Edge")
+
+[node name="Window01TopTrim" type="CSGBox3D" parent="."]
+position = Vector3(-6, 6, -20.97)
+size = Vector3(10, 0.12, 0.06)
+material = SubResource("Edge")
+
+[node name="Window01Arrow" type="Node3D" parent="."]
+position = Vector3(-6, 0.05, -16)
+rotation_degrees = Vector3(0, 0, 0)
+
+[node name="Stem" type="MeshInstance3D" parent="Window01Arrow"]
+mesh = SubResource("ArrowStem")
+
+[node name="Left" type="MeshInstance3D" parent="Window01Arrow"]
+position = Vector3(-0.55, 0, -0.85)
+rotation_degrees = Vector3(0, -45, 0)
+mesh = SubResource("ArrowWing")
+
+[node name="Right" type="MeshInstance3D" parent="Window01Arrow"]
+position = Vector3(0.55, 0, -0.85)
+rotation_degrees = Vector3(0, 45, 0)
+mesh = SubResource("ArrowWing")
+
+[node name="Window01Anchor" parent="." instance=ExtResource("Anchor")]
+position = Vector3(-6, 4.75, -27)
+
+[node name="Window02Left" type="CSGBox3D" parent="."]
+position = Vector3(-5.5, 6, -46)
+use_collision = true
+size = Vector3(13, 12, 2)
+material = ExtResource("CityRoof")
+
+[node name="Window02Right" type="CSGBox3D" parent="."]
+position = Vector3(11.5, 6, -46)
+use_collision = true
+size = Vector3(1, 12, 2)
+material = ExtResource("CityRoof")
+
+[node name="Window02Lintel" type="CSGBox3D" parent="."]
+position = Vector3(6, 9, -46)
+use_collision = true
+size = Vector3(10, 6, 2)
+material = ExtResource("CityRoof")
+
+[node name="Window02LeftTrim" type="CSGBox3D" parent="."]
+position = Vector3(1, 3, -44.97)
+size = Vector3(0.12, 6, 0.06)
+material = SubResource("Edge")
+
+[node name="Window02RightTrim" type="CSGBox3D" parent="."]
+position = Vector3(11, 3, -44.97)
+size = Vector3(0.12, 6, 0.06)
+material = SubResource("Edge")
+
+[node name="Window02TopTrim" type="CSGBox3D" parent="."]
+position = Vector3(6, 6, -44.97)
+size = Vector3(10, 0.12, 0.06)
+material = SubResource("Edge")
+
+[node name="Window02Arrow" type="Node3D" parent="."]
+position = Vector3(6, 0.05, -40)
+rotation_degrees = Vector3(0, 0, 0)
+
+[node name="Stem" type="MeshInstance3D" parent="Window02Arrow"]
+mesh = SubResource("ArrowStem")
+
+[node name="Left" type="MeshInstance3D" parent="Window02Arrow"]
+position = Vector3(-0.55, 0, -0.85)
+rotation_degrees = Vector3(0, -45, 0)
+mesh = SubResource("ArrowWing")
+
+[node name="Right" type="MeshInstance3D" parent="Window02Arrow"]
+position = Vector3(0.55, 0, -0.85)
+rotation_degrees = Vector3(0, 45, 0)
+mesh = SubResource("ArrowWing")
+
+[node name="Window02Anchor" parent="." instance=ExtResource("Anchor")]
+position = Vector3(6, 4.75, -51)
+
+[node name="Window03Left" type="CSGBox3D" parent="."]
+position = Vector3(-11.5, 6, -68)
+use_collision = true
+size = Vector3(1, 12, 2)
+material = ExtResource("CityRoof")
+
+[node name="Window03Right" type="CSGBox3D" parent="."]
+position = Vector3(5.5, 6, -68)
+use_collision = true
+size = Vector3(13, 12, 2)
+material = ExtResource("CityRoof")
+
+[node name="Window03Lintel" type="CSGBox3D" parent="."]
+position = Vector3(-6, 9, -68)
+use_collision = true
+size = Vector3(10, 6, 2)
+material = ExtResource("CityRoof")
+
+[node name="Window03LeftTrim" type="CSGBox3D" parent="."]
+position = Vector3(-11, 3, -66.97)
+size = Vector3(0.12, 6, 0.06)
+material = SubResource("Edge")
+
+[node name="Window03RightTrim" type="CSGBox3D" parent="."]
+position = Vector3(-1, 3, -66.97)
+size = Vector3(0.12, 6, 0.06)
+material = SubResource("Edge")
+
+[node name="Window03TopTrim" type="CSGBox3D" parent="."]
+position = Vector3(-6, 6, -66.97)
+size = Vector3(10, 0.12, 0.06)
+material = SubResource("Edge")
+
+[node name="Window03Arrow" type="Node3D" parent="."]
+position = Vector3(-6, 0.05, -62)
+rotation_degrees = Vector3(0, 0, 0)
+
+[node name="Stem" type="MeshInstance3D" parent="Window03Arrow"]
+mesh = SubResource("ArrowStem")
+
+[node name="Left" type="MeshInstance3D" parent="Window03Arrow"]
+position = Vector3(-0.55, 0, -0.85)
+rotation_degrees = Vector3(0, -45, 0)
+mesh = SubResource("ArrowWing")
+
+[node name="Right" type="MeshInstance3D" parent="Window03Arrow"]
+position = Vector3(0.55, 0, -0.85)
+rotation_degrees = Vector3(0, 45, 0)
+mesh = SubResource("ArrowWing")
+
+[node name="Window03Anchor" parent="." instance=ExtResource("Anchor")]
+position = Vector3(-6, 4.75, -73)
+
+[node name="WindowTransfer01" parent="." instance=ExtResource("Anchor")]
+position = Vector3(0, 4.75, -37)
+
+[node name="WindowTransfer02" parent="." instance=ExtResource("Anchor")]
+position = Vector3(0, 4.75, -58)
+
+[node name="Checkpoint1" type="Area3D" parent="."]
+position = Vector3(0, 7, -82)
+collision_layer = 0
+collision_mask = 4
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Checkpoint1"]
+shape = SubResource("Gate24")
+
+[node name="Respawn" type="Marker3D" parent="Checkpoint1"]
+position = Vector3(0, -6.45, -4)
+
+[node name="Checkpoint1Frame" type="Node3D" parent="."]
+position = Vector3(0, 0, -82)
+rotation_degrees = Vector3(0, 0, 0)
+
+[node name="Left" type="CSGBox3D" parent="Checkpoint1Frame"]
+position = Vector3(-12, 4.5, 0)
+size = Vector3(0.25, 9, 0.3)
+material = SubResource("Edge")
+
+[node name="Right" type="CSGBox3D" parent="Checkpoint1Frame"]
+position = Vector3(12, 4.5, 0)
+size = Vector3(0.25, 9, 0.3)
+material = SubResource("Edge")
+
+[node name="Top" type="CSGBox3D" parent="Checkpoint1Frame"]
+position = Vector3(0, 9, 0)
+size = Vector3(24, 0.3, 0.3)
+material = SubResource("Edge")
+
+[node name="Line" type="CSGBox3D" parent="Checkpoint1Frame"]
+position = Vector3(0, 0.03, 0)
+size = Vector3(24, 0.04, 1)
+material = SubResource("Edge")
+
+[node name="Checkpoint1Sign" type="Label3D" parent="."]
+position = Vector3(0, 10, -82)
+billboard = 1
+text = "01  CHECKPOINT"
+font_size = 70
+pixel_size = 0.007
+outline_size = 10
+
+[node name="SlalomSign" type="Label3D" parent="."]
+position = Vector3(0, 7, -89)
+billboard = 1
+text = "02  PILLAR SLALOM\nSteer around the blocks · Clear a line to the next anchor"
+font_size = 46
+pixel_size = 0.007
+outline_size = 10
+
+[node name="Pillar01" type="CSGBox3D" parent="."]
+position = Vector3(3, 5, -99)
+use_collision = true
+size = Vector3(14, 10, 5)
+material = ExtResource("CityRoof")
+
+[node name="Slalom01Arrow" type="Node3D" parent="."]
+position = Vector3(-8, 0.05, -92)
+rotation_degrees = Vector3(0, 0, 0)
+
+[node name="Stem" type="MeshInstance3D" parent="Slalom01Arrow"]
+mesh = SubResource("ArrowStem")
+
+[node name="Left" type="MeshInstance3D" parent="Slalom01Arrow"]
+position = Vector3(-0.55, 0, -0.85)
+rotation_degrees = Vector3(0, -45, 0)
+mesh = SubResource("ArrowWing")
+
+[node name="Right" type="MeshInstance3D" parent="Slalom01Arrow"]
+position = Vector3(0.55, 0, -0.85)
+rotation_degrees = Vector3(0, 45, 0)
+mesh = SubResource("ArrowWing")
+
+[node name="Slalom01Anchor" parent="." instance=ExtResource("Anchor")]
+position = Vector3(-8, 5, -105)
+
+[node name="Pillar01WhiteCap" type="CSGBox3D" parent="."]
+position = Vector3(3, 10.03, -99)
+size = Vector3(14, 0.06, 5)
+material = SubResource("Edge")
+
+[node name="Pillar02" type="CSGBox3D" parent="."]
+position = Vector3(-3, 5, -119)
+use_collision = true
+size = Vector3(14, 10, 5)
+material = ExtResource("CityRoof")
+
+[node name="Slalom02Arrow" type="Node3D" parent="."]
+position = Vector3(8, 0.05, -112)
+rotation_degrees = Vector3(0, 0, 0)
+
+[node name="Stem" type="MeshInstance3D" parent="Slalom02Arrow"]
+mesh = SubResource("ArrowStem")
+
+[node name="Left" type="MeshInstance3D" parent="Slalom02Arrow"]
+position = Vector3(-0.55, 0, -0.85)
+rotation_degrees = Vector3(0, -45, 0)
+mesh = SubResource("ArrowWing")
+
+[node name="Right" type="MeshInstance3D" parent="Slalom02Arrow"]
+position = Vector3(0.55, 0, -0.85)
+rotation_degrees = Vector3(0, 45, 0)
+mesh = SubResource("ArrowWing")
+
+[node name="Slalom02Anchor" parent="." instance=ExtResource("Anchor")]
+position = Vector3(8, 5, -125)
+
+[node name="Pillar02WhiteCap" type="CSGBox3D" parent="."]
+position = Vector3(-3, 10.03, -119)
+size = Vector3(14, 0.06, 5)
+material = SubResource("Edge")
+
+[node name="Pillar03" type="CSGBox3D" parent="."]
+position = Vector3(3, 5, -139)
+use_collision = true
+size = Vector3(14, 10, 5)
+material = ExtResource("CityRoof")
+
+[node name="Slalom03Arrow" type="Node3D" parent="."]
+position = Vector3(-8, 0.05, -132)
+rotation_degrees = Vector3(0, 0, 0)
+
+[node name="Stem" type="MeshInstance3D" parent="Slalom03Arrow"]
+mesh = SubResource("ArrowStem")
+
+[node name="Left" type="MeshInstance3D" parent="Slalom03Arrow"]
+position = Vector3(-0.55, 0, -0.85)
+rotation_degrees = Vector3(0, -45, 0)
+mesh = SubResource("ArrowWing")
+
+[node name="Right" type="MeshInstance3D" parent="Slalom03Arrow"]
+position = Vector3(0.55, 0, -0.85)
+rotation_degrees = Vector3(0, 45, 0)
+mesh = SubResource("ArrowWing")
+
+[node name="Slalom03Anchor" parent="." instance=ExtResource("Anchor")]
+position = Vector3(-8, 5, -145)
+
+[node name="Pillar03WhiteCap" type="CSGBox3D" parent="."]
+position = Vector3(3, 10.03, -139)
+size = Vector3(14, 0.06, 5)
+material = SubResource("Edge")
+
+[node name="SlalomTransfer01" parent="." instance=ExtResource("Anchor")]
+position = Vector3(0, 5, -113)
+
+[node name="SlalomTransfer02" parent="." instance=ExtResource("Anchor")]
+position = Vector3(0, 5, -133)
+
+[node name="Checkpoint2" type="Area3D" parent="."]
+position = Vector3(0, 7, -158)
+collision_layer = 0
+collision_mask = 4
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Checkpoint2"]
+shape = SubResource("Gate24")
+
+[node name="Respawn" type="Marker3D" parent="Checkpoint2"]
+position = Vector3(0, -6.45, -4)
+
+[node name="Checkpoint2Frame" type="Node3D" parent="."]
+position = Vector3(0, 0, -158)
+rotation_degrees = Vector3(0, 0, 0)
+
+[node name="Left" type="CSGBox3D" parent="Checkpoint2Frame"]
+position = Vector3(-12, 4.5, 0)
+size = Vector3(0.25, 9, 0.3)
+material = SubResource("Edge")
+
+[node name="Right" type="CSGBox3D" parent="Checkpoint2Frame"]
+position = Vector3(12, 4.5, 0)
+size = Vector3(0.25, 9, 0.3)
+material = SubResource("Edge")
+
+[node name="Top" type="CSGBox3D" parent="Checkpoint2Frame"]
+position = Vector3(0, 9, 0)
+size = Vector3(24, 0.3, 0.3)
+material = SubResource("Edge")
+
+[node name="Line" type="CSGBox3D" parent="Checkpoint2Frame"]
+position = Vector3(0, 0.03, 0)
+size = Vector3(24, 0.04, 1)
+material = SubResource("Edge")
+
+[node name="Checkpoint2Sign" type="Label3D" parent="."]
+position = Vector3(0, 10, -158)
+billboard = 1
+text = "02  CHECKPOINT"
+font_size = 70
+pixel_size = 0.007
+outline_size = 10
+
+[node name="SplitBaseRunway" type="CSGBox3D" parent="."]
+position = Vector3(0, -0.5, -208)
+use_collision = true
+size = Vector3(28, 1, 100)
+material = ExtResource("CityRoof")
+
+[node name="SplitBaseRunwayLeftEdge" type="CSGBox3D" parent="."]
+position = Vector3(-13.88, 0.025, -208)
+size = Vector3(0.18, 0.04, 99.8)
+material = SubResource("Edge")
+
+[node name="SplitBaseRunwayRightEdge" type="CSGBox3D" parent="."]
+position = Vector3(13.88, 0.025, -208)
+size = Vector3(0.18, 0.04, 99.8)
+material = SubResource("Edge")
+
+[node name="BankTunnelSign" type="Label3D" parent="."]
+position = Vector3(0, 8, -168)
+billboard = 1
+text = "03  CHOOSE YOUR LINE\n← LOW TUNNEL       HIGH BANK →"
+font_size = 46
+pixel_size = 0.007
+outline_size = 10
+
+[node name="DividerWall" type="CSGBox3D" parent="."]
+position = Vector3(0.5, 4, -207)
+use_collision = true
+size = Vector3(1, 8, 60)
+material = ExtResource("CityRoof")
+
+[node name="TunnelLeftWall" type="CSGBox3D" parent="."]
+position = Vector3(-13.5, 3, -207)
+use_collision = true
+size = Vector3(1, 6, 60)
+material = ExtResource("CityRoof")
+
+[node name="TunnelRoof" type="CSGBox3D" parent="."]
+position = Vector3(-6.5, 3.8, -207)
+use_collision = true
+size = Vector3(13, 0.8, 60)
+material = ExtResource("CityRoof")
+
+[node name="TunnelRoofEdge" type="CSGBox3D" parent="."]
+position = Vector3(-6.5, 4.23, -207)
+size = Vector3(13, 0.06, 60)
+material = SubResource("Edge")
+
+[node name="TunnelEntrySign" type="Label3D" parent="."]
+position = Vector3(-6.5, 2.8, -179)
+billboard = 1
+text = "LOW / WIDE"
+font_size = 36
+pixel_size = 0.007
+outline_size = 10
+
+[node name="TunnelArrow01" type="Node3D" parent="."]
+position = Vector3(-6.5, 0.05, -182)
+rotation_degrees = Vector3(0, 0, 0)
+
+[node name="Stem" type="MeshInstance3D" parent="TunnelArrow01"]
+mesh = SubResource("ArrowStem")
+
+[node name="Left" type="MeshInstance3D" parent="TunnelArrow01"]
+position = Vector3(-0.55, 0, -0.85)
+rotation_degrees = Vector3(0, -45, 0)
+mesh = SubResource("ArrowWing")
+
+[node name="Right" type="MeshInstance3D" parent="TunnelArrow01"]
+position = Vector3(0.55, 0, -0.85)
+rotation_degrees = Vector3(0, 45, 0)
+mesh = SubResource("ArrowWing")
+
+[node name="TunnelArrow02" type="Node3D" parent="."]
+position = Vector3(-6.5, 0.05, -201)
+rotation_degrees = Vector3(0, 0, 0)
+
+[node name="Stem" type="MeshInstance3D" parent="TunnelArrow02"]
+mesh = SubResource("ArrowStem")
+
+[node name="Left" type="MeshInstance3D" parent="TunnelArrow02"]
+position = Vector3(-0.55, 0, -0.85)
+rotation_degrees = Vector3(0, -45, 0)
+mesh = SubResource("ArrowWing")
+
+[node name="Right" type="MeshInstance3D" parent="TunnelArrow02"]
+position = Vector3(0.55, 0, -0.85)
+rotation_degrees = Vector3(0, 45, 0)
+mesh = SubResource("ArrowWing")
+
+[node name="TunnelArrow03" type="Node3D" parent="."]
+position = Vector3(-6.5, 0.05, -220)
+rotation_degrees = Vector3(0, 0, 0)
+
+[node name="Stem" type="MeshInstance3D" parent="TunnelArrow03"]
+mesh = SubResource("ArrowStem")
+
+[node name="Left" type="MeshInstance3D" parent="TunnelArrow03"]
+position = Vector3(-0.55, 0, -0.85)
+rotation_degrees = Vector3(0, -45, 0)
+mesh = SubResource("ArrowWing")
+
+[node name="Right" type="MeshInstance3D" parent="TunnelArrow03"]
+position = Vector3(0.55, 0, -0.85)
+rotation_degrees = Vector3(0, 45, 0)
+mesh = SubResource("ArrowWing")
+
+[node name="BankEntryRamp" type="CSGBox3D" parent="."]
+transform = Transform3D(1.000000, 0.000000, 0.000000, 0.000000, 0.970143, -0.242536, 0.000000, 0.242536, 0.970143, 7.500000, 2.708957, -178.072761)
+use_collision = true
+size = Vector3(11, 0.6, 24.738634)
+material = ExtResource("CityRoof")
+
+[node name="BankInsideLane" type="CSGBox3D" parent="."]
+position = Vector3(6, 5.5, -207)
+use_collision = true
+size = Vector3(6, 1, 34)
+material = ExtResource("CityRoof")
+
+[node name="BankInsideLaneLeftEdge" type="CSGBox3D" parent="."]
+position = Vector3(3.12, 6.025, -207)
+size = Vector3(0.18, 0.04, 33.8)
+material = SubResource("Edge")
+
+[node name="BankInsideLaneRightEdge" type="CSGBox3D" parent="."]
+position = Vector3(8.88, 6.025, -207)
+size = Vector3(0.18, 0.04, 33.8)
+material = SubResource("Edge")
+
+[node name="HighBank" type="CSGBox3D" parent="."]
+transform = Transform3D(0.939693, -0.342020, 0.000000, 0.342020, 0.939693, 0.000000, 0.000000, 0.000000, 1.000000, 12.102606, 6.810003, -207.000000)
+use_collision = true
+size = Vector3(6.385067, 0.6, 34)
+material = ExtResource("CityRoof")
+
+[node name="HighBankOutsideEdge" type="CSGBox3D" parent="."]
+position = Vector3(14.94, 8.17, -207)
+size = Vector3(0.15, 0.05, 33.8)
+material = SubResource("Edge")
+
+[node name="HighBankSign" type="Label3D" parent="."]
+position = Vector3(8, 10, -194)
+billboard = 1
+text = "HIGH BANK\nHold your line · Let the slope carry you"
+font_size = 38
+pixel_size = 0.007
+outline_size = 10
+
+[node name="BankExitRamp" type="CSGBox3D" parent="."]
+transform = Transform3D(1.000000, 0.000000, 0.000000, 0.000000, 0.970143, 0.242536, 0.000000, -0.242536, 0.970143, 7.500000, 2.708957, -235.927239)
+use_collision = true
+size = Vector3(11, 0.6, 24.738634)
+material = ExtResource("CityRoof")
+
+[node name="BankApproachAnchor" parent="." instance=ExtResource("Anchor")]
+position = Vector3(7.5, 5, -174)
+
+[node name="BankEntryAnchor" parent="." instance=ExtResource("Anchor")]
+position = Vector3(7.5, 10.5, -192)
+
+[node name="BankRideAnchor" parent="." instance=ExtResource("Anchor")]
+position = Vector3(10.5, 11.5, -212)
+
+[node name="BankExitAnchor" parent="." instance=ExtResource("Anchor")]
+position = Vector3(7.5, 9.5, -231)
+
+[node name="BankMergeAnchor" parent="." instance=ExtResource("Anchor")]
+position = Vector3(0, 5, -249)
+
+[node name="Checkpoint3" type="Area3D" parent="."]
+position = Vector3(0, 7, -252)
+collision_layer = 0
+collision_mask = 4
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Checkpoint3"]
+shape = SubResource("Gate32")
+
+[node name="Respawn" type="Marker3D" parent="Checkpoint3"]
+position = Vector3(0, -6.45, -1)
+
+[node name="Checkpoint3Frame" type="Node3D" parent="."]
+position = Vector3(0, 0, -252)
+rotation_degrees = Vector3(0, 0, 0)
+
+[node name="Left" type="CSGBox3D" parent="Checkpoint3Frame"]
+position = Vector3(-16, 4.5, 0)
+size = Vector3(0.25, 9, 0.3)
+material = SubResource("Edge")
+
+[node name="Right" type="CSGBox3D" parent="Checkpoint3Frame"]
+position = Vector3(16, 4.5, 0)
+size = Vector3(0.25, 9, 0.3)
+material = SubResource("Edge")
+
+[node name="Top" type="CSGBox3D" parent="Checkpoint3Frame"]
+position = Vector3(0, 9, 0)
+size = Vector3(32, 0.3, 0.3)
+material = SubResource("Edge")
+
+[node name="Line" type="CSGBox3D" parent="Checkpoint3Frame"]
+position = Vector3(0, 0.03, 0)
+size = Vector3(32, 0.04, 1)
+material = SubResource("Edge")
+
+[node name="Checkpoint3Sign" type="Label3D" parent="."]
+position = Vector3(0, 10, -252)
+billboard = 1
+text = "03  CHECKPOINT"
+font_size = 70
+pixel_size = 0.007
+outline_size = 10
+
+[node name="BridgeApproach" type="CSGBox3D" parent="."]
+position = Vector3(0, -0.5, -257)
+use_collision = true
+size = Vector3(32, 1, 14)
+material = ExtResource("CityRoof")
+
+[node name="BridgeApproachLeftEdge" type="CSGBox3D" parent="."]
+position = Vector3(-15.88, 0.025, -257)
+size = Vector3(0.18, 0.04, 13.8)
+material = SubResource("Edge")
+
+[node name="BridgeApproachRightEdge" type="CSGBox3D" parent="."]
+position = Vector3(15.88, 0.025, -257)
+size = Vector3(0.18, 0.04, 13.8)
+material = SubResource("Edge")
+
+[node name="BridgeEntryRamp" type="CSGBox3D" parent="."]
+transform = Transform3D(1.000000, 0.000000, 0.000000, 0.000000, 0.970143, -0.242536, 0.000000, 0.242536, 0.970143, 0.000000, 1.458957, -261.072761)
+use_collision = true
+size = Vector3(32, 0.6, 14.43087)
+material = ExtResource("CityRoof")
+
+[node name="BridgeEntryDeck" type="CSGBox3D" parent="."]
+position = Vector3(0, 3, -271)
+use_collision = true
+size = Vector3(32, 1, 6)
+material = ExtResource("CityRoof")
+
+[node name="BridgeEntryDeckLeftEdge" type="CSGBox3D" parent="."]
+position = Vector3(-15.88, 3.525, -271)
+size = Vector3(0.18, 0.04, 5.8)
+material = SubResource("Edge")
+
+[node name="BridgeEntryDeckRightEdge" type="CSGBox3D" parent="."]
+position = Vector3(15.88, 3.525, -271)
+size = Vector3(0.18, 0.04, 5.8)
+material = SubResource("Edge")
+
+[node name="BridgeChoiceSign" type="Label3D" parent="."]
+position = Vector3(0, 9, -267)
+billboard = 1
+text = "04  STAGGERED BRIDGES\n← HOP LINE       WIDE OUTSIDE →"
+font_size = 46
+pixel_size = 0.007
+outline_size = 10
+
+[node name="BridgeCatchDeck" type="CSGBox3D" parent="."]
+position = Vector3(1, -0.5, -302)
+use_collision = true
+size = Vector3(30, 1, 60)
+material = ExtResource("CityRoof")
+
+[node name="BridgeCatchDeckLeftEdge" type="CSGBox3D" parent="."]
+position = Vector3(-13.88, 0.025, -302)
+size = Vector3(0.18, 0.04, 59.8)
+material = SubResource("Edge")
+
+[node name="BridgeCatchDeckRightEdge" type="CSGBox3D" parent="."]
+position = Vector3(15.88, 0.025, -302)
+size = Vector3(0.18, 0.04, 59.8)
+material = SubResource("Edge")
+
+[node name="NarrowBridge01" type="CSGBox3D" parent="."]
+position = Vector3(-6, 3, -281.5)
+use_collision = true
+size = Vector3(5, 1, 15)
+material = ExtResource("CityRoof")
+
+[node name="NarrowBridge01LeftEdge" type="CSGBox3D" parent="."]
+position = Vector3(-8.38, 3.525, -281.5)
+size = Vector3(0.18, 0.04, 14.8)
+material = SubResource("Edge")
+
+[node name="NarrowBridge01RightEdge" type="CSGBox3D" parent="."]
+position = Vector3(-3.62, 3.525, -281.5)
+size = Vector3(0.18, 0.04, 14.8)
+material = SubResource("Edge")
+
+[node name="Bridge01Arrow" type="Node3D" parent="."]
+position = Vector3(-6, 3.55, -283.5)
+rotation_degrees = Vector3(0, 0, 0)
+
+[node name="Stem" type="MeshInstance3D" parent="Bridge01Arrow"]
+mesh = SubResource("ArrowStem")
+
+[node name="Left" type="MeshInstance3D" parent="Bridge01Arrow"]
+position = Vector3(-0.55, 0, -0.85)
+rotation_degrees = Vector3(0, -45, 0)
+mesh = SubResource("ArrowWing")
+
+[node name="Right" type="MeshInstance3D" parent="Bridge01Arrow"]
+position = Vector3(0.55, 0, -0.85)
+rotation_degrees = Vector3(0, 45, 0)
+mesh = SubResource("ArrowWing")
+
+[node name="Bridge01Anchor" parent="." instance=ExtResource("Anchor")]
+position = Vector3(-6, 8.5, -280.5)
+
+[node name="NarrowBridge02" type="CSGBox3D" parent="."]
+position = Vector3(1, 3, -302.5)
+use_collision = true
+size = Vector3(5, 1, 15)
+material = ExtResource("CityRoof")
+
+[node name="NarrowBridge02LeftEdge" type="CSGBox3D" parent="."]
+position = Vector3(-1.38, 3.525, -302.5)
+size = Vector3(0.18, 0.04, 14.8)
+material = SubResource("Edge")
+
+[node name="NarrowBridge02RightEdge" type="CSGBox3D" parent="."]
+position = Vector3(3.38, 3.525, -302.5)
+size = Vector3(0.18, 0.04, 14.8)
+material = SubResource("Edge")
+
+[node name="Bridge02Arrow" type="Node3D" parent="."]
+position = Vector3(1, 3.55, -304.5)
+rotation_degrees = Vector3(0, 0, 0)
+
+[node name="Stem" type="MeshInstance3D" parent="Bridge02Arrow"]
+mesh = SubResource("ArrowStem")
+
+[node name="Left" type="MeshInstance3D" parent="Bridge02Arrow"]
+position = Vector3(-0.55, 0, -0.85)
+rotation_degrees = Vector3(0, -45, 0)
+mesh = SubResource("ArrowWing")
+
+[node name="Right" type="MeshInstance3D" parent="Bridge02Arrow"]
+position = Vector3(0.55, 0, -0.85)
+rotation_degrees = Vector3(0, 45, 0)
+mesh = SubResource("ArrowWing")
+
+[node name="Bridge02Anchor" parent="." instance=ExtResource("Anchor")]
+position = Vector3(1, 8.5, -301.5)
+
+[node name="NarrowBridge03" type="CSGBox3D" parent="."]
+position = Vector3(-6, 3, -322.5)
+use_collision = true
+size = Vector3(5, 1, 13)
+material = ExtResource("CityRoof")
+
+[node name="NarrowBridge03LeftEdge" type="CSGBox3D" parent="."]
+position = Vector3(-8.38, 3.525, -322.5)
+size = Vector3(0.18, 0.04, 12.8)
+material = SubResource("Edge")
+
+[node name="NarrowBridge03RightEdge" type="CSGBox3D" parent="."]
+position = Vector3(-3.62, 3.525, -322.5)
+size = Vector3(0.18, 0.04, 12.8)
+material = SubResource("Edge")
+
+[node name="Bridge03Arrow" type="Node3D" parent="."]
+position = Vector3(-6, 3.55, -324.5)
+rotation_degrees = Vector3(0, 0, 0)
+
+[node name="Stem" type="MeshInstance3D" parent="Bridge03Arrow"]
+mesh = SubResource("ArrowStem")
+
+[node name="Left" type="MeshInstance3D" parent="Bridge03Arrow"]
+position = Vector3(-0.55, 0, -0.85)
+rotation_degrees = Vector3(0, -45, 0)
+mesh = SubResource("ArrowWing")
+
+[node name="Right" type="MeshInstance3D" parent="Bridge03Arrow"]
+position = Vector3(0.55, 0, -0.85)
+rotation_degrees = Vector3(0, 45, 0)
+mesh = SubResource("ArrowWing")
+
+[node name="Bridge03Anchor" parent="." instance=ExtResource("Anchor")]
+position = Vector3(-6, 8.5, -321.5)
+
+[node name="WideOutsideRoute" type="CSGBox3D" parent="."]
+position = Vector3(12, 3, -301)
+use_collision = true
+size = Vector3(8, 1, 62)
+material = ExtResource("CityRoof")
+
+[node name="WideOutsideRouteLeftEdge" type="CSGBox3D" parent="."]
+position = Vector3(8.12, 3.525, -301)
+size = Vector3(0.18, 0.04, 61.8)
+material = SubResource("Edge")
+
+[node name="WideOutsideRouteRightEdge" type="CSGBox3D" parent="."]
+position = Vector3(15.88, 3.525, -301)
+size = Vector3(0.18, 0.04, 61.8)
+material = SubResource("Edge")
+
+[node name="OutsideArrow01" type="Node3D" parent="."]
+position = Vector3(12, 3.55, -278)
+rotation_degrees = Vector3(0, 0, 0)
+
+[node name="Stem" type="MeshInstance3D" parent="OutsideArrow01"]
+mesh = SubResource("ArrowStem")
+
+[node name="Left" type="MeshInstance3D" parent="OutsideArrow01"]
+position = Vector3(-0.55, 0, -0.85)
+rotation_degrees = Vector3(0, -45, 0)
+mesh = SubResource("ArrowWing")
+
+[node name="Right" type="MeshInstance3D" parent="OutsideArrow01"]
+position = Vector3(0.55, 0, -0.85)
+rotation_degrees = Vector3(0, 45, 0)
+mesh = SubResource("ArrowWing")
+
+[node name="OutsideAnchor01" parent="." instance=ExtResource("Anchor")]
+position = Vector3(12, 8.5, -284)
+
+[node name="OutsideArrow02" type="Node3D" parent="."]
+position = Vector3(12, 3.55, -296)
+rotation_degrees = Vector3(0, 0, 0)
+
+[node name="Stem" type="MeshInstance3D" parent="OutsideArrow02"]
+mesh = SubResource("ArrowStem")
+
+[node name="Left" type="MeshInstance3D" parent="OutsideArrow02"]
+position = Vector3(-0.55, 0, -0.85)
+rotation_degrees = Vector3(0, -45, 0)
+mesh = SubResource("ArrowWing")
+
+[node name="Right" type="MeshInstance3D" parent="OutsideArrow02"]
+position = Vector3(0.55, 0, -0.85)
+rotation_degrees = Vector3(0, 45, 0)
+mesh = SubResource("ArrowWing")
+
+[node name="OutsideAnchor02" parent="." instance=ExtResource("Anchor")]
+position = Vector3(12, 8.5, -302)
+
+[node name="OutsideArrow03" type="Node3D" parent="."]
+position = Vector3(12, 3.55, -314)
+rotation_degrees = Vector3(0, 0, 0)
+
+[node name="Stem" type="MeshInstance3D" parent="OutsideArrow03"]
+mesh = SubResource("ArrowStem")
+
+[node name="Left" type="MeshInstance3D" parent="OutsideArrow03"]
+position = Vector3(-0.55, 0, -0.85)
+rotation_degrees = Vector3(0, -45, 0)
+mesh = SubResource("ArrowWing")
+
+[node name="Right" type="MeshInstance3D" parent="OutsideArrow03"]
+position = Vector3(0.55, 0, -0.85)
+rotation_degrees = Vector3(0, 45, 0)
+mesh = SubResource("ArrowWing")
+
+[node name="OutsideAnchor03" parent="." instance=ExtResource("Anchor")]
+position = Vector3(12, 8.5, -320)
+
+[node name="OutsideSign" type="Label3D" parent="."]
+position = Vector3(12, 7, -278)
+billboard = 1
+text = "WIDE / SAFE"
+font_size = 36
+pixel_size = 0.007
+outline_size = 10
+
+[node name="CatchWeaveBlock" type="CSGBox3D" parent="."]
+position = Vector3(-5.5, 1.25, -300)
+use_collision = true
+size = Vector3(14, 2.5, 3)
+material = ExtResource("CityRoof")
+
+[node name="CatchRecoveryRamp" type="CSGBox3D" parent="."]
+transform = Transform3D(1.000000, 0.000000, 0.000000, 0.000000, 0.989533, -0.144307, 0.000000, 0.144307, 0.989533, 1.000000, 1.453140, -320.043292)
+use_collision = true
+size = Vector3(8, 0.6, 24.253866)
+material = ExtResource("CityRoof")
+
+[node name="CatchRecoverySign" type="Label3D" parent="."]
+position = Vector3(1, 3.1, -309)
+billboard = 1
+text = "RECOVERY → RAMP"
+font_size = 34
+pixel_size = 0.007
+outline_size = 10
+
+[node name="BridgeMergeDeck" type="CSGBox3D" parent="."]
+position = Vector3(0, 3, -338)
+use_collision = true
+size = Vector3(32, 1, 18)
+material = ExtResource("CityRoof")
+
+[node name="BridgeMergeDeckLeftEdge" type="CSGBox3D" parent="."]
+position = Vector3(-15.88, 3.525, -338)
+size = Vector3(0.18, 0.04, 17.8)
+material = SubResource("Edge")
+
+[node name="BridgeMergeDeckRightEdge" type="CSGBox3D" parent="."]
+position = Vector3(15.88, 3.525, -338)
+size = Vector3(0.18, 0.04, 17.8)
+material = SubResource("Edge")
+
+[node name="Checkpoint4" type="Area3D" parent="."]
+position = Vector3(0, 10.5, -338)
+collision_layer = 0
+collision_mask = 4
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Checkpoint4"]
+shape = SubResource("Gate32")
+
+[node name="Respawn" type="Marker3D" parent="Checkpoint4"]
+position = Vector3(0, -6.45, -4)
+
+[node name="Checkpoint4Frame" type="Node3D" parent="."]
+position = Vector3(0, 3.5, -338)
+rotation_degrees = Vector3(0, 0, 0)
+
+[node name="Left" type="CSGBox3D" parent="Checkpoint4Frame"]
+position = Vector3(-16, 4.5, 0)
+size = Vector3(0.25, 9, 0.3)
+material = SubResource("Edge")
+
+[node name="Right" type="CSGBox3D" parent="Checkpoint4Frame"]
+position = Vector3(16, 4.5, 0)
+size = Vector3(0.25, 9, 0.3)
+material = SubResource("Edge")
+
+[node name="Top" type="CSGBox3D" parent="Checkpoint4Frame"]
+position = Vector3(0, 9, 0)
+size = Vector3(32, 0.3, 0.3)
+material = SubResource("Edge")
+
+[node name="Line" type="CSGBox3D" parent="Checkpoint4Frame"]
+position = Vector3(0, 0.03, 0)
+size = Vector3(32, 0.04, 1)
+material = SubResource("Edge")
+
+[node name="Checkpoint4Sign" type="Label3D" parent="."]
+position = Vector3(0, 13.5, -338)
+billboard = 1
+text = "04  CHECKPOINT"
+font_size = 70
+pixel_size = 0.007
+outline_size = 10
+
+[node name="TurnApproachDeck" type="CSGBox3D" parent="."]
+position = Vector3(0, 3, -348)
+use_collision = true
+size = Vector3(20, 1, 20)
+material = ExtResource("CityRoof")
+
+[node name="TurnApproachDeckLeftEdge" type="CSGBox3D" parent="."]
+position = Vector3(-9.88, 3.525, -348)
+size = Vector3(0.18, 0.04, 19.8)
+material = SubResource("Edge")
+
+[node name="TurnApproachDeckRightEdge" type="CSGBox3D" parent="."]
+position = Vector3(9.88, 3.525, -348)
+size = Vector3(0.18, 0.04, 19.8)
+material = SubResource("Edge")
+
+[node name="FinishRunway" type="CSGBox3D" parent="."]
+position = Vector3(20, 3, -352)
+use_collision = true
+size = Vector3(60, 1, 16)
+material = ExtResource("CityRoof")
+
+[node name="FinishRunwayLeftEdge" type="CSGBox3D" parent="."]
+position = Vector3(-9.88, 3.525, -352)
+size = Vector3(0.18, 0.04, 15.8)
+material = SubResource("Edge")
+
+[node name="FinishRunwayRightEdge" type="CSGBox3D" parent="."]
+position = Vector3(49.88, 3.525, -352)
+size = Vector3(0.18, 0.04, 15.8)
+material = SubResource("Edge")
+
+[node name="FinalInnerTurnWall" type="CSGBox3D" parent="."]
+position = Vector3(23, 7.5, -341)
+use_collision = true
+size = Vector3(34, 8, 4)
+material = ExtResource("CityRoof")
+
+[node name="FinalTurnSign" type="Label3D" parent="."]
+position = Vector3(0, 10, -346)
+billboard = 1
+text = "05  TURN RIGHT →\nRelease early · Carry it to the line"
+font_size = 46
+pixel_size = 0.007
+outline_size = 10
+
+[node name="FinalTurnArrow" type="Node3D" parent="."]
+position = Vector3(0, 3.55, -351)
+rotation_degrees = Vector3(0, -90, 0)
+
+[node name="Stem" type="MeshInstance3D" parent="FinalTurnArrow"]
+mesh = SubResource("ArrowStem")
+
+[node name="Left" type="MeshInstance3D" parent="FinalTurnArrow"]
+position = Vector3(-0.55, 0, -0.85)
+rotation_degrees = Vector3(0, -45, 0)
+mesh = SubResource("ArrowWing")
+
+[node name="Right" type="MeshInstance3D" parent="FinalTurnArrow"]
+position = Vector3(0.55, 0, -0.85)
+rotation_degrees = Vector3(0, 45, 0)
+mesh = SubResource("ArrowWing")
+
+[node name="FinishArrow01" type="Node3D" parent="."]
+position = Vector3(12, 3.55, -352)
+rotation_degrees = Vector3(0, -90, 0)
+
+[node name="Stem" type="MeshInstance3D" parent="FinishArrow01"]
+mesh = SubResource("ArrowStem")
+
+[node name="Left" type="MeshInstance3D" parent="FinishArrow01"]
+position = Vector3(-0.55, 0, -0.85)
+rotation_degrees = Vector3(0, -45, 0)
+mesh = SubResource("ArrowWing")
+
+[node name="Right" type="MeshInstance3D" parent="FinishArrow01"]
+position = Vector3(0.55, 0, -0.85)
+rotation_degrees = Vector3(0, 45, 0)
+mesh = SubResource("ArrowWing")
+
+[node name="FinishArrow02" type="Node3D" parent="."]
+position = Vector3(25, 3.55, -352)
+rotation_degrees = Vector3(0, -90, 0)
+
+[node name="Stem" type="MeshInstance3D" parent="FinishArrow02"]
+mesh = SubResource("ArrowStem")
+
+[node name="Left" type="MeshInstance3D" parent="FinishArrow02"]
+position = Vector3(-0.55, 0, -0.85)
+rotation_degrees = Vector3(0, -45, 0)
+mesh = SubResource("ArrowWing")
+
+[node name="Right" type="MeshInstance3D" parent="FinishArrow02"]
+position = Vector3(0.55, 0, -0.85)
+rotation_degrees = Vector3(0, 45, 0)
+mesh = SubResource("ArrowWing")
+
+[node name="FinishArrow03" type="Node3D" parent="."]
+position = Vector3(36, 3.55, -352)
+rotation_degrees = Vector3(0, -90, 0)
+
+[node name="Stem" type="MeshInstance3D" parent="FinishArrow03"]
+mesh = SubResource("ArrowStem")
+
+[node name="Left" type="MeshInstance3D" parent="FinishArrow03"]
+position = Vector3(-0.55, 0, -0.85)
+rotation_degrees = Vector3(0, -45, 0)
+mesh = SubResource("ArrowWing")
+
+[node name="Right" type="MeshInstance3D" parent="FinishArrow03"]
+position = Vector3(0.55, 0, -0.85)
+rotation_degrees = Vector3(0, 45, 0)
+mesh = SubResource("ArrowWing")
+
+[node name="TurnAnchor" parent="." instance=ExtResource("Anchor")]
+position = Vector3(12, 8.5, -353)
+
+[node name="FinishAnchor" parent="." instance=ExtResource("Anchor")]
+position = Vector3(31, 8.5, -352)
+
+[node name="FinishGate" type="Area3D" parent="."]
+position = Vector3(40, 10.5, -352)
+collision_layer = 0
+collision_mask = 4
+rotation_degrees = Vector3(0, 90, 0)
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="FinishGate"]
+shape = SubResource("Gate24")
+
+[node name="FinishGateFrame" type="Node3D" parent="."]
+position = Vector3(40, 3.5, -352)
+rotation_degrees = Vector3(0, 90, 0)
+
+[node name="Left" type="CSGBox3D" parent="FinishGateFrame"]
+position = Vector3(-12, 4.5, 0)
+size = Vector3(0.25, 9, 0.3)
+material = SubResource("Edge")
+
+[node name="Right" type="CSGBox3D" parent="FinishGateFrame"]
+position = Vector3(12, 4.5, 0)
+size = Vector3(0.25, 9, 0.3)
+material = SubResource("Edge")
+
+[node name="Top" type="CSGBox3D" parent="FinishGateFrame"]
+position = Vector3(0, 9, 0)
+size = Vector3(24, 0.3, 0.3)
+material = SubResource("Edge")
+
+[node name="Line" type="CSGBox3D" parent="FinishGateFrame"]
+position = Vector3(0, 0.03, 0)
+size = Vector3(24, 0.04, 1)
+material = SubResource("Edge")
+
+[node name="FinishGateSign" type="Label3D" parent="."]
+position = Vector3(40, 13.5, -352)
+billboard = 1
+text = "FINISH"
+font_size = 70
+pixel_size = 0.007
+outline_size = 10
+
+[node name="Void" type="CSGBox3D" parent="."]
+visible = false
+position = Vector3(10, -14, -181)
+size = Vector3(180, 1, 430)
+material = SubResource("Hazard")
+
+[node name="OpeningTitle" type="Label3D" parent="."]
+position = Vector3(0, 8, 5)
+billboard = 1
+text = "SWITCHYARD\nPRECISION RUN"
+font_size = 72
+pixel_size = 0.007
+outline_size = 10
+
+[node name="CityScenery" parent="." instance=ExtResource("CityScenery")]

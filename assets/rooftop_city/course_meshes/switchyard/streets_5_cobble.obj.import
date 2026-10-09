@@ -1,0 +1,25 @@
+[remap]
+
+importer="wavefront_obj"
+importer_version=1
+type="Mesh"
+uid="uid://cuhwejy82aoth"
+path="res://.godot/imported/streets_5_cobble.obj-03d00754bcdad0a8a6716c6fdcecd642.mesh"
+
+[deps]
+
+files=["res://.godot/imported/streets_5_cobble.obj-03d00754bcdad0a8a6716c6fdcecd642.mesh"]
+
+source_file="res://assets/rooftop_city/course_meshes/switchyard/streets_5_cobble.obj"
+dest_files=["res://.godot/imported/streets_5_cobble.obj-03d00754bcdad0a8a6716c6fdcecd642.mesh", "res://.godot/imported/streets_5_cobble.obj-03d00754bcdad0a8a6716c6fdcecd642.mesh"]
+
+[params]
+
+generate_tangents=true
+generate_lods=true
+generate_shadow_mesh=true
+generate_lightmap_uv2=false
+generate_lightmap_uv2_texel_size=0.2
+scale_mesh=Vector3(1, 1, 1)
+offset_mesh=Vector3(0, 0, 0)
+force_disable_mesh_compression=false

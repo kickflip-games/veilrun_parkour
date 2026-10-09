@@ -1,0 +1,25 @@
+[remap]
+
+importer="wavefront_obj"
+importer_version=1
+type="Mesh"
+uid="uid://boiqa0bwuedks"
+path="res://.godot/imported/city_9_glass.obj-3a0b4a7c1891e997df4e95de9b24dc8e.mesh"
+
+[deps]
+
+files=["res://.godot/imported/city_9_glass.obj-3a0b4a7c1891e997df4e95de9b24dc8e.mesh"]
+
+source_file="res://assets/main_city/meshes/03_blackglass/city_9_glass.obj"
+dest_files=["res://.godot/imported/city_9_glass.obj-3a0b4a7c1891e997df4e95de9b24dc8e.mesh", "res://.godot/imported/city_9_glass.obj-3a0b4a7c1891e997df4e95de9b24dc8e.mesh"]
+
+[params]
+
+generate_tangents=true
+generate_lods=true
+generate_shadow_mesh=true
+generate_lightmap_uv2=false
+generate_lightmap_uv2_texel_size=0.2
+scale_mesh=Vector3(1, 1, 1)
+offset_mesh=Vector3(0, 0, 0)
+force_disable_mesh_compression=false

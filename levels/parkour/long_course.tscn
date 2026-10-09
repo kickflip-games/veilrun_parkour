@@ -1,0 +1,1626 @@
+[gd_scene load_steps=13 format=3]
+
+[ext_resource type="Material" path="res://scenes/parkour/city_roof.tres" id="CityRoof"]
+
+
+
+[ext_resource type="PackedScene" path="res://scenes/parkour/grapple_anchor.tscn" id="Anchor"]
+
+[ext_resource type="PackedScene" path="res://scenes/parkour/spring_pad.tscn" id="Spring"]
+
+[sub_resource type="StandardMaterial3D" id="Edge"]
+shading_mode = 0
+albedo_color = Color(0.92, 0.92, 0.92, 1)
+
+[sub_resource type="StandardMaterial3D" id="Hazard"]
+shading_mode = 0
+albedo_color = Color(0.5, 0.015, 0.025, 1)
+
+[sub_resource type="StandardMaterial3D" id="ArrowInk"]
+shading_mode = 0
+albedo_color = Color(0.62, 0.67, 0.72, 1)
+
+[sub_resource type="BoxShape3D" id="Gate18"]
+size = Vector3(18, 12, 2)
+
+[sub_resource type="BoxShape3D" id="Gate20"]
+size = Vector3(20, 12, 2)
+
+[sub_resource type="BoxShape3D" id="Gate28"]
+size = Vector3(28, 12, 2)
+
+[sub_resource type="BoxMesh" id="ArrowStem"]
+material = SubResource("ArrowInk")
+size = Vector3(0.32, 0.04, 2.8)
+
+[sub_resource type="BoxMesh" id="ArrowWing"]
+material = SubResource("ArrowInk")
+size = Vector3(0.32, 0.04, 1.7)
+
+[node name="LongCourse" type="Node3D"]
+metadata/course_length_from_checkpoint_1 = 839.554968
+metadata/design = "Velocity drive, rising S bend, sky hairpin and beam cut, downhill sweep, spring chain and safe recovery"
+
+[node name="Drive01" type="Node3D" parent="."]
+transform = Transform3D(-1, 0, 0, 0, 1, 0, 0, 0, -1, 40, 2.5, -286)
+
+[node name="Road" type="CSGBox3D" parent="Drive01"]
+position = Vector3(0, 0, 0)
+use_collision = true
+size = Vector3(18, 1, 110)
+material = ExtResource("CityRoof")
+
+[node name="EdgeLeft" type="CSGBox3D" parent="Drive01"]
+position = Vector3(-8.88, 0.535, 0)
+size = Vector3(0.18, 0.04, 108)
+material = SubResource("Edge")
+
+[node name="EdgeRight" type="CSGBox3D" parent="Drive01"]
+position = Vector3(8.88, 0.535, 0)
+size = Vector3(0.18, 0.04, 108)
+material = SubResource("Edge")
+
+[node name="Rise01" type="Node3D" parent="."]
+transform = Transform3D(-1, 0, 0, 0, 1, 0, 0, 0, -1, 40, 2.5, -352.5)
+
+[node name="Road" type="CSGBox3D" parent="Rise01"]
+position = Vector3(0, 0, 0)
+use_collision = true
+size = Vector3(18, 1, 27)
+material = ExtResource("CityRoof")
+
+[node name="EdgeLeft" type="CSGBox3D" parent="Rise01"]
+position = Vector3(-8.88, 0.535, 0)
+size = Vector3(0.18, 0.04, 25)
+material = SubResource("Edge")
+
+[node name="EdgeRight" type="CSGBox3D" parent="Rise01"]
+position = Vector3(8.88, 0.535, 0)
+size = Vector3(0.18, 0.04, 25)
+material = SubResource("Edge")
+
+[node name="Rise02" type="Node3D" parent="."]
+transform = Transform3D(-0.882353, -0.027634, 0.469776, 0, 0.998274, 0.058722, -0.470588, 0.051814, -0.88083, 44.013817, 3.000863, -372.525907)
+
+[node name="Road" type="CSGBox3D" parent="Rise02"]
+position = Vector3(0, 0, 0)
+use_collision = true
+size = Vector3(18, 1, 19.029386)
+material = ExtResource("CityRoof")
+
+[node name="EdgeLeft" type="CSGBox3D" parent="Rise02"]
+position = Vector3(-8.88, 0.535, 0)
+size = Vector3(0.18, 0.04, 17.029386)
+material = SubResource("Edge")
+
+[node name="EdgeRight" type="CSGBox3D" parent="Rise02"]
+position = Vector3(8.88, 0.535, 0)
+size = Vector3(0.18, 0.04, 17.029386)
+material = SubResource("Edge")
+
+[node name="Rise03" type="Node3D" parent="."]
+transform = Transform3D(-0.647648, -0.057887, 0.759737, 0, 0.99711, 0.075974, -0.761939, 0.049204, -0.645777, 58.028944, 4.501445, -388.524602)
+
+[node name="Road" type="CSGBox3D" parent="Rise03"]
+position = Vector3(0, 0, 0)
+use_collision = true
+size = Vector3(18, 1, 28.324893)
+material = ExtResource("CityRoof")
+
+[node name="EdgeLeft" type="CSGBox3D" parent="Rise03"]
+position = Vector3(-8.88, 0.535, 0)
+size = Vector3(0.18, 0.04, 26.324893)
+material = SubResource("Edge")
+
+[node name="EdgeRight" type="CSGBox3D" parent="Rise03"]
+position = Vector3(8.88, 0.535, 0)
+size = Vector3(0.18, 0.04, 26.324893)
+material = SubResource("Edge")
+
+[node name="Rise04" type="Node3D" parent="."]
+transform = Transform3D(-0.461353, -0.093928, 0.882231, 0, 0.99438, 0.105868, -0.887217, 0.048842, -0.45876, 80.546964, 7.00281, -403.524421)
+
+[node name="Road" type="CSGBox3D" parent="Rise04"]
+position = Vector3(0, 0, 0)
+use_collision = true
+size = Vector3(18, 1, 30.337255)
+material = ExtResource("CityRoof")
+
+[node name="EdgeLeft" type="CSGBox3D" parent="Rise04"]
+position = Vector3(-8.88, 0.535, 0)
+size = Vector3(0.18, 0.04, 28.337255)
+material = SubResource("Edge")
+
+[node name="EdgeRight" type="CSGBox3D" parent="Rise04"]
+position = Vector3(8.88, 0.535, 0)
+size = Vector3(0.18, 0.04, 28.337255)
+material = SubResource("Edge")
+
+[node name="Rise05" type="Node3D" parent="."]
+transform = Transform3D(0.154377, -0.060894, 0.986134, 0, 0.998099, 0.061633, -0.988012, -0.009515, 0.154083, 109.030447, 9.500951, -407.495243)
+
+[node name="Road" type="CSGBox3D" parent="Rise05"]
+position = Vector3(0, 0, 0)
+use_collision = true
+size = Vector3(18, 1, 34.449961)
+material = ExtResource("CityRoof")
+
+[node name="EdgeLeft" type="CSGBox3D" parent="Rise05"]
+position = Vector3(-8.88, 0.535, 0)
+size = Vector3(0.18, 0.04, 32.449961)
+material = SubResource("Edge")
+
+[node name="EdgeRight" type="CSGBox3D" parent="Rise05"]
+position = Vector3(8.88, 0.535, 0)
+size = Vector3(0.18, 0.04, 32.449961)
+material = SubResource("Edge")
+
+[node name="Sky01" type="Node3D" parent="."]
+transform = Transform3D(0, 0, 1, 0, 1, 0, -1, 0, 0, 137.5, 10.5, -405)
+
+[node name="Road" type="CSGBox3D" parent="Sky01"]
+position = Vector3(0, 0, 0)
+use_collision = true
+size = Vector3(18, 1, 27)
+material = ExtResource("CityRoof")
+
+[node name="EdgeLeft" type="CSGBox3D" parent="Sky01"]
+position = Vector3(-8.88, 0.535, 0)
+size = Vector3(0.18, 0.04, 25)
+material = SubResource("Edge")
+
+[node name="EdgeRight" type="CSGBox3D" parent="Sky01"]
+position = Vector3(8.88, 0.535, 0)
+size = Vector3(0.18, 0.04, 25)
+material = SubResource("Edge")
+
+[node name="Sky02" type="Node3D" parent="."]
+transform = Transform3D(-0.416655, 0, 0.909065, 0, 1, 0, -0.909065, 0, -0.416655, 162, 10.5, -410.5)
+
+[node name="Road" type="CSGBox3D" parent="Sky02"]
+position = Vector3(0, 0, 0)
+use_collision = true
+size = Vector3(18, 1, 28.400758)
+material = ExtResource("CityRoof")
+
+[node name="EdgeLeft" type="CSGBox3D" parent="Sky02"]
+position = Vector3(-8.88, 0.535, 0)
+size = Vector3(0.18, 0.04, 26.400758)
+material = SubResource("Edge")
+
+[node name="EdgeRight" type="CSGBox3D" parent="Sky02"]
+position = Vector3(8.88, 0.535, 0)
+size = Vector3(0.18, 0.04, 26.400758)
+material = SubResource("Edge")
+
+[node name="Sky03" type="Node3D" parent="."]
+transform = Transform3D(-0.707107, 0, 0.707107, 0, 1, 0, -0.707107, 0, -0.707107, 182, 10.5, -424)
+
+[node name="Road" type="CSGBox3D" parent="Sky03"]
+position = Vector3(0, 0, 0)
+use_collision = true
+size = Vector3(18, 1, 24.627417)
+material = ExtResource("CityRoof")
+
+[node name="EdgeLeft" type="CSGBox3D" parent="Sky03"]
+position = Vector3(-8.88, 0.535, 0)
+size = Vector3(0.18, 0.04, 22.627417)
+material = SubResource("Edge")
+
+[node name="EdgeRight" type="CSGBox3D" parent="Sky03"]
+position = Vector3(8.88, 0.535, 0)
+size = Vector3(0.18, 0.04, 22.627417)
+material = SubResource("Edge")
+
+[node name="Sky04" type="Node3D" parent="."]
+transform = Transform3D(-0.813733, 0, 0.581238, 0, 1, 0, -0.581238, 0, -0.813733, 195, 10.5, -439)
+
+[node name="Road" type="CSGBox3D" parent="Sky04"]
+position = Vector3(0, 0, 0)
+use_collision = true
+size = Vector3(18, 1, 19.204651)
+material = ExtResource("CityRoof")
+
+[node name="EdgeLeft" type="CSGBox3D" parent="Sky04"]
+position = Vector3(-8.88, 0.535, 0)
+size = Vector3(0.18, 0.04, 17.204651)
+material = SubResource("Edge")
+
+[node name="EdgeRight" type="CSGBox3D" parent="Sky04"]
+position = Vector3(8.88, 0.535, 0)
+size = Vector3(0.18, 0.04, 17.204651)
+material = SubResource("Edge")
+
+[node name="Sky05" type="Node3D" parent="."]
+transform = Transform3D(-0.21693, 0, 0.976187, 0, 1, 0, -0.976187, 0, -0.21693, 209, 10.5, -448)
+
+[node name="Road" type="CSGBox3D" parent="Sky05"]
+position = Vector3(0, 0, 0)
+use_collision = true
+size = Vector3(18, 1, 20.439089)
+material = ExtResource("CityRoof")
+
+[node name="EdgeLeft" type="CSGBox3D" parent="Sky05"]
+position = Vector3(-8.88, 0.535, 0)
+size = Vector3(0.18, 0.04, 18.439089)
+material = SubResource("Edge")
+
+[node name="EdgeRight" type="CSGBox3D" parent="Sky05"]
+position = Vector3(8.88, 0.535, 0)
+size = Vector3(0.18, 0.04, 18.439089)
+material = SubResource("Edge")
+
+[node name="Sky06" type="Node3D" parent="."]
+transform = Transform3D(0.752577, 0, 0.658505, 0, 1, 0, -0.658505, 0, 0.752577, 225, 10.5, -442)
+
+[node name="Road" type="CSGBox3D" parent="Sky06"]
+position = Vector3(0, 0, 0)
+use_collision = true
+size = Vector3(18, 1, 23.260292)
+material = ExtResource("CityRoof")
+
+[node name="EdgeLeft" type="CSGBox3D" parent="Sky06"]
+position = Vector3(-8.88, 0.535, 0)
+size = Vector3(0.18, 0.04, 21.260292)
+material = SubResource("Edge")
+
+[node name="EdgeRight" type="CSGBox3D" parent="Sky06"]
+position = Vector3(8.88, 0.535, 0)
+size = Vector3(0.18, 0.04, 21.260292)
+material = SubResource("Edge")
+
+[node name="Sky07" type="Node3D" parent="."]
+transform = Transform3D(0.993884, 0, 0.110432, 0, 1, 0, -0.110432, 0, 0.993884, 233, 10.5, -425)
+
+[node name="Road" type="CSGBox3D" parent="Sky07"]
+position = Vector3(0, 0, 0)
+use_collision = true
+size = Vector3(18, 1, 20.11077)
+material = ExtResource("CityRoof")
+
+[node name="EdgeLeft" type="CSGBox3D" parent="Sky07"]
+position = Vector3(-8.88, 0.535, 0)
+size = Vector3(0.18, 0.04, 18.11077)
+material = SubResource("Edge")
+
+[node name="EdgeRight" type="CSGBox3D" parent="Sky07"]
+position = Vector3(8.88, 0.535, 0)
+size = Vector3(0.18, 0.04, 18.11077)
+material = SubResource("Edge")
+
+[node name="Sky08" type="Node3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 234, 10.5, -385.5)
+
+[node name="Road" type="CSGBox3D" parent="Sky08"]
+position = Vector3(0, 0, 0)
+use_collision = true
+size = Vector3(18, 1, 63)
+material = ExtResource("CityRoof")
+
+[node name="EdgeLeft" type="CSGBox3D" parent="Sky08"]
+position = Vector3(-8.88, 0.535, 0)
+size = Vector3(0.18, 0.04, 61)
+material = SubResource("Edge")
+
+[node name="EdgeRight" type="CSGBox3D" parent="Sky08"]
+position = Vector3(8.88, 0.535, 0)
+size = Vector3(0.18, 0.04, 61)
+material = SubResource("Edge")
+
+[node name="Sky09" type="Node3D" parent="."]
+transform = Transform3D(0.940887, 0, -0.338719, 0, 1, 0, 0.338719, 0, 0.940887, 229.5, 10.5, -342.5)
+
+[node name="Road" type="CSGBox3D" parent="Sky09"]
+position = Vector3(0, 0, 0)
+use_collision = true
+size = Vector3(18, 1, 28.570661)
+material = ExtResource("CityRoof")
+
+[node name="EdgeLeft" type="CSGBox3D" parent="Sky09"]
+position = Vector3(-8.88, 0.535, 0)
+size = Vector3(0.18, 0.04, 26.570661)
+material = SubResource("Edge")
+
+[node name="EdgeRight" type="CSGBox3D" parent="Sky09"]
+position = Vector3(8.88, 0.535, 0)
+size = Vector3(0.18, 0.04, 26.570661)
+material = SubResource("Edge")
+
+[node name="Sky10" type="Node3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 225, 10.5, -320)
+
+[node name="Road" type="CSGBox3D" parent="Sky10"]
+position = Vector3(0, 0, 0)
+use_collision = true
+size = Vector3(18, 1, 22)
+material = ExtResource("CityRoof")
+
+[node name="EdgeLeft" type="CSGBox3D" parent="Sky10"]
+position = Vector3(-8.88, 0.535, 0)
+size = Vector3(0.18, 0.04, 20)
+material = SubResource("Edge")
+
+[node name="EdgeRight" type="CSGBox3D" parent="Sky10"]
+position = Vector3(8.88, 0.535, 0)
+size = Vector3(0.18, 0.04, 20)
+material = SubResource("Edge")
+
+[node name="Downhill01" type="Node3D" parent="."]
+transform = Transform3D(0.38075, 0, 0.924678, 0, 1, 0, -0.924678, 0, 0.38075, 233.5, 10.5, -306.5)
+
+[node name="Road" type="CSGBox3D" parent="Downhill01"]
+position = Vector3(0, 0, 0)
+use_collision = true
+size = Vector3(18, 1, 20.384776)
+material = ExtResource("CityRoof")
+
+[node name="EdgeLeft" type="CSGBox3D" parent="Downhill01"]
+position = Vector3(-8.88, 0.535, 0)
+size = Vector3(0.18, 0.04, 18.384776)
+material = SubResource("Edge")
+
+[node name="EdgeRight" type="CSGBox3D" parent="Downhill01"]
+position = Vector3(8.88, 0.535, 0)
+size = Vector3(0.18, 0.04, 18.384776)
+material = SubResource("Edge")
+
+[node name="Downhill02" type="Node3D" parent="."]
+transform = Transform3D(-0.250962, 0.034682, 0.967375, 0, 0.999358, -0.035829, -0.967997, -0.008992, -0.250801, 255.482659, 10.000321, -306.495504)
+
+[node name="Road" type="CSGBox3D" parent="Downhill02"]
+position = Vector3(0, 0, 0)
+use_collision = true
+size = Vector3(18, 1, 29.910571)
+material = ExtResource("CityRoof")
+
+[node name="EdgeLeft" type="CSGBox3D" parent="Downhill02"]
+position = Vector3(-8.88, 0.535, 0)
+size = Vector3(0.18, 0.04, 27.910571)
+material = SubResource("Edge")
+
+[node name="EdgeRight" type="CSGBox3D" parent="Downhill02"]
+position = Vector3(8.88, 0.535, 0)
+size = Vector3(0.18, 0.04, 27.910571)
+material = SubResource("Edge")
+
+[node name="Downhill03" type="Node3D" parent="."]
+transform = Transform3D(-0.735931, 0.05956, 0.674432, 0, 0.996123, -0.087969, -0.677057, -0.064739, -0.733078, 280.47022, 8.001938, -322.46763)
+
+[node name="Road" type="CSGBox3D" parent="Downhill03"]
+position = Vector3(0, 0, 0)
+use_collision = true
+size = Vector3(18, 1, 36.102786)
+material = ExtResource("CityRoof")
+
+[node name="EdgeLeft" type="CSGBox3D" parent="Downhill03"]
+position = Vector3(-8.88, 0.535, 0)
+size = Vector3(0.18, 0.04, 34.102786)
+material = SubResource("Edge")
+
+[node name="EdgeRight" type="CSGBox3D" parent="Downhill03"]
+position = Vector3(8.88, 0.535, 0)
+size = Vector3(0.18, 0.04, 34.102786)
+material = SubResource("Edge")
+
+[node name="Downhill04" type="Node3D" parent="."]
+transform = Transform3D(-0.952424, 0.023155, 0.303895, 0, 0.99711, -0.075974, -0.304776, -0.072359, -0.949671, 295.988423, 5.501445, -347.46382)
+
+[node name="Road" type="CSGBox3D" parent="Downhill04"]
+position = Vector3(0, 0, 0)
+use_collision = true
+size = Vector3(18, 1, 28.324893)
+material = ExtResource("CityRoof")
+
+[node name="EdgeLeft" type="CSGBox3D" parent="Downhill04"]
+position = Vector3(-8.88, 0.535, 0)
+size = Vector3(0.18, 0.04, 26.324893)
+material = SubResource("Edge")
+
+[node name="EdgeRight" type="CSGBox3D" parent="Downhill04"]
+position = Vector3(8.88, 0.535, 0)
+size = Vector3(0.18, 0.04, 26.324893)
+material = SubResource("Edge")
+
+[node name="Downhill05" type="Node3D" parent="."]
+transform = Transform3D(-1, 0, 0, 0, 0.997054, -0.076696, 0, -0.076696, -0.997054, 300, 3.501473, -372.961652)
+
+[node name="Road" type="CSGBox3D" parent="Downhill05"]
+position = Vector3(0, 0, 0)
+use_collision = true
+size = Vector3(18, 1, 28.07681)
+material = ExtResource("CityRoof")
+
+[node name="EdgeLeft" type="CSGBox3D" parent="Downhill05"]
+position = Vector3(-8.88, 0.535, 0)
+size = Vector3(0.18, 0.04, 26.07681)
+material = SubResource("Edge")
+
+[node name="EdgeRight" type="CSGBox3D" parent="Downhill05"]
+position = Vector3(8.88, 0.535, 0)
+size = Vector3(0.18, 0.04, 26.07681)
+material = SubResource("Edge")
+
+[node name="Downhill06" type="Node3D" parent="."]
+transform = Transform3D(-1, 0, 0, 0, 1, 0, 0, 0, -1, 300, 2.5, -408)
+
+[node name="Road" type="CSGBox3D" parent="Downhill06"]
+position = Vector3(0, 0, 0)
+use_collision = true
+size = Vector3(18, 1, 46)
+material = ExtResource("CityRoof")
+
+[node name="EdgeLeft" type="CSGBox3D" parent="Downhill06"]
+position = Vector3(-8.88, 0.535, 0)
+size = Vector3(0.18, 0.04, 44)
+material = SubResource("Edge")
+
+[node name="EdgeRight" type="CSGBox3D" parent="Downhill06"]
+position = Vector3(8.88, 0.535, 0)
+size = Vector3(0.18, 0.04, 44)
+material = SubResource("Edge")
+
+[node name="Home01" type="Node3D" parent="."]
+transform = Transform3D(-1, 0, 0, 0, 1, 0, 0, 0, -1, 300, 2.5, -570)
+
+[node name="Road" type="CSGBox3D" parent="Home01"]
+position = Vector3(0, 0, 0)
+use_collision = true
+size = Vector3(20, 1, 86)
+material = ExtResource("CityRoof")
+
+[node name="EdgeLeft" type="CSGBox3D" parent="Home01"]
+position = Vector3(-9.88, 0.535, 0)
+size = Vector3(0.18, 0.04, 84)
+material = SubResource("Edge")
+
+[node name="EdgeRight" type="CSGBox3D" parent="Home01"]
+position = Vector3(9.88, 0.535, 0)
+size = Vector3(0.18, 0.04, 84)
+material = SubResource("Edge")
+
+[node name="ChainIslandB" type="Node3D" parent="."]
+transform = Transform3D(-1, 0, 0, 0, 1, 0, 0, 0, -1, 300, 2.5, -461)
+
+[node name="Road" type="CSGBox3D" parent="ChainIslandB"]
+position = Vector3(0, 0, 0)
+use_collision = true
+size = Vector3(18, 1, 26)
+material = ExtResource("CityRoof")
+
+[node name="EdgeLeft" type="CSGBox3D" parent="ChainIslandB"]
+position = Vector3(-8.88, 0.535, 0)
+size = Vector3(0.18, 0.04, 24)
+material = SubResource("Edge")
+
+[node name="EdgeRight" type="CSGBox3D" parent="ChainIslandB"]
+position = Vector3(8.88, 0.535, 0)
+size = Vector3(0.18, 0.04, 24)
+material = SubResource("Edge")
+
+[node name="ChainIslandC" type="Node3D" parent="."]
+transform = Transform3D(-1, 0, 0, 0, 1, 0, 0, 0, -1, 300, 2.5, -503.5)
+
+[node name="Road" type="CSGBox3D" parent="ChainIslandC"]
+position = Vector3(0, 0, 0)
+use_collision = true
+size = Vector3(18, 1, 27)
+material = ExtResource("CityRoof")
+
+[node name="EdgeLeft" type="CSGBox3D" parent="ChainIslandC"]
+position = Vector3(-8.88, 0.535, 0)
+size = Vector3(0.18, 0.04, 25)
+material = SubResource("Edge")
+
+[node name="EdgeRight" type="CSGBox3D" parent="ChainIslandC"]
+position = Vector3(8.88, 0.535, 0)
+size = Vector3(0.18, 0.04, 25)
+material = SubResource("Edge")
+
+[node name="ChainCatchDeck" type="Node3D" parent="."]
+transform = Transform3D(-1, 0, 0, 0, 1, 0, 0, 0, -1, 300, -2.5, -470.5)
+
+[node name="Road" type="CSGBox3D" parent="ChainCatchDeck"]
+position = Vector3(0, 0, 0)
+use_collision = true
+size = Vector3(28, 1, 101)
+material = ExtResource("CityRoof")
+
+[node name="EdgeLeft" type="CSGBox3D" parent="ChainCatchDeck"]
+position = Vector3(-13.88, 0.535, 0)
+size = Vector3(0.18, 0.04, 99)
+material = SubResource("Edge")
+
+[node name="EdgeRight" type="CSGBox3D" parent="ChainCatchDeck"]
+position = Vector3(13.88, 0.535, 0)
+size = Vector3(0.18, 0.04, 99)
+material = SubResource("Edge")
+
+[node name="SafeEntry" type="Node3D" parent="."]
+transform = Transform3D(0, 0, 1, 0, 1, 0, -1, 0, 0, 309, 2.5, -414)
+
+[node name="Road" type="CSGBox3D" parent="SafeEntry"]
+position = Vector3(0, 0, 0)
+use_collision = true
+size = Vector3(12, 1, 20)
+material = ExtResource("CityRoof")
+
+[node name="EdgeLeft" type="CSGBox3D" parent="SafeEntry"]
+position = Vector3(-5.88, 0.535, 0)
+size = Vector3(0.18, 0.04, 18)
+material = SubResource("Edge")
+
+[node name="EdgeRight" type="CSGBox3D" parent="SafeEntry"]
+position = Vector3(5.88, 0.535, 0)
+size = Vector3(0.18, 0.04, 18)
+material = SubResource("Edge")
+
+[node name="SafeDownRamp" type="Node3D" parent="."]
+transform = Transform3D(-1, 0, 0, 0, 0.972806, -0.231621, 0, -0.231621, -0.972806, 318, 0.013597, -424.38419)
+
+[node name="Road" type="CSGBox3D" parent="SafeDownRamp"]
+position = Vector3(0, 0, 0)
+use_collision = true
+size = Vector3(12, 1, 23.587033)
+material = ExtResource("CityRoof")
+
+[node name="EdgeLeft" type="CSGBox3D" parent="SafeDownRamp"]
+position = Vector3(-5.88, 0.535, 0)
+size = Vector3(0.18, 0.04, 21.587033)
+material = SubResource("Edge")
+
+[node name="EdgeRight" type="CSGBox3D" parent="SafeDownRamp"]
+position = Vector3(5.88, 0.535, 0)
+size = Vector3(0.18, 0.04, 21.587033)
+material = SubResource("Edge")
+
+[node name="SafeStraight" type="Node3D" parent="."]
+transform = Transform3D(-1, 0, 0, 0, 1, 0, 0, 0, -1, 318, -2.5, -471.5)
+
+[node name="Road" type="CSGBox3D" parent="SafeStraight"]
+position = Vector3(0, 0, 0)
+use_collision = true
+size = Vector3(12, 1, 75)
+material = ExtResource("CityRoof")
+
+[node name="EdgeLeft" type="CSGBox3D" parent="SafeStraight"]
+position = Vector3(-5.88, 0.535, 0)
+size = Vector3(0.18, 0.04, 73)
+material = SubResource("Edge")
+
+[node name="EdgeRight" type="CSGBox3D" parent="SafeStraight"]
+position = Vector3(5.88, 0.535, 0)
+size = Vector3(0.18, 0.04, 73)
+material = SubResource("Edge")
+
+[node name="SafeReturnRamp" type="Node3D" parent="."]
+transform = Transform3D(-0.725953, 0.129053, -0.675528, 0, 0.982237, 0.187647, 0.687745, 0.136223, -0.713057, 308.935474, 0.008882, -517.568111)
+
+[node name="Road" type="CSGBox3D" parent="SafeReturnRamp"]
+position = Vector3(0, 0, 0)
+use_collision = true
+size = Vector3(16, 1, 28.645825)
+material = ExtResource("CityRoof")
+
+[node name="EdgeLeft" type="CSGBox3D" parent="SafeReturnRamp"]
+position = Vector3(-7.88, 0.535, 0)
+size = Vector3(0.18, 0.04, 26.645825)
+material = SubResource("Edge")
+
+[node name="EdgeRight" type="CSGBox3D" parent="SafeReturnRamp"]
+position = Vector3(7.88, 0.535, 0)
+size = Vector3(0.18, 0.04, 26.645825)
+material = SubResource("Edge")
+
+[node name="BeamCutA" type="Node3D" parent="."]
+transform = Transform3D(0.793772, 0, 0.608215, 0, 1, 0, -0.608215, 0, 0.793772, 180.5, 10.5, -366.5)
+
+[node name="Road" type="CSGBox3D" parent="BeamCutA"]
+position = Vector3(0, 0, 0)
+use_collision = true
+size = Vector3(5, 1, 99.005155)
+material = ExtResource("CityRoof")
+
+[node name="EdgeLeft" type="CSGBox3D" parent="BeamCutA"]
+position = Vector3(-2.38, 0.535, 0)
+size = Vector3(0.18, 0.04, 97.005155)
+material = SubResource("Edge")
+
+[node name="EdgeRight" type="CSGBox3D" parent="BeamCutA"]
+position = Vector3(2.38, 0.535, 0)
+size = Vector3(0.18, 0.04, 97.005155)
+material = SubResource("Edge")
+
+[node name="BeamCutB" type="Node3D" parent="."]
+transform = Transform3D(0.768221, 0, 0.640184, 0, 1, 0, -0.640184, 0, 0.768221, 217.5, 10.5, -319)
+
+[node name="Road" type="CSGBox3D" parent="BeamCutB"]
+position = Vector3(0, 0, 0)
+use_collision = true
+size = Vector3(5, 1, 25.430749)
+material = ExtResource("CityRoof")
+
+[node name="EdgeLeft" type="CSGBox3D" parent="BeamCutB"]
+position = Vector3(-2.38, 0.535, 0)
+size = Vector3(0.18, 0.04, 23.430749)
+material = SubResource("Edge")
+
+[node name="EdgeRight" type="CSGBox3D" parent="BeamCutB"]
+position = Vector3(2.38, 0.535, 0)
+size = Vector3(0.18, 0.04, 23.430749)
+material = SubResource("Edge")
+
+[node name="BeamCutAnchorA" parent="." instance=ExtResource("Anchor")]
+position = Vector3(164.38, 16, -387.53)
+
+[node name="BeamCutAnchorB" parent="." instance=ExtResource("Anchor")]
+position = Vector3(177.76, 16, -370.06)
+
+[node name="BeamCutAnchorC" parent="." instance=ExtResource("Anchor")]
+position = Vector3(191.14, 16, -352.59)
+
+[node name="BeamCutAnchorD" parent="." instance=ExtResource("Anchor")]
+position = Vector3(204.52, 16, -335.12)
+
+[node name="BeamCutAnchorE" parent="." instance=ExtResource("Anchor")]
+position = Vector3(218, 16, -318)
+
+[node name="DriveAnchor1" parent="." instance=ExtResource("Anchor")]
+position = Vector3(40, 8, -252)
+
+[node name="DriveAnchor2" parent="." instance=ExtResource("Anchor")]
+position = Vector3(40, 8, -274)
+
+[node name="DriveAnchor3" parent="." instance=ExtResource("Anchor")]
+position = Vector3(40, 8, -296)
+
+[node name="DriveAnchor4" parent="." instance=ExtResource("Anchor")]
+position = Vector3(40, 8, -318)
+
+[node name="DriveAnchor5" parent="." instance=ExtResource("Anchor")]
+position = Vector3(40, 8, -340)
+
+[node name="RiseAnchor01" parent="." instance=ExtResource("Anchor")]
+position = Vector3(40, 8, -358)
+
+[node name="RiseAnchor02" parent="." instance=ExtResource("Anchor")]
+position = Vector3(47.046643, 8.88083, -378.212455)
+
+[node name="RiseAnchor03" parent="." instance=ExtResource("Anchor")]
+position = Vector3(63.172418, 10.517242, -392.896555)
+
+[node name="RiseAnchor04" parent="." instance=ExtResource("Anchor")]
+position = Vector3(81.803137, 12.656376, -404.177631)
+
+[node name="RiseAnchor05" parent="." instance=ExtResource("Anchor")]
+position = Vector3(102.179392, 14.573712, -408.56572)
+
+[node name="RiseAnchor06" parent="." instance=ExtResource("Anchor")]
+position = Vector3(123.874333, 15.929646, -405.175886)
+
+[node name="SkyAnchor01" parent="." instance=ExtResource("Anchor")]
+position = Vector3(143, 16, -405)
+
+[node name="SkyAnchor02" parent="." instance=ExtResource("Anchor")]
+position = Vector3(163.635972, 16, -411.249821)
+
+[node name="SkyAnchor03" parent="." instance=ExtResource("Anchor")]
+position = Vector3(181.494796, 16, -423.494796)
+
+[node name="SkyAnchor04" parent="." instance=ExtResource("Anchor")]
+position = Vector3(195.796006, 16, -440.114408)
+
+[node name="SkyAnchor05" parent="." instance=ExtResource("Anchor")]
+position = Vector3(214.415525, 16, -449.20345)
+
+[node name="SkyAnchor06" parent="." instance=ExtResource("Anchor")]
+position = Vector3(230.069129, 16, -436.20671)
+
+[node name="SkyAnchor07" parent="." instance=ExtResource("Anchor")]
+position = Vector3(234, 16, -415.042976)
+
+[node name="SkyAnchor08" parent="." instance=ExtResource("Anchor")]
+position = Vector3(234, 16, -393.042976)
+
+[node name="SkyAnchor09" parent="." instance=ExtResource("Anchor")]
+position = Vector3(234, 16, -371.042976)
+
+[node name="SkyAnchor10" parent="." instance=ExtResource("Anchor")]
+position = Vector3(231.98224, 16, -349.395111)
+
+[node name="SkyAnchor11" parent="." instance=ExtResource("Anchor")]
+position = Vector3(225, 16, -328.613636)
+
+[node name="DownhillAnchor01" parent="." instance=ExtResource("Anchor")]
+position = Vector3(241.644206, 16, -303.146504)
+
+[node name="DownhillAnchor02" parent="." instance=ExtResource("Anchor")]
+position = Vector3(262.910035, 15.225554, -308.42112)
+
+[node name="DownhillAnchor03" parent="." instance=ExtResource("Anchor")]
+position = Vector3(279.591715, 13.618472, -321.512734)
+
+[node name="DownhillAnchor04" parent="." instance=ExtResource("Anchor")]
+position = Vector3(293.094589, 11.726353, -338.42059)
+
+[node name="DownhillAnchor05" parent="." instance=ExtResource("Anchor")]
+position = Vector3(299.780276, 10.054931, -359.313362)
+
+[node name="DownhillAnchor06" parent="." instance=ExtResource("Anchor")]
+position = Vector3(300, 8.368131, -381.214302)
+
+[node name="DownhillAnchor07" parent="." instance=ExtResource("Anchor")]
+position = Vector3(300, 8, -403.200164)
+
+[node name="DownhillAnchor08" parent="." instance=ExtResource("Anchor")]
+position = Vector3(300, 8, -425.200164)
+
+[node name="CornerAnchor" parent="." instance=ExtResource("Anchor")]
+position = Vector3(230, 16, -307)
+
+[node name="ChainSpringA" parent="." instance=ExtResource("Spring")]
+position = Vector3(300, 3.08, -426)
+launch_direction = Vector3(0, 0.42, -1)
+launch_strength = 24.0
+lateral_retention = 0.4
+
+[node name="ChainSpringB" parent="." instance=ExtResource("Spring")]
+position = Vector3(300, 3.08, -468)
+launch_direction = Vector3(0, 0.42, -1)
+launch_strength = 24.0
+lateral_retention = 0.4
+
+[node name="ChainSpringC" parent="." instance=ExtResource("Spring")]
+position = Vector3(300, 3.08, -508)
+launch_direction = Vector3(0, 0.42, -1)
+launch_strength = 24.0
+lateral_retention = 0.4
+
+[node name="ChainAnchorA" parent="." instance=ExtResource("Anchor")]
+position = Vector3(300, 8, -447)
+
+[node name="ChainAnchorB" parent="." instance=ExtResource("Anchor")]
+position = Vector3(300, 8, -489)
+
+[node name="ChainAnchorC" parent="." instance=ExtResource("Anchor")]
+position = Vector3(300, 8, -529)
+
+[node name="FinishAnchor1" parent="." instance=ExtResource("Anchor")]
+position = Vector3(300, 8, -550)
+
+[node name="FinishAnchor2" parent="." instance=ExtResource("Anchor")]
+position = Vector3(300, 8, -572)
+
+[node name="DriveArrowA" type="Node3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 40, 3.06, -248)
+
+[node name="Stem" type="MeshInstance3D" parent="DriveArrowA"]
+mesh = SubResource("ArrowStem")
+
+[node name="WingLeft" type="MeshInstance3D" parent="DriveArrowA"]
+position = Vector3(-0.55, 0, -0.85)
+rotation = Vector3(0, -0.785398, 0)
+mesh = SubResource("ArrowWing")
+
+[node name="WingRight" type="MeshInstance3D" parent="DriveArrowA"]
+position = Vector3(0.55, 0, -0.85)
+rotation = Vector3(0, 0.785398, 0)
+mesh = SubResource("ArrowWing")
+
+[node name="DriveArrowB" type="Node3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 40, 3.06, -290)
+
+[node name="Stem" type="MeshInstance3D" parent="DriveArrowB"]
+mesh = SubResource("ArrowStem")
+
+[node name="WingLeft" type="MeshInstance3D" parent="DriveArrowB"]
+position = Vector3(-0.55, 0, -0.85)
+rotation = Vector3(0, -0.785398, 0)
+mesh = SubResource("ArrowWing")
+
+[node name="WingRight" type="MeshInstance3D" parent="DriveArrowB"]
+position = Vector3(0.55, 0, -0.85)
+rotation = Vector3(0, 0.785398, 0)
+mesh = SubResource("ArrowWing")
+
+[node name="DriveArrowC" type="Node3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 40, 3.06, -332)
+
+[node name="Stem" type="MeshInstance3D" parent="DriveArrowC"]
+mesh = SubResource("ArrowStem")
+
+[node name="WingLeft" type="MeshInstance3D" parent="DriveArrowC"]
+position = Vector3(-0.55, 0, -0.85)
+rotation = Vector3(0, -0.785398, 0)
+mesh = SubResource("ArrowWing")
+
+[node name="WingRight" type="MeshInstance3D" parent="DriveArrowC"]
+position = Vector3(0.55, 0, -0.85)
+rotation = Vector3(0, 0.785398, 0)
+mesh = SubResource("ArrowWing")
+
+[node name="RiseArrow01" type="Node3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 40, 3.09, -352.5)
+
+[node name="Stem" type="MeshInstance3D" parent="RiseArrow01"]
+mesh = SubResource("ArrowStem")
+
+[node name="WingLeft" type="MeshInstance3D" parent="RiseArrow01"]
+position = Vector3(-0.55, 0, -0.85)
+rotation = Vector3(0, -0.785398, 0)
+mesh = SubResource("ArrowWing")
+
+[node name="WingRight" type="MeshInstance3D" parent="RiseArrow01"]
+position = Vector3(0.55, 0, -0.85)
+rotation = Vector3(0, 0.785398, 0)
+mesh = SubResource("ArrowWing")
+
+[node name="RiseArrow02" type="Node3D" parent="."]
+transform = Transform3D(0.882353, -0.027634, -0.469776, 0, 0.998274, -0.058722, 0.470588, 0.051814, 0.88083, 44, 3.59, -372.5)
+
+[node name="Stem" type="MeshInstance3D" parent="RiseArrow02"]
+mesh = SubResource("ArrowStem")
+
+[node name="WingLeft" type="MeshInstance3D" parent="RiseArrow02"]
+position = Vector3(-0.55, 0, -0.85)
+rotation = Vector3(0, -0.785398, 0)
+mesh = SubResource("ArrowWing")
+
+[node name="WingRight" type="MeshInstance3D" parent="RiseArrow02"]
+position = Vector3(0.55, 0, -0.85)
+rotation = Vector3(0, 0.785398, 0)
+mesh = SubResource("ArrowWing")
+
+[node name="RiseArrow03" type="Node3D" parent="."]
+transform = Transform3D(0.647648, -0.057887, -0.759737, 0, 0.99711, -0.075974, 0.761939, 0.049204, 0.645777, 58, 5.09, -388.5)
+
+[node name="Stem" type="MeshInstance3D" parent="RiseArrow03"]
+mesh = SubResource("ArrowStem")
+
+[node name="WingLeft" type="MeshInstance3D" parent="RiseArrow03"]
+position = Vector3(-0.55, 0, -0.85)
+rotation = Vector3(0, -0.785398, 0)
+mesh = SubResource("ArrowWing")
+
+[node name="WingRight" type="MeshInstance3D" parent="RiseArrow03"]
+position = Vector3(0.55, 0, -0.85)
+rotation = Vector3(0, 0.785398, 0)
+mesh = SubResource("ArrowWing")
+
+[node name="RiseArrow04" type="Node3D" parent="."]
+transform = Transform3D(0.461353, -0.093928, -0.882231, 0, 0.99438, -0.105868, 0.887217, 0.048842, 0.45876, 80.5, 7.59, -403.5)
+
+[node name="Stem" type="MeshInstance3D" parent="RiseArrow04"]
+mesh = SubResource("ArrowStem")
+
+[node name="WingLeft" type="MeshInstance3D" parent="RiseArrow04"]
+position = Vector3(-0.55, 0, -0.85)
+rotation = Vector3(0, -0.785398, 0)
+mesh = SubResource("ArrowWing")
+
+[node name="WingRight" type="MeshInstance3D" parent="RiseArrow04"]
+position = Vector3(0.55, 0, -0.85)
+rotation = Vector3(0, 0.785398, 0)
+mesh = SubResource("ArrowWing")
+
+[node name="RiseArrow05" type="Node3D" parent="."]
+transform = Transform3D(-0.154377, -0.060894, -0.986134, 0, 0.998099, -0.061633, 0.988012, -0.009515, -0.154083, 109, 10.09, -407.5)
+
+[node name="Stem" type="MeshInstance3D" parent="RiseArrow05"]
+mesh = SubResource("ArrowStem")
+
+[node name="WingLeft" type="MeshInstance3D" parent="RiseArrow05"]
+position = Vector3(-0.55, 0, -0.85)
+rotation = Vector3(0, -0.785398, 0)
+mesh = SubResource("ArrowWing")
+
+[node name="WingRight" type="MeshInstance3D" parent="RiseArrow05"]
+position = Vector3(0.55, 0, -0.85)
+rotation = Vector3(0, 0.785398, 0)
+mesh = SubResource("ArrowWing")
+
+[node name="SkyArrow01" type="Node3D" parent="."]
+transform = Transform3D(0, 0, -1, 0, 1, 0, 1, 0, 0, 137.5, 11.09, -405)
+
+[node name="Stem" type="MeshInstance3D" parent="SkyArrow01"]
+mesh = SubResource("ArrowStem")
+
+[node name="WingLeft" type="MeshInstance3D" parent="SkyArrow01"]
+position = Vector3(-0.55, 0, -0.85)
+rotation = Vector3(0, -0.785398, 0)
+mesh = SubResource("ArrowWing")
+
+[node name="WingRight" type="MeshInstance3D" parent="SkyArrow01"]
+position = Vector3(0.55, 0, -0.85)
+rotation = Vector3(0, 0.785398, 0)
+mesh = SubResource("ArrowWing")
+
+[node name="SkyArrow02" type="Node3D" parent="."]
+transform = Transform3D(0.416655, 0, -0.909065, 0, 1, 0, 0.909065, 0, 0.416655, 162, 11.09, -410.5)
+
+[node name="Stem" type="MeshInstance3D" parent="SkyArrow02"]
+mesh = SubResource("ArrowStem")
+
+[node name="WingLeft" type="MeshInstance3D" parent="SkyArrow02"]
+position = Vector3(-0.55, 0, -0.85)
+rotation = Vector3(0, -0.785398, 0)
+mesh = SubResource("ArrowWing")
+
+[node name="WingRight" type="MeshInstance3D" parent="SkyArrow02"]
+position = Vector3(0.55, 0, -0.85)
+rotation = Vector3(0, 0.785398, 0)
+mesh = SubResource("ArrowWing")
+
+[node name="SkyArrow03" type="Node3D" parent="."]
+transform = Transform3D(0.707107, 0, -0.707107, 0, 1, 0, 0.707107, 0, 0.707107, 182, 11.09, -424)
+
+[node name="Stem" type="MeshInstance3D" parent="SkyArrow03"]
+mesh = SubResource("ArrowStem")
+
+[node name="WingLeft" type="MeshInstance3D" parent="SkyArrow03"]
+position = Vector3(-0.55, 0, -0.85)
+rotation = Vector3(0, -0.785398, 0)
+mesh = SubResource("ArrowWing")
+
+[node name="WingRight" type="MeshInstance3D" parent="SkyArrow03"]
+position = Vector3(0.55, 0, -0.85)
+rotation = Vector3(0, 0.785398, 0)
+mesh = SubResource("ArrowWing")
+
+[node name="SkyArrow04" type="Node3D" parent="."]
+transform = Transform3D(0.813733, 0, -0.581238, 0, 1, 0, 0.581238, 0, 0.813733, 195, 11.09, -439)
+
+[node name="Stem" type="MeshInstance3D" parent="SkyArrow04"]
+mesh = SubResource("ArrowStem")
+
+[node name="WingLeft" type="MeshInstance3D" parent="SkyArrow04"]
+position = Vector3(-0.55, 0, -0.85)
+rotation = Vector3(0, -0.785398, 0)
+mesh = SubResource("ArrowWing")
+
+[node name="WingRight" type="MeshInstance3D" parent="SkyArrow04"]
+position = Vector3(0.55, 0, -0.85)
+rotation = Vector3(0, 0.785398, 0)
+mesh = SubResource("ArrowWing")
+
+[node name="SkyArrow05" type="Node3D" parent="."]
+transform = Transform3D(0.21693, 0, -0.976187, 0, 1, 0, 0.976187, 0, 0.21693, 209, 11.09, -448)
+
+[node name="Stem" type="MeshInstance3D" parent="SkyArrow05"]
+mesh = SubResource("ArrowStem")
+
+[node name="WingLeft" type="MeshInstance3D" parent="SkyArrow05"]
+position = Vector3(-0.55, 0, -0.85)
+rotation = Vector3(0, -0.785398, 0)
+mesh = SubResource("ArrowWing")
+
+[node name="WingRight" type="MeshInstance3D" parent="SkyArrow05"]
+position = Vector3(0.55, 0, -0.85)
+rotation = Vector3(0, 0.785398, 0)
+mesh = SubResource("ArrowWing")
+
+[node name="SkyArrow06" type="Node3D" parent="."]
+transform = Transform3D(-0.752577, 0, -0.658505, 0, 1, 0, 0.658505, 0, -0.752577, 225, 11.09, -442)
+
+[node name="Stem" type="MeshInstance3D" parent="SkyArrow06"]
+mesh = SubResource("ArrowStem")
+
+[node name="WingLeft" type="MeshInstance3D" parent="SkyArrow06"]
+position = Vector3(-0.55, 0, -0.85)
+rotation = Vector3(0, -0.785398, 0)
+mesh = SubResource("ArrowWing")
+
+[node name="WingRight" type="MeshInstance3D" parent="SkyArrow06"]
+position = Vector3(0.55, 0, -0.85)
+rotation = Vector3(0, 0.785398, 0)
+mesh = SubResource("ArrowWing")
+
+[node name="SkyArrow07" type="Node3D" parent="."]
+transform = Transform3D(-0.993884, 0, -0.110432, 0, 1, 0, 0.110432, 0, -0.993884, 233, 11.09, -425)
+
+[node name="Stem" type="MeshInstance3D" parent="SkyArrow07"]
+mesh = SubResource("ArrowStem")
+
+[node name="WingLeft" type="MeshInstance3D" parent="SkyArrow07"]
+position = Vector3(-0.55, 0, -0.85)
+rotation = Vector3(0, -0.785398, 0)
+mesh = SubResource("ArrowWing")
+
+[node name="WingRight" type="MeshInstance3D" parent="SkyArrow07"]
+position = Vector3(0.55, 0, -0.85)
+rotation = Vector3(0, 0.785398, 0)
+mesh = SubResource("ArrowWing")
+
+[node name="SkyArrow08" type="Node3D" parent="."]
+transform = Transform3D(-1, 0, 0, 0, 1, 0, 0, 0, -1, 234, 11.09, -385.5)
+
+[node name="Stem" type="MeshInstance3D" parent="SkyArrow08"]
+mesh = SubResource("ArrowStem")
+
+[node name="WingLeft" type="MeshInstance3D" parent="SkyArrow08"]
+position = Vector3(-0.55, 0, -0.85)
+rotation = Vector3(0, -0.785398, 0)
+mesh = SubResource("ArrowWing")
+
+[node name="WingRight" type="MeshInstance3D" parent="SkyArrow08"]
+position = Vector3(0.55, 0, -0.85)
+rotation = Vector3(0, 0.785398, 0)
+mesh = SubResource("ArrowWing")
+
+[node name="SkyArrow09" type="Node3D" parent="."]
+transform = Transform3D(-0.940887, 0, 0.338719, 0, 1, 0, -0.338719, 0, -0.940887, 229.5, 11.09, -342.5)
+
+[node name="Stem" type="MeshInstance3D" parent="SkyArrow09"]
+mesh = SubResource("ArrowStem")
+
+[node name="WingLeft" type="MeshInstance3D" parent="SkyArrow09"]
+position = Vector3(-0.55, 0, -0.85)
+rotation = Vector3(0, -0.785398, 0)
+mesh = SubResource("ArrowWing")
+
+[node name="WingRight" type="MeshInstance3D" parent="SkyArrow09"]
+position = Vector3(0.55, 0, -0.85)
+rotation = Vector3(0, 0.785398, 0)
+mesh = SubResource("ArrowWing")
+
+[node name="SkyArrow10" type="Node3D" parent="."]
+transform = Transform3D(-1, 0, 0, 0, 1, 0, 0, 0, -1, 225, 11.09, -320)
+
+[node name="Stem" type="MeshInstance3D" parent="SkyArrow10"]
+mesh = SubResource("ArrowStem")
+
+[node name="WingLeft" type="MeshInstance3D" parent="SkyArrow10"]
+position = Vector3(-0.55, 0, -0.85)
+rotation = Vector3(0, -0.785398, 0)
+mesh = SubResource("ArrowWing")
+
+[node name="WingRight" type="MeshInstance3D" parent="SkyArrow10"]
+position = Vector3(0.55, 0, -0.85)
+rotation = Vector3(0, 0.785398, 0)
+mesh = SubResource("ArrowWing")
+
+[node name="DownhillArrow01" type="Node3D" parent="."]
+transform = Transform3D(-0.38075, 0, -0.924678, 0, 1, 0, 0.924678, 0, -0.38075, 233.5, 11.09, -306.5)
+
+[node name="Stem" type="MeshInstance3D" parent="DownhillArrow01"]
+mesh = SubResource("ArrowStem")
+
+[node name="WingLeft" type="MeshInstance3D" parent="DownhillArrow01"]
+position = Vector3(-0.55, 0, -0.85)
+rotation = Vector3(0, -0.785398, 0)
+mesh = SubResource("ArrowWing")
+
+[node name="WingRight" type="MeshInstance3D" parent="DownhillArrow01"]
+position = Vector3(0.55, 0, -0.85)
+rotation = Vector3(0, 0.785398, 0)
+mesh = SubResource("ArrowWing")
+
+[node name="DownhillArrow02" type="Node3D" parent="."]
+transform = Transform3D(0.250962, 0.034682, -0.967375, 0, 0.999358, 0.035829, 0.967997, -0.008992, 0.250801, 255.5, 10.59, -306.5)
+
+[node name="Stem" type="MeshInstance3D" parent="DownhillArrow02"]
+mesh = SubResource("ArrowStem")
+
+[node name="WingLeft" type="MeshInstance3D" parent="DownhillArrow02"]
+position = Vector3(-0.55, 0, -0.85)
+rotation = Vector3(0, -0.785398, 0)
+mesh = SubResource("ArrowWing")
+
+[node name="WingRight" type="MeshInstance3D" parent="DownhillArrow02"]
+position = Vector3(0.55, 0, -0.85)
+rotation = Vector3(0, 0.785398, 0)
+mesh = SubResource("ArrowWing")
+
+[node name="DownhillArrow03" type="Node3D" parent="."]
+transform = Transform3D(0.735931, 0.05956, -0.674432, 0, 0.996123, 0.087969, 0.677057, -0.064739, 0.733078, 280.5, 8.59, -322.5)
+
+[node name="Stem" type="MeshInstance3D" parent="DownhillArrow03"]
+mesh = SubResource("ArrowStem")
+
+[node name="WingLeft" type="MeshInstance3D" parent="DownhillArrow03"]
+position = Vector3(-0.55, 0, -0.85)
+rotation = Vector3(0, -0.785398, 0)
+mesh = SubResource("ArrowWing")
+
+[node name="WingRight" type="MeshInstance3D" parent="DownhillArrow03"]
+position = Vector3(0.55, 0, -0.85)
+rotation = Vector3(0, 0.785398, 0)
+mesh = SubResource("ArrowWing")
+
+[node name="DownhillArrow04" type="Node3D" parent="."]
+transform = Transform3D(0.952424, 0.023155, -0.303895, 0, 0.99711, 0.075974, 0.304776, -0.072359, 0.949671, 296, 6.09, -347.5)
+
+[node name="Stem" type="MeshInstance3D" parent="DownhillArrow04"]
+mesh = SubResource("ArrowStem")
+
+[node name="WingLeft" type="MeshInstance3D" parent="DownhillArrow04"]
+position = Vector3(-0.55, 0, -0.85)
+rotation = Vector3(0, -0.785398, 0)
+mesh = SubResource("ArrowWing")
+
+[node name="WingRight" type="MeshInstance3D" parent="DownhillArrow04"]
+position = Vector3(0.55, 0, -0.85)
+rotation = Vector3(0, 0.785398, 0)
+mesh = SubResource("ArrowWing")
+
+[node name="DownhillArrow05" type="Node3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 0.997054, 0.076696, 0, -0.076696, 0.997054, 300, 4.09, -373)
+
+[node name="Stem" type="MeshInstance3D" parent="DownhillArrow05"]
+mesh = SubResource("ArrowStem")
+
+[node name="WingLeft" type="MeshInstance3D" parent="DownhillArrow05"]
+position = Vector3(-0.55, 0, -0.85)
+rotation = Vector3(0, -0.785398, 0)
+mesh = SubResource("ArrowWing")
+
+[node name="WingRight" type="MeshInstance3D" parent="DownhillArrow05"]
+position = Vector3(0.55, 0, -0.85)
+rotation = Vector3(0, 0.785398, 0)
+mesh = SubResource("ArrowWing")
+
+[node name="DownhillArrow06" type="Node3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 300, 3.09, -408)
+
+[node name="Stem" type="MeshInstance3D" parent="DownhillArrow06"]
+mesh = SubResource("ArrowStem")
+
+[node name="WingLeft" type="MeshInstance3D" parent="DownhillArrow06"]
+position = Vector3(-0.55, 0, -0.85)
+rotation = Vector3(0, -0.785398, 0)
+mesh = SubResource("ArrowWing")
+
+[node name="WingRight" type="MeshInstance3D" parent="DownhillArrow06"]
+position = Vector3(0.55, 0, -0.85)
+rotation = Vector3(0, 0.785398, 0)
+mesh = SubResource("ArrowWing")
+
+[node name="CutArrow" type="Node3D" parent="."]
+transform = Transform3D(-0.793772, 0, -0.608215, 0, 1, 0, 0.608215, 0, -0.793772, 158, 11.07, -396)
+
+[node name="Stem" type="MeshInstance3D" parent="CutArrow"]
+mesh = SubResource("ArrowStem")
+
+[node name="WingLeft" type="MeshInstance3D" parent="CutArrow"]
+position = Vector3(-0.55, 0, -0.85)
+rotation = Vector3(0, -0.785398, 0)
+mesh = SubResource("ArrowWing")
+
+[node name="WingRight" type="MeshInstance3D" parent="CutArrow"]
+position = Vector3(0.55, 0, -0.85)
+rotation = Vector3(0, 0.785398, 0)
+mesh = SubResource("ArrowWing")
+
+[node name="SafeArrow" type="Node3D" parent="."]
+transform = Transform3D(0, 0, -1, 0, 1, 0, 1, 0, 0, 310, 3.07, -414)
+
+[node name="Stem" type="MeshInstance3D" parent="SafeArrow"]
+mesh = SubResource("ArrowStem")
+
+[node name="WingLeft" type="MeshInstance3D" parent="SafeArrow"]
+position = Vector3(-0.55, 0, -0.85)
+rotation = Vector3(0, -0.785398, 0)
+mesh = SubResource("ArrowWing")
+
+[node name="WingRight" type="MeshInstance3D" parent="SafeArrow"]
+position = Vector3(0.55, 0, -0.85)
+rotation = Vector3(0, 0.785398, 0)
+mesh = SubResource("ArrowWing")
+
+[node name="SafeReturnArrow" type="Node3D" parent="."]
+transform = Transform3D(0.725953, 0.129053, 0.675528, 0, 0.982237, -0.187647, -0.687745, 0.136223, 0.713057, 309.011615, 0.588401, -517.48774)
+
+[node name="Stem" type="MeshInstance3D" parent="SafeReturnArrow"]
+mesh = SubResource("ArrowStem")
+
+[node name="WingLeft" type="MeshInstance3D" parent="SafeReturnArrow"]
+position = Vector3(-0.55, 0, -0.85)
+rotation = Vector3(0, -0.785398, 0)
+mesh = SubResource("ArrowWing")
+
+[node name="WingRight" type="MeshInstance3D" parent="SafeReturnArrow"]
+position = Vector3(0.55, 0, -0.85)
+rotation = Vector3(0, 0.785398, 0)
+mesh = SubResource("ArrowWing")
+
+[node name="HomeArrowA" type="Node3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 300, 3.07, -560)
+
+[node name="Stem" type="MeshInstance3D" parent="HomeArrowA"]
+mesh = SubResource("ArrowStem")
+
+[node name="WingLeft" type="MeshInstance3D" parent="HomeArrowA"]
+position = Vector3(-0.55, 0, -0.85)
+rotation = Vector3(0, -0.785398, 0)
+mesh = SubResource("ArrowWing")
+
+[node name="WingRight" type="MeshInstance3D" parent="HomeArrowA"]
+position = Vector3(0.55, 0, -0.85)
+rotation = Vector3(0, 0.785398, 0)
+mesh = SubResource("ArrowWing")
+
+[node name="HomeArrowB" type="Node3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 300, 3.07, -586)
+
+[node name="Stem" type="MeshInstance3D" parent="HomeArrowB"]
+mesh = SubResource("ArrowStem")
+
+[node name="WingLeft" type="MeshInstance3D" parent="HomeArrowB"]
+position = Vector3(-0.55, 0, -0.85)
+rotation = Vector3(0, -0.785398, 0)
+mesh = SubResource("ArrowWing")
+
+[node name="WingRight" type="MeshInstance3D" parent="HomeArrowB"]
+position = Vector3(0.55, 0, -0.85)
+rotation = Vector3(0, 0.785398, 0)
+mesh = SubResource("ArrowWing")
+
+[node name="Checkpoint2" type="Area3D" parent="."]
+position = Vector3(40, 9, -315)
+rotation = Vector3(0, 0, 0)
+collision_layer = 0
+collision_mask = 4
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Checkpoint2"]
+shape = SubResource("Gate18")
+
+[node name="LeftPost" type="CSGBox3D" parent="Checkpoint2"]
+position = Vector3(-9, 0, 0)
+size = Vector3(0.35, 12, 0.4)
+material = SubResource("Edge")
+
+[node name="RightPost" type="CSGBox3D" parent="Checkpoint2"]
+position = Vector3(9, 0, 0)
+size = Vector3(0.35, 12, 0.4)
+material = SubResource("Edge")
+
+[node name="Crossbar" type="CSGBox3D" parent="Checkpoint2"]
+position = Vector3(0, 6, 0)
+size = Vector3(18, 0.4, 0.4)
+material = SubResource("Edge")
+
+[node name="TimingLine" type="CSGBox3D" parent="Checkpoint2"]
+position = Vector3(0, -5.965, 0)
+size = Vector3(18, 0.04, 1)
+material = SubResource("Edge")
+
+[node name="Sign" type="Label3D" parent="Checkpoint2"]
+position = Vector3(0, 7, 0)
+billboard = 1
+pixel_size = 0.007
+font_size = 70
+outline_size = 8
+text = "02 / 06"
+
+[node name="Respawn" type="Marker3D" parent="Checkpoint2"]
+position = Vector3(0, -5.45, -3)
+
+[node name="Checkpoint3" type="Area3D" parent="."]
+position = Vector3(125, 17, -405)
+rotation = Vector3(0, -1.570796, 0)
+collision_layer = 0
+collision_mask = 4
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Checkpoint3"]
+shape = SubResource("Gate18")
+
+[node name="LeftPost" type="CSGBox3D" parent="Checkpoint3"]
+position = Vector3(-9, 0, 0)
+size = Vector3(0.35, 12, 0.4)
+material = SubResource("Edge")
+
+[node name="RightPost" type="CSGBox3D" parent="Checkpoint3"]
+position = Vector3(9, 0, 0)
+size = Vector3(0.35, 12, 0.4)
+material = SubResource("Edge")
+
+[node name="Crossbar" type="CSGBox3D" parent="Checkpoint3"]
+position = Vector3(0, 6, 0)
+size = Vector3(18, 0.4, 0.4)
+material = SubResource("Edge")
+
+[node name="TimingLine" type="CSGBox3D" parent="Checkpoint3"]
+position = Vector3(0, -5.965, 0)
+size = Vector3(18, 0.04, 1)
+material = SubResource("Edge")
+
+[node name="Sign" type="Label3D" parent="Checkpoint3"]
+position = Vector3(0, 7, 0)
+billboard = 1
+pixel_size = 0.007
+font_size = 70
+outline_size = 8
+text = "03 / 06"
+
+[node name="Respawn" type="Marker3D" parent="Checkpoint3"]
+position = Vector3(0, -5.45, -3)
+
+[node name="Checkpoint4" type="Area3D" parent="."]
+position = Vector3(225, 17, -315)
+rotation = Vector3(0, 3.141593, 0)
+collision_layer = 0
+collision_mask = 4
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Checkpoint4"]
+shape = SubResource("Gate20")
+
+[node name="LeftPost" type="CSGBox3D" parent="Checkpoint4"]
+position = Vector3(-10, 0, 0)
+size = Vector3(0.35, 12, 0.4)
+material = SubResource("Edge")
+
+[node name="RightPost" type="CSGBox3D" parent="Checkpoint4"]
+position = Vector3(10, 0, 0)
+size = Vector3(0.35, 12, 0.4)
+material = SubResource("Edge")
+
+[node name="Crossbar" type="CSGBox3D" parent="Checkpoint4"]
+position = Vector3(0, 6, 0)
+size = Vector3(20, 0.4, 0.4)
+material = SubResource("Edge")
+
+[node name="TimingLine" type="CSGBox3D" parent="Checkpoint4"]
+position = Vector3(0, -5.965, 0)
+size = Vector3(20, 0.04, 1)
+material = SubResource("Edge")
+
+[node name="Sign" type="Label3D" parent="Checkpoint4"]
+position = Vector3(0, 7, 0)
+billboard = 1
+pixel_size = 0.007
+font_size = 70
+outline_size = 8
+text = "04 / 06"
+
+[node name="Respawn" type="Marker3D" parent="Checkpoint4"]
+position = Vector3(0, -5.45, -3)
+rotation = Vector3(0, -4.712389, 0)
+
+[node name="Checkpoint5" type="Area3D" parent="."]
+position = Vector3(300, 9, -405)
+rotation = Vector3(0, 0, 0)
+collision_layer = 0
+collision_mask = 4
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Checkpoint5"]
+shape = SubResource("Gate20")
+
+[node name="LeftPost" type="CSGBox3D" parent="Checkpoint5"]
+position = Vector3(-10, 0, 0)
+size = Vector3(0.35, 12, 0.4)
+material = SubResource("Edge")
+
+[node name="RightPost" type="CSGBox3D" parent="Checkpoint5"]
+position = Vector3(10, 0, 0)
+size = Vector3(0.35, 12, 0.4)
+material = SubResource("Edge")
+
+[node name="Crossbar" type="CSGBox3D" parent="Checkpoint5"]
+position = Vector3(0, 6, 0)
+size = Vector3(20, 0.4, 0.4)
+material = SubResource("Edge")
+
+[node name="TimingLine" type="CSGBox3D" parent="Checkpoint5"]
+position = Vector3(0, -5.965, 0)
+size = Vector3(20, 0.04, 1)
+material = SubResource("Edge")
+
+[node name="Sign" type="Label3D" parent="Checkpoint5"]
+position = Vector3(0, 7, 0)
+billboard = 1
+pixel_size = 0.007
+font_size = 70
+outline_size = 8
+text = "05 / 06"
+
+[node name="Respawn" type="Marker3D" parent="Checkpoint5"]
+position = Vector3(0, -5.45, -3)
+
+[node name="Checkpoint6" type="Area3D" parent="."]
+position = Vector3(300, 9, -535)
+rotation = Vector3(0, 0, 0)
+collision_layer = 0
+collision_mask = 4
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Checkpoint6"]
+shape = SubResource("Gate28")
+
+[node name="LeftPost" type="CSGBox3D" parent="Checkpoint6"]
+position = Vector3(-14, 0, 0)
+size = Vector3(0.35, 12, 0.4)
+material = SubResource("Edge")
+
+[node name="RightPost" type="CSGBox3D" parent="Checkpoint6"]
+position = Vector3(14, 0, 0)
+size = Vector3(0.35, 12, 0.4)
+material = SubResource("Edge")
+
+[node name="Crossbar" type="CSGBox3D" parent="Checkpoint6"]
+position = Vector3(0, 6, 0)
+size = Vector3(28, 0.4, 0.4)
+material = SubResource("Edge")
+
+[node name="TimingLine" type="CSGBox3D" parent="Checkpoint6"]
+position = Vector3(0, -5.965, 0)
+size = Vector3(28, 0.04, 1)
+material = SubResource("Edge")
+
+[node name="Sign" type="Label3D" parent="Checkpoint6"]
+position = Vector3(0, 7, 0)
+billboard = 1
+pixel_size = 0.007
+font_size = 70
+outline_size = 8
+text = "06 / 06"
+
+[node name="Respawn" type="Marker3D" parent="Checkpoint6"]
+position = Vector3(0, -5.45, -3)
+
+[node name="FinishGate" type="Area3D" parent="."]
+position = Vector3(300, 9, -595)
+rotation = Vector3(0, 0, 0)
+collision_layer = 0
+collision_mask = 4
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="FinishGate"]
+shape = SubResource("Gate20")
+
+[node name="LeftPost" type="CSGBox3D" parent="FinishGate"]
+position = Vector3(-10, 0, 0)
+size = Vector3(0.35, 12, 0.4)
+material = SubResource("Edge")
+
+[node name="RightPost" type="CSGBox3D" parent="FinishGate"]
+position = Vector3(10, 0, 0)
+size = Vector3(0.35, 12, 0.4)
+material = SubResource("Edge")
+
+[node name="Crossbar" type="CSGBox3D" parent="FinishGate"]
+position = Vector3(0, 6, 0)
+size = Vector3(20, 0.4, 0.4)
+material = SubResource("Edge")
+
+[node name="TimingLine" type="CSGBox3D" parent="FinishGate"]
+position = Vector3(0, -5.965, 0)
+size = Vector3(20, 0.04, 1)
+material = SubResource("Edge")
+
+[node name="Sign" type="Label3D" parent="FinishGate"]
+position = Vector3(0, 7, 0)
+billboard = 1
+pixel_size = 0.007
+font_size = 70
+outline_size = 8
+text = "FINISH"
+
+[node name="DriveSign" type="Label3D" parent="."]
+position = Vector3(40, 9, -241)
+billboard = 1
+pixel_size = 0.007
+font_size = 48
+outline_size = 8
+text = "05  VELOCITY DRIVE\nClick the anchor rhythm · carry speed"
+
+[node name="RiseSign" type="Label3D" parent="."]
+position = Vector3(40, 9, -327)
+billboard = 1
+pixel_size = 0.007
+font_size = 48
+outline_size = 8
+text = "06  RISING S BEND\nFollow the white road uphill"
+
+[node name="SkySign" type="Label3D" parent="."]
+position = Vector3(134, 17, -405)
+billboard = 1
+pixel_size = 0.007
+font_size = 48
+outline_size = 8
+text = "07  SKY HAIRPIN\nWIDE →       5m BEAM CUT ↘"
+
+[node name="BeamSign" type="Label3D" parent="."]
+position = Vector3(164, 15, -397)
+billboard = 1
+pixel_size = 0.007
+font_size = 48
+outline_size = 8
+text = "BEAM CUT\nNarrow line · faster split"
+
+[node name="HairpinSign" type="Label3D" parent="."]
+position = Vector3(218, 19, -444)
+billboard = 1
+pixel_size = 0.007
+font_size = 48
+outline_size = 8
+text = "SWEEP THE SKY\nRound the bend · south to checkpoint 04"
+
+[node name="DownhillSign" type="Label3D" parent="."]
+position = Vector3(241, 17, -305)
+billboard = 1
+pixel_size = 0.007
+font_size = 48
+outline_size = 8
+text = "08  DOWNHILL SWEEP\nTurn east · flow back north"
+
+[node name="ChainSign" type="Label3D" parent="."]
+position = Vector3(300, 9, -410)
+billboard = 1
+pixel_size = 0.007
+font_size = 48
+outline_size = 8
+text = "09  SPRING CHAIN\nAIR →      WIDE / SAFE RIGHT →"
+
+[node name="ChainRecoverySign" type="Label3D" parent="."]
+position = Vector3(318, 2, -439)
+billboard = 1
+pixel_size = 0.007
+font_size = 48
+outline_size = 8
+text = "RECOVERY LANE\nContinuous ramp → checkpoint 06"
+
+[node name="FinalSign" type="Label3D" parent="."]
+position = Vector3(300, 9, -552)
+billboard = 1
+pixel_size = 0.007
+font_size = 48
+outline_size = 8
+text = "10  FINAL SPRINT\nThe clock is still running"
+
+[node name="Support01" type="CSGBox3D" parent="."]
+position = Vector3(40, -5, -340)
+size = Vector3(3, 14, 3)
+material = ExtResource("CityRoof")
+
+[node name="Support02" type="CSGBox3D" parent="."]
+position = Vector3(68, -3.5, -397)
+size = Vector3(3, 17, 3)
+material = ExtResource("CityRoof")
+
+[node name="Support03" type="CSGBox3D" parent="."]
+position = Vector3(125, -1, -405)
+size = Vector3(3, 22, 3)
+material = ExtResource("CityRoof")
+
+[node name="Support04" type="CSGBox3D" parent="."]
+position = Vector3(200, -1, -446)
+size = Vector3(3, 22, 3)
+material = ExtResource("CityRoof")
+
+[node name="Support05" type="CSGBox3D" parent="."]
+position = Vector3(234, -1, -382)
+size = Vector3(3, 22, 3)
+material = ExtResource("CityRoof")
+
+[node name="Support06" type="CSGBox3D" parent="."]
+position = Vector3(225, -1, -310)
+size = Vector3(3, 22, 3)
+material = ExtResource("CityRoof")
+
+[node name="Support07" type="CSGBox3D" parent="."]
+position = Vector3(292, -3, -335)
+size = Vector3(3, 18, 3)
+material = ExtResource("CityRoof")
+
+[node name="Support08" type="CSGBox3D" parent="."]
+position = Vector3(300, -5, -386)
+size = Vector3(3, 14, 3)
+material = ExtResource("CityRoof")
+
+[node name="Support09" type="CSGBox3D" parent="."]
+position = Vector3(300, -5, -563)
+size = Vector3(3, 14, 3)
+material = ExtResource("CityRoof")
+
+[node name="SkyMonolith" type="CSGBox3D" parent="."]
+position = Vector3(260, 7, -461)
+size = Vector3(9, 38, 9)
+material = ExtResource("CityRoof")
+
+[node name="SkyMonolithStripe" type="CSGBox3D" parent="."]
+position = Vector3(254.45, 12, -461)
+size = Vector3(0.15, 16, 9)
+material = SubResource("Edge")
+
+[node name="ExtensionVoid" type="CSGBox3D" parent="."]
+visible = false
+position = Vector3(175, -12.5, -427)
+size = Vector3(420, 1, 410)
+material = SubResource("Hazard")

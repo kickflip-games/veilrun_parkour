@@ -1,0 +1,25 @@
+[remap]
+
+importer="wavefront_obj"
+importer_version=1
+type="Mesh"
+uid="uid://lmbm0i2edbic"
+path="res://.godot/imported/city_23_stone.obj-038f33bc16f8d527977238199adbf4ef.mesh"
+
+[deps]
+
+files=["res://.godot/imported/city_23_stone.obj-038f33bc16f8d527977238199adbf4ef.mesh"]
+
+source_file="res://assets/main_city/meshes/07_long_fall/city_23_stone.obj"
+dest_files=["res://.godot/imported/city_23_stone.obj-038f33bc16f8d527977238199adbf4ef.mesh", "res://.godot/imported/city_23_stone.obj-038f33bc16f8d527977238199adbf4ef.mesh"]
+
+[params]
+
+generate_tangents=true
+generate_lods=true
+generate_shadow_mesh=true
+generate_lightmap_uv2=false
+generate_lightmap_uv2_texel_size=0.2
+scale_mesh=Vector3(1, 1, 1)
+offset_mesh=Vector3(0, 0, 0)
+force_disable_mesh_compression=false

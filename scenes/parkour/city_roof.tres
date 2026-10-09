@@ -1,0 +1,12 @@
+[gd_resource type="StandardMaterial3D" load_steps=2 format=3]
+
+[ext_resource type="Texture2D" path="res://assets/rooftop_city/textures/roof_clay_grey_center.png" id="Slate"]
+
+[resource]
+albedo_color = Color(0.38, 0.43, 0.51, 1)
+roughness = 0.84
+albedo_texture = ExtResource("Slate")
+texture_filter = 0
+uv1_scale = Vector3(0.25, 0.25, 0.25)
+uv1_triplanar = true
+uv1_world_triplanar = true

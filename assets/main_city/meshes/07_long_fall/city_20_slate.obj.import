@@ -1,0 +1,25 @@
+[remap]
+
+importer="wavefront_obj"
+importer_version=1
+type="Mesh"
+uid="uid://c562vsuyvpbyd"
+path="res://.godot/imported/city_20_slate.obj-932a2b834b7044a30faf8e1b89ecbe5d.mesh"
+
+[deps]
+
+files=["res://.godot/imported/city_20_slate.obj-932a2b834b7044a30faf8e1b89ecbe5d.mesh"]
+
+source_file="res://assets/main_city/meshes/07_long_fall/city_20_slate.obj"
+dest_files=["res://.godot/imported/city_20_slate.obj-932a2b834b7044a30faf8e1b89ecbe5d.mesh", "res://.godot/imported/city_20_slate.obj-932a2b834b7044a30faf8e1b89ecbe5d.mesh"]
+
+[params]
+
+generate_tangents=true
+generate_lods=true
+generate_shadow_mesh=true
+generate_lightmap_uv2=false
+generate_lightmap_uv2_texel_size=0.2
+scale_mesh=Vector3(1, 1, 1)
+offset_mesh=Vector3(0, 0, 0)
+force_disable_mesh_compression=false

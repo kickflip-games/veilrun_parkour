@@ -1,0 +1,108 @@
+[gd_scene load_steps=9 format=3 uid="uid://giwqconkotrq"]
+
+[ext_resource type="Script" path="res://scenes/player/player.gd" id="PlayerScript"]
+[ext_resource type="PackedScene" path="res://scenes/parkour/grapple_controller.tscn" id="Grapple"]
+[ext_resource type="Script" path="res://scenes/player/hud.gd" id="HudScript"]
+[ext_resource type="Shader" path="res://scenes/player/speedlines.gdshader" id="Speedlines"]
+
+[sub_resource type="CapsuleShape3D" id="PlayerCapsule"]
+radius = 0.3515625
+height = 2.2180176
+
+[sub_resource type="FastNoiseLite" id="SpeedNoise"]
+frequency = 0.05
+
+[sub_resource type="NoiseTexture2D" id="SpeedTexture"]
+noise = SubResource("SpeedNoise")
+seamless = true
+
+[sub_resource type="ShaderMaterial" id="SpeedMaterial"]
+resource_local_to_scene = true
+shader = ExtResource("Speedlines")
+shader_parameter/noise = SubResource("SpeedTexture")
+shader_parameter/line_color = Color(1, 1, 1, 0.85)
+shader_parameter/line_count = 0.5
+shader_parameter/line_density = 0.0
+shader_parameter/line_faloff = 0.25
+shader_parameter/mask_size = 0.1
+shader_parameter/mask_edge = 0.5
+shader_parameter/animation_speed = 10.0
+
+[node name="Player" type="CharacterBody3D"]
+collision_layer = 4
+collision_mask = 1
+platform_floor_layers = 1
+script = ExtResource("PlayerScript")
+parkour_mode = true
+
+[node name="Camera3D" type="Camera3D" parent="."]
+position = Vector3(0, 1.1516392, 0)
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="."]
+position = Vector3(0, 0.6090088, 0)
+shape = SubResource("PlayerCapsule")
+debug_color = Color(0.9137255, 0, 0.13333334, 1)
+
+[node name="Grapple" parent="." instance=ExtResource("Grapple")]
+position = Vector3(0, 0.31992096, 0)
+
+[node name="Hud" type="CanvasLayer" parent="."]
+process_mode = 3
+script = ExtResource("HudScript")
+
+[node name="SpeedlinesOverlay" type="ColorRect" parent="Hud"]
+visible = false
+material = SubResource("SpeedMaterial")
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+color = Color(0, 0, 0, 0)
+
+[node name="PauseScreen" type="Control" parent="Hud"]
+process_mode = 3
+visible = false
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="PanelContainer" type="PanelContainer" parent="Hud/PauseScreen"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -200.0
+offset_top = -175.0
+offset_right = 200.0
+offset_bottom = 175.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="VBoxContainer" type="VBoxContainer" parent="Hud/PauseScreen/PanelContainer"]
+layout_mode = 2
+theme_override_constants/separation = 16
+
+[node name="PauseTitle" type="Label" parent="Hud/PauseScreen/PanelContainer/VBoxContainer"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 32
+text = "PAUSED"
+horizontal_alignment = 1
+
+[node name="ResumeButton" type="Button" parent="Hud/PauseScreen/PanelContainer/VBoxContainer"]
+layout_mode = 2
+text = "RESUME"
+
+[node name="RetryButton" type="Button" parent="Hud/PauseScreen/PanelContainer/VBoxContainer"]
+layout_mode = 2
+text = "RETRY COURSE"
+
+[node name="QuitButton" type="Button" parent="Hud/PauseScreen/PanelContainer/VBoxContainer"]
+layout_mode = 2
+text = "COURSES"

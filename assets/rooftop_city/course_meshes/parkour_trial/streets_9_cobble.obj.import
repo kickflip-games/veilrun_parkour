@@ -1,0 +1,25 @@
+[remap]
+
+importer="wavefront_obj"
+importer_version=1
+type="Mesh"
+uid="uid://cnclk3bum0t3s"
+path="res://.godot/imported/streets_9_cobble.obj-3ad40ae7a56b1058e46f4ef6f4dbd309.mesh"
+
+[deps]
+
+files=["res://.godot/imported/streets_9_cobble.obj-3ad40ae7a56b1058e46f4ef6f4dbd309.mesh"]
+
+source_file="res://assets/rooftop_city/course_meshes/parkour_trial/streets_9_cobble.obj"
+dest_files=["res://.godot/imported/streets_9_cobble.obj-3ad40ae7a56b1058e46f4ef6f4dbd309.mesh", "res://.godot/imported/streets_9_cobble.obj-3ad40ae7a56b1058e46f4ef6f4dbd309.mesh"]
+
+[params]
+
+generate_tangents=true
+generate_lods=true
+generate_shadow_mesh=true
+generate_lightmap_uv2=false
+generate_lightmap_uv2_texel_size=0.2
+scale_mesh=Vector3(1, 1, 1)
+offset_mesh=Vector3(0, 0, 0)
+force_disable_mesh_compression=false

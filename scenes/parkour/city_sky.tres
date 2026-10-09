@@ -1,0 +1,12 @@
+[gd_resource type="Sky" load_steps=2 format=3]
+
+[sub_resource type="ProceduralSkyMaterial" id="Night"]
+sky_top_color = Color(0.015, 0.026, 0.052, 1)
+sky_horizon_color = Color(0.18, 0.23, 0.30, 1)
+ground_bottom_color = Color(0.07, 0.09, 0.12, 1)
+ground_horizon_color = Color(0.18, 0.23, 0.30, 1)
+sun_angle_max = 1.5
+sun_curve = 0.05
+
+[resource]
+sky_material = SubResource("Night")
